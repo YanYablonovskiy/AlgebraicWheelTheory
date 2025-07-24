@@ -1,4 +1,2 @@
 # AlgebraicWheelTheory
 
-## GitHub configuration
-
