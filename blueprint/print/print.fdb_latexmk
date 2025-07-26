@@ -1,16 +1,16 @@
 # Fdb version 4
-["biber C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print"] 1753491944.05313 "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bcf" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bbl" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print" 1753491952.65759 0
+["biber C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print"] 1753491944.05313 "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bcf" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bbl" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print" 1753495179.53187 0
   "Bibliography.bib" 1753364534 240 d302faab26990a26427c5c1922e4e371 ""
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bcf" 1753491951 108623 9aff15c254aabd061983df06156fadbd "pdflatex"
+  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bcf" 1753495178 108623 9aff15c254aabd061983df06156fadbd "pdflatex"
   (generated)
   "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bbl"
   "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.blg"
   (rewritten before read)
-["pdflatex"] 1753491950.31797 "print.tex" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf" "print" 1753491952.65839 0
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux" 1753491951 787 652c9c31c43676543d73a307facbe165 "pdflatex"
+["pdflatex"] 1753495177.24705 "print.tex" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf" "print" 1753495179.53259 0
+  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux" 1753495178 604 5a3a49e0e3f9c2de7afbd5fa3c19fe9c "pdflatex"
   "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bbl" 1753491945 1887 d7b267090f6577aa4fd588cba2bc085a "biber C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print"
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out" 1753491951 196 5c2e277c45e9fae8d1e8da6ca37e12e2 "pdflatex"
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.run.xml" 1753491951 2349 98e465060a1362274c4a0f4a30d7974d "pdflatex"
+  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out" 1753495178 103 4d47afb7107a54a21b0d2c438b3c2bd0 "pdflatex"
+  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.run.xml" 1753495178 2349 98e465060a1362274c4a0f4a30d7974d "pdflatex"
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1752763572 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1752766303 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1752762400 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -103,10 +103,10 @@
   "c:/texlive/2025/texmf-dist/web2c/texmf.cnf" 1752762313 42213 4e2ca030e8e2640502016e9e45868dcb ""
   "c:/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt" 1752766597 5896197 18e24e6dab172011f3ea30b215cf7a1c ""
   "c:/texlive/2025/texmf.cnf" 1752766326 713 e69b156964470283e0530f5060668171 ""
-  "content.tex" 1753489546 535 a2b12810084e88e0829d5c75ca026b7e ""
+  "content.tex" 1753494234 513 643a243394db0ce369227f6b72739e6d ""
   "macros/common.tex" 1753352609 820 60fafcc3aa944a5e60030581a943ef6b ""
   "macros/print.tex" 1753352609 1101 87627b2ec24fef68edc71c13f43f7bab ""
-  "print.tex" 1753490309 1219 3af14b3bb355cf59b08ff3679afdf21e ""
+  "print.tex" 1753495172 1228 e33e7f672f05c5672570b53d666fee32 ""
   (generated)
   "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux"
   "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.bcf"
