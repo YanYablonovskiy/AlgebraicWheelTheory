@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.7.18)  26 JUL 2025 10:39
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.7.18)  26 JUL 2025 11:07
  restricted system commands enabled.
 **print.tex
 (./print.tex
@@ -1215,7 +1215,7 @@ Here is how much of LuaTeX's memory you used:
  7 attribute_list, 1 write nodes
    avail lists: 2:126,3:36,4:18,5:48,6:11,7:500,8:25,9:90,10:6,11:30
  52820 multiletter control sequences out of 65536+600000
- 64 fonts using 19305483 bytes
+ 64 fonts using 19305635 bytes
  90i,6n,89p,693b,1163s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><c:/te
 xlive/2025/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf><c:/tex
