@@ -1,0 +1,56 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{CARLSTRÖM_2004}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f33103676f408b9caf455beb63d2d079}{%
+           family={CARLSTRÖM},
+           familyi={C\bibinitperiod},
+           given={JESPER},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f33103676f408b9caf455beb63d2d079}
+      \strng{fullhash}{f33103676f408b9caf455beb63d2d079}
+      \strng{fullhashraw}{f33103676f408b9caf455beb63d2d079}
+      \strng{bibnamehash}{f33103676f408b9caf455beb63d2d079}
+      \strng{authorbibnamehash}{f33103676f408b9caf455beb63d2d079}
+      \strng{authornamehash}{f33103676f408b9caf455beb63d2d079}
+      \strng{authorfullhash}{f33103676f408b9caf455beb63d2d079}
+      \strng{authorfullhashraw}{f33103676f408b9caf455beb63d2d079}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Structures in Computer Science}
+      \field{number}{1}
+      \field{title}{Wheels – on division by zero}
+      \field{volume}{14}
+      \field{year}{2004}
+      \field{pages}{143\bibrangedash 184}
+      \range{pages}{42}
+      \verb{doi}
+      \verb 10.1017/S0960129503004110
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
