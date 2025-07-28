@@ -1,5 +1,7 @@
 import Mathlib.Algebra.Ring.Defs
 
+
+section Wheel
 /-- A Wheel is a `Semiring` satisfying a few more rules:
 * There is a multiplicative unary map `wDiv` which is an involution.
 * Given an arbitrary `a b c : α` , ` (a + b*c)*(wDiv b) = a*(wDiv b) + c` .
@@ -11,3 +13,5 @@ inv_wDiv: ∀ a : α, wDiv (wDiv a) = a
 mul_wDiv: ∀ a b : α, wDiv (a*b) = (wDiv a)*(wDiv b)
 add_wDiv: ∀ a b c: α, (a + b*c)*(wDiv b) = a*(wDiv b) + c
 wDiv_zero_add: ∀ a : α, 0*(wDiv 0) + a = 0*(wDiv 0)
+
+end Wheel
