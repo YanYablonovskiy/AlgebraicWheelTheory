@@ -75,15 +75,23 @@
       Definition
       </span>
       <span class="definition_thmlabel">1</span><span class="definition_thmtitle"><b class="bfseries">Wheel</b></span></div>
-    <div class="thm_thmcontent"><p>   A wheel is a unital commutative semiring \(W\) along with a unary map \(wDiv: W \rightarrow W\) satisfying: </p>
+    <div class="thm_thmcontent"><p>   A Wheel \(W\) is an algebraic structure which has two binary operations \((+,*)\), like a ring. Similarly to a commutative ring, a Wheel is a commutative monoid in both operations. Additionally, there is a multiplicative unary map \(wDiv\) which is an involution, as well as a few idiosyncratic properties in the interactions of the \(+\),\(*\) and \(wDiv\). </p>
 <ol class="enumerate">
   <li><p>Involution: \(\forall w \in W, wDiv(wDiv(w)) = w\) </p>
 </li>
   <li><p>Multiplicative automophism: \(\forall w, v \in W, wDiv(wv) = wDiv(w)wDiv(v)\) </p>
 </li>
-  <li><p>Addition psuedo-distributivity: \(\forall w, v, u \in W, (w + uv)Div(u) = wDiv(u)+ v\) </p>
+  <li><p>Right distributivity rule 1: \(\forall w, v, u \in W, (w + v)u + 0u= wu + vu\) </p>
+</li>
+  <li><p>Right distributivity rule 2: \(\forall w, v, u \in W, (w + 0v)u + 0u= wu + 0v\) </p>
+</li>
+  <li><p>Right wDiv distributivity: \(\forall w, v, u \in W, (w + uv)wDiv(u) = wDiv(u)+ v+0u\) </p>
 </li>
   <li><p>Division by 0: \(\forall w \in W, 0Div(0) + w = 0Div(0)\) </p>
+</li>
+  <li><p>Zero squared: \(0*0 = 0\) </p>
+</li>
+  <li><p>Division rule: \(\forall w, v \in W, wDiv(w + 0v) = wDiv(w) +0v\) </p>
 </li>
 </ol>
 </div>
