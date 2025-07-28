@@ -51,6 +51,60 @@
 <p> Agebraic wheels are structures generalising a commutative semiring, attempting to make sense of ‘division’ by zero. </p>
 <p>Loosely speaking, given a semiring \(R\) and it’s associated monoids, one may extend the semi-ring in a variety of well-known ways. Considering an additive inverse extends a commutative semiring, to a structure with a given name: a commutative ring, and attempting the same succesfully for the multiplicative monoid yields a field. </p>
 <p>The idea of a wheel, is to extend a commutative semiring by introducing a new unary operation \(/\), to then have \(a \cdot / b\) agree with \(a*b^{-1}\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="def:Wheel">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">1</span>
+    <span class="definition_thmtitle"><b class="bfseries">Wheel</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:Wheel">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Basic.Wheel" class="lean_decl">Basic.Wheel</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   A wheel is a unital commutative semiring \(W\) along with a unary map \(wDiv: W \rightarrow W\) satisfying: </p>
+<ol class="enumerate">
+  <li><p>Involution: \(\forall w \in W, wDiv(wDiv(w)) = w\) </p>
+</li>
+  <li><p>Multiplicative automophism: \(\forall w, v \in W, wDiv(wv) = wDiv(w)wDiv(v)\) </p>
+</li>
+  <li><p>Addition psuedo-distributivity: \(\forall w, v, u \in W, (w + uv)Div(u) = wDiv(u)+ v\) </p>
+</li>
+  <li><p>Division by 0: \(\forall w \in W, 0Div(0) + w = 0Div(0)\) </p>
+</li>
+</ol>
+
+  </div>
+</div>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->

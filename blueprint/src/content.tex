@@ -9,5 +9,17 @@
 Agebraic wheels are structures generalising a commutative semiring, attempting to make sense of  `division' by zero. \par
 Loosely speaking, given a semiring $R$ and it's associated monoids, one may extend the semi-ring in a variety of well-known ways. Considering an additive inverse extends a commutative semiring, to a structure with a given name: a commutative ring, and attempting the same succesfully for the multiplicative monoid yields a field. \par
 The idea of a wheel, is to extend a commutative semiring by introducing a new unary operation $/$, to then have $a \cdot / b$ agree with $a*b^{-1}$.
+\begin{definition}[\textbf{Wheel}]
+  \label{def:Wheel}
+  \lean{Basic.Wheel}
+  \leanok
+   A wheel is a unital commutative semiring $W$ along with a unary map $wDiv: W \rightarrow W$ satisfying:
+  \begin{enumerate}
+  \item Involution: $\forall w \in W, wDiv(wDiv(w)) = w$ 
+  \item Multiplicative automophism: $\forall w, v \in W, wDiv(wv) = wDiv(w)wDiv(v)$
+  \item Addition psuedo-distributivity: $\forall w, v, u \in W, (w + uv)Div(u) = wDiv(u)+ v$
+  \item Division by 0: $\forall w \in W, 0Div(0) + w = 0Div(0)$
+  \end{enumerate}
+\end{definition}
 \chapter{References:}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.
