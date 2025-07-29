@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1753763144.57894 "print.tex" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf" "print" 1753763146.39054 0
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux" 1753763146 977 a83bcb178599a1f83cbeaeb0169b71f3 "pdflatex"
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out" 1753763146 493 d83235ddd09063a83aa8fd123e6e0d51 "pdflatex"
+["pdflatex"] 1753771543.57053 "print.tex" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf" "print" 1753771545.42939 0
+  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux" 1753771545 1244 b4c88f40f799f4191f699c903ed4f1bd "pdflatex"
+  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out" 1753771545 493 d83235ddd09063a83aa8fd123e6e0d51 "pdflatex"
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1752763572 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1752766303 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1752762400 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -79,7 +79,7 @@
   "c:/texlive/2025/texmf-dist/web2c/texmf.cnf" 1752762313 42213 4e2ca030e8e2640502016e9e45868dcb ""
   "c:/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt" 1752766597 5896197 18e24e6dab172011f3ea30b215cf7a1c ""
   "c:/texlive/2025/texmf.cnf" 1752766326 713 e69b156964470283e0530f5060668171 ""
-  "content.tex" 1753763128 3223 f71c6947162527948d22d681bce2fd26 ""
+  "content.tex" 1753771537 4199 d4e99c5fbecda5eafb8a4ffa353089b7 ""
   "macros/common.tex" 1753500584 820 60fafcc3aa944a5e60030581a943ef6b ""
   "macros/print.tex" 1753500584 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1753500584 1136 b5a0886260d8d3075d0b130192a98bce ""

@@ -33,40 +33,70 @@ attribute [simp] inv_wDiv mul_wDiv add_wDiv zero_mul_zero div_add_zero wDiv_zero
 
 /-- We have that `wDiv 1` is one, in general
 -/
-lemma Wheel.wDiv_one: \ₐ 1 = (1:α) := by
+@[simp, grind]
+lemma Wheel.wdiv_one : \ₐ1 = (1:α) := by
   calc  \ₐ 1 = (1:α)* \ₐ 1 := by simp
           _   = \ₐ\ₐ 1 * \ₐ 1 := by simp
           _   = \ₐ (\ₐ 1 * 1) := by rw [mul_wDiv]
           _   = \ₐ \ₐ 1  := by simp
           _   = 1 := by simp
 
+/-- For any two terms `a b :α` with `[Wheel α]` , we have that `0*a + 0*b = 0*a*b`.
+-/
+@[simp, grind]
+lemma Wheel.zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
+ intro a b
+ rw [add_comm,←left_mul_distrib' 0 a b]
+ simp
+
+
+/-- For any `a :α` and `[Wheel α]` , `(0* \ₐ 0)*a = 0* \ₐ 0`. Morally, this is like
+saying infinity times anything is infinity, complementing the axiom `wDiv_zero_add`.
+-/
+@[simp, grind]
+lemma Wheel.zero_wdiv_mul : ∀a: α, (0* \ₐ 0)*a = 0* \ₐ 0 := by
+  intro a
+  rw [←zero_mul_add,wDiv_zero_add]
+
+/--  For any `a :α` and `[Wheel α]` , `a*\ₐa = 1 + 0*(a*\ₐa)` .
+-/
+@[simp, grind]
+lemma Wheel.wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
+  intro a
+  have := add_wDiv 0 (a:α) 1
+  simp only [zero_add,mul_one] at this
+  nth_rw 1 [this]
+  rw [add_comm _ 1,add_assoc]
+  suffices h: 0 * \ₐa + 0 * a = 0 * (a * \ₐa) by rw [h]
+  simp
+  rw [mul_assoc,mul_comm _ a]
+
+/-- For any `a b c :α` and `[Wheel α]` , ` a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc `. This is the
+version of cancellation that wheels enjoy.
+-/
+lemma Wheel.wdiv_right_cancel': ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc := by
+  intro a b c hab
+  have: (a * c *\ₐc) = (b * c *\ₐc) := by rw [hab]
+  rw [mul_assoc,mul_assoc,wdiv_self c,mul_comm,mul_comm b] at this
+  rw [left_mul_distrib',left_mul_distrib'] at this
+  simp only [one_mul,←mul_assoc] at this
+  exact this
 
 
 
 /-- Since we have that `wDiv 1` is one, therefore `wDiv` is a Monoid Automorphism on `α`.
 -/
-instance Wheel.toMonoidHom: MonoidHom α α where
+instance Wheel.toMonoidHom : MonoidHom α α where
  toFun := wDiv
- map_one' := wDiv_one
+ map_one' := wdiv_one
  map_mul' := mul_wDiv
 
-example: ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*(x*y*z)^2 := by
-  intro x y z
-  simp [pow_two]
-  have t1:= left_mul_distrib x y 0
-  have t2 := left_mul_distrib z z 0
-  rw [mul_comm 0 x,mul_comm 0 y,mul_comm 0 z,←t1,add_assoc,←t2]
-  sorry
-
-
-
-
-
-
-lemma zero_mul_add: ∀{a b: α}, a*0 + b*0 = 0*a*b := by
+example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*(x*y*z)^2 := by
  sorry
 
-lemma wdiv_self: ∀a : α, a * wDiv a = 0*a*a := by
+
+
+lemma wdiv_self : ∀a : α, a * wDiv a = 0*a*a := by
  intro a
  have t1 := add_wDiv a a 0
  have t2 := div_add_zero a 0

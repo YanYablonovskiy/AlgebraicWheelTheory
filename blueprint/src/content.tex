@@ -32,12 +32,49 @@ properties in the interactions of the $+$,$*$ and $wDiv$.
 Whenever not specified, the notation for the monoids is assumed to be $(+,*)$ with neutral elements $0$ and $1$ respectively.
 \subsection{Basic results}
 Here we collate some very simple propositions that are straightforward given the Wheel definition. These are designed to be auxillary 
-and thus somewhat assorted and perhaps trivial, however mechanisation demands specification of what is typically deemed trivial.
+and thus somewhat assorted and perhaps trivial, however mechanisation demands specification of what is typically deemed trivial.\par
+Define the notation $\backslash_{a}  := wDiv $ for brevity.
 \begin{proposition}[\textbf{Unit preserving}]
 \label{prop:wDiv_one}
 \lean{Wheel.wDiv_one}
 \leanok
-Given a Wheel $W$ , then $wDiv(1) = 1$  where $1$ is the neutral element of the multiplicative commutative monoid.
+Given a Wheel $W$ , then $\backslash_{a} \backslash_{a} 1 = 1$  where $1$ is the neutral element of the multiplicative commutative monoid.
+\end{proposition}
+\begin{proposition}
+\label{prop:zero_mul_add}
+\lean{Wheel.zero_mul_add}
+\leanok
+Given a Wheel $W$ and any two elements $a,b \in W$, then:
+\[
+0*a + 0*b = 0*a*b
+\]
+\end{proposition}
+\begin{proposition}
+\label{prop:zero_wdiv_mul}
+\lean{Wheel.zero_wdiv_mul}
+\leanok
+Given a Wheel $W$ and any element $a \in W$, then:
+\[
+(0* \backslash_{a}  0)*a = 0* \backslash_{a}  0
+\]
+\end{proposition}
+\begin{proposition}[\textbf{Dividing by self}]
+\label{prop:wdiv_selfl}
+\lean{Wheel.wdiv_self}
+\leanok
+Given a Wheel $W$ and any element $a \in W$, then:
+\[
+a*\backslash_{a}  a = 1 + 0*(a*\backslash_{a}  a)
+\]
+\end{proposition}
+\begin{proposition}[\textbf{Right cancellation}]
+\label{prop:wdiv_right_cancell}
+\lean{Wheel.wdiv_right_cancel'}
+\leanok
+Given a Wheel $W$ and any elements $a,b,c \in W$ such that $a*c = b*c$, then:
+\[
+a + 0*c*\backslash_{a}  c = b + 0*c*\backslash_{a} c
+\]
 \end{proposition}
 \begin{proposition}[\textbf{Monoid Automorphism}]
 \label{prop:wDivMonAuto}

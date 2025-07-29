@@ -130,7 +130,8 @@
 </div>
 <p> Whenever not specified, the notation for the monoids is assumed to be \((+,*)\) with neutral elements \(0\) and \(1\) respectively. </p>
 <h2 id="a0000000005">1.1.1 Basic results</h2>
-<p> Here we collate some very simple propositions that are straightforward given the Wheel definition. These are designed to be auxillary and thus somewhat assorted and perhaps trivial, however mechanisation demands specification of what is typically deemed trivial. </p>
+<p> Here we collate some very simple propositions that are straightforward given the Wheel definition. These are designed to be auxillary and thus somewhat assorted and perhaps trivial, however mechanisation demands specification of what is typically deemed trivial.</p>
+<p>Define the notation \(\backslash _{a} := wDiv \) for brevity. </p>
 <div class="proposition_thmwrapper theorem-style-plain" id="prop:wDiv_one">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
@@ -171,7 +172,193 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>   Given a Wheel \(W\) , then \(wDiv(1) = 1\) where \(1\) is the neutral element of the multiplicative commutative monoid. </p>
+  <p>   Given a Wheel \(W\) , then \(\backslash _{a} \backslash _{a} 1 = 1\) where \(1\) is the neutral element of the multiplicative commutative monoid. </p>
+
+  </div>
+</div>
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:zero_mul_add">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#prop:zero_mul_add">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.zero_mul_add" class="lean_decl">Wheel.zero_mul_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>  Given a Wheel \(W\) and any two elements \(a,b \in W\), then: </p>
+<div class="displaymath" id="a0000000006">
+  \[  0*a + 0*b = 0*a*b  \]
+</div>
+
+  </div>
+</div>
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:zero_wdiv_mul">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#prop:zero_wdiv_mul">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.zero_wdiv_mul" class="lean_decl">Wheel.zero_wdiv_mul</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>  Given a Wheel \(W\) and any element \(a \in W\), then: </p>
+<div class="displaymath" id="a0000000007">
+  \[  (0* \backslash _{a} 0)*a = 0* \backslash _{a} 0  \]
+</div>
+
+  </div>
+</div>
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:wdiv_selfl">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">5</span>
+    <span class="proposition_thmtitle"><b class="bfseries">Dividing by self</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#prop:wdiv_selfl">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.wdiv_self" class="lean_decl">Wheel.wdiv_self</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>   Given a Wheel \(W\) and any element \(a \in W\), then: </p>
+<div class="displaymath" id="a0000000008">
+  \[  a*\backslash _{a} a = 1 + 0*(a*\backslash _{a} a)  \]
+</div>
+
+  </div>
+</div>
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:wdiv_right_cancell">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">6</span>
+    <span class="proposition_thmtitle"><b class="bfseries">Right cancellation</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#prop:wdiv_right_cancell">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.wdiv_right_cancel'" class="lean_decl">Wheel.wdiv_right_cancel'</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>   Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(a*c = b*c\), then: </p>
+<div class="displaymath" id="a0000000009">
+  \[  a + 0*c*\backslash _{a} c = b + 0*c*\backslash _{a} c  \]
+</div>
 
   </div>
 </div>
@@ -180,7 +367,7 @@
     <span class="proposition_thmcaption">
     Proposition
     </span>
-    <span class="proposition_thmlabel">3</span>
+    <span class="proposition_thmlabel">7</span>
     <span class="proposition_thmtitle"><b class="bfseries">Monoid Automorphism</b></span>
     <div class="thm_header_extras">
 
