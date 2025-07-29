@@ -23,18 +23,43 @@ wDiv_zero_add: ∀ a : α, 0*(wDiv 0) + a = 0*(wDiv 0)
 open Wheel
 
 universe u
-variable {α: Type u} [Wheel α]
+variable {α: Type u} [Wheel α] ( a b: α)
 
+
+prefix:100  "\\ₐ" => wDiv
 
 attribute [simp] inv_wDiv mul_wDiv add_wDiv zero_mul_zero div_add_zero wDiv_zero_add
 
 
-/-- If we have that `wDiv 1` is one, then `wDiv` is a Monoid Automorphism on `α`.
+/-- We have that `wDiv 1` is one, in general
 -/
-def Wheel.toMonoidHom (h : wDiv (1 : α) = 1) : MonoidHom α α where
+lemma Wheel.wDiv_one: \ₐ 1 = (1:α) := by
+  calc  \ₐ 1 = (1:α)* \ₐ 1 := by simp
+          _   = \ₐ\ₐ 1 * \ₐ 1 := by simp
+          _   = \ₐ (\ₐ 1 * 1) := by rw [mul_wDiv]
+          _   = \ₐ \ₐ 1  := by simp
+          _   = 1 := by simp
+
+
+
+
+/-- Since we have that `wDiv 1` is one, therefore `wDiv` is a Monoid Automorphism on `α`.
+-/
+instance Wheel.toMonoidHom: MonoidHom α α where
  toFun := wDiv
- map_one' := h
+ map_one' := wDiv_one
  map_mul' := mul_wDiv
+
+example: ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*(x*y*z)^2 := by
+  intro x y z
+  simp [pow_two]
+  have t1:= left_mul_distrib x y 0
+  have t2 := left_mul_distrib z z 0
+  rw [mul_comm 0 x,mul_comm 0 y,mul_comm 0 z,←t1,add_assoc,←t2]
+  sorry
+
+
+
 
 
 

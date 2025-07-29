@@ -33,11 +33,17 @@ Whenever not specified, the notation for the monoids is assumed to be $(+,*)$ wi
 \subsection{Basic results}
 Here we collate some very simple propositions that are straightforward given the Wheel definition. These are designed to be auxillary 
 and thus somewhat assorted and perhaps trivial, however mechanisation demands specification of what is typically deemed trivial.
+\begin{proposition}[\textbf{Unit preserving}]
+\label{prop:wDiv_one}
+\lean{Wheel.wDiv_one}
+\leanok
+Given a Wheel $W$ , then $wDiv(1) = 1$  where $1$ is the neutral element of the multiplicative commutative monoid.
+\end{proposition}
 \begin{proposition}[\textbf{Monoid Automorphism}]
 \label{prop:wDivMonAuto}
 \lean{Wheel.toMonoidHom}
 \leanok
-Given a Wheel $W$ , such that $wDiv 1 = 1$, then $wDiv$ is a monoid automorphism for $(1,*)$.
+Given a Wheel $W$ ,  $wDiv$ is a monoid automorphism for $(1,*)$.
 \end{proposition}
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.

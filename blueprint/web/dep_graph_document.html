@@ -111,6 +111,36 @@
 
 
     
+    <div class="dep-modal-container" id="prop:wDiv_one_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:wDiv_one" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">2</span><span class="proposition_thmtitle"><b class="bfseries">Unit preserving</b></span></div>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) , then \(wDiv(1) = 1\) where \(1\) is the neutral element of the multiplicative commutative monoid. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:wDiv_one">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.wDiv_one">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="prop:wDivMonAuto_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -122,8 +152,8 @@
       <span class="proposition_thmcaption">
       Proposition
       </span>
-      <span class="proposition_thmlabel">2</span><span class="proposition_thmtitle"><b class="bfseries">Monoid Automorphism</b></span></div>
-    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) , such that \(wDiv 1 = 1\), then \(wDiv\) is a monoid automorphism for \((1,*)\). </p>
+      <span class="proposition_thmlabel">3</span><span class="proposition_thmtitle"><b class="bfseries">Monoid Automorphism</b></span></div>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) , \(wDiv\) is a monoid automorphism for \((1,*)\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#prop:wDivMonAuto">LaTeX</a>
@@ -157,7 +187,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {
