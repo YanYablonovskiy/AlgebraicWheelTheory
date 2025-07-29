@@ -31,11 +31,11 @@ attribute [simp] inv_wDiv mul_wDiv add_wDiv zero_mul_zero div_add_zero wDiv_zero
 
 /-- If we have that `wDiv 1` is one, then `wDiv` is a Monoid Automorphism on `α`.
 -/
-instance toMonoidHom [h : Fact (wDiv (1 : α) = 1)] : MonoidHom α α where
+def Wheel.toMonoidHom (h : wDiv (1 : α) = 1) : MonoidHom α α where
  toFun := wDiv
- map_one' := by
-  apply h.out
- map_mul' := by simp
+ map_one' := h
+ map_mul' := mul_wDiv
+
 
 
 lemma zero_mul_add: ∀{a b: α}, a*0 + b*0 = 0*a*b := by
