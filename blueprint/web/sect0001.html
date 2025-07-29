@@ -13,7 +13,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Introduction</title>
-<link rel="next" href="sect0002.html" title="References:" />
+<link rel="next" href="sect0002.html" title="References" />
 <link rel="prev" href="index.html" title="Algebraic Wheel Theory in Lean 4" />
 <link rel="up" href="index.html" title="Algebraic Wheel Theory in Lean 4" />
 <link rel="stylesheet" href="styles/theme-white.css" />
@@ -34,9 +34,23 @@
 <ul class="sub-toc-0">
 <li class=" active current">
   <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0001.html#a0000000004"><span class="toc_ref">1.1</span> <span class="toc_entry">Definition of a Wheel</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000000005"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Basic results</span></a>
+ </li>
+
+  </ul>
+ </li>
+
+  </ul>
  </li>
 <li class="">
-  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">References:</span></a>
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">References</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -48,6 +62,7 @@
 
 <div class="main-text">
 <h1 id="a0000000002">1 Introduction</h1>
+<h1 id="a0000000004">1.1 Definition of a Wheel</h1>
 <p> Agebraic wheels are structures generalising a commutative semiring, attempting to make sense of ‘division’ by zero. </p>
 <p>Loosely speaking, given a semiring \(R\) and it’s associated monoids, one may extend the semi-ring in a variety of well-known ways. Considering an additive inverse extends a commutative semiring, to a structure with a given name: a commutative ring, and attempting the same succesfully for the multiplicative monoid yields a field. </p>
 <p>Working backwards, given a set \(M\) with two monoids – one in additive notation and one in multiplicative. The path to obtain a semiring is clear, a wheel however generalises the semiring by removing the usual distributivity and defines a new unary map \(wDiv\). </p>
@@ -113,6 +128,53 @@
 
   </div>
 </div>
+<p> Whenever not specified, the notation for the monoids is assumed to be \((+,*)\) with neutral elements \(0\) and \(1\) respectively. </p>
+<h2 id="a0000000005">1.1.1 Basic results</h2>
+<p> Here we collate some very simple propositions that are straightforward given the Wheel definition. These are designed to be auxillary and thus somewhat assorted and perhaps trivial, however mechanisation demands specification of what is typically deemed trivial. </p>
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:wDivMonAuto">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">2</span>
+    <span class="proposition_thmtitle"><b class="bfseries">Monoid Automorphism</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#prop:wDivMonAuto">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.toMonoidHom" class="lean_decl">Wheel.toMonoidHom</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>   Given a Wheel \(W\) , such that \(wDiv 1 = 1\), then \(wDiv\) is a monoid automorphism for \((1,*)\). </p>
+
+  </div>
+</div>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
@@ -128,7 +190,7 @@
 </a>
   <a href="index.html" title="Algebraic Wheel Theory in Lean 4"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
-  <a href="sect0002.html" title="References:"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0002.html" title="References"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

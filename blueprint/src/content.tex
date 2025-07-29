@@ -6,6 +6,7 @@
 % the current file can be a simple sequence of \input. Otherwise It
 % can start with a \section or \chapter for instance.
 \chapter{Introduction}
+\section{Definition of a Wheel}
 Agebraic wheels are structures generalising a commutative semiring, attempting to make sense of  `division' by zero. \par
 Loosely speaking, given a semiring $R$ and it's associated monoids, one may extend the semi-ring in a variety of well-known ways. Considering an additive inverse extends a commutative semiring, to a structure with a given name: a commutative ring, and attempting the same succesfully for the multiplicative monoid yields a field. \par
 Working backwards, given a set $M$ with two monoids -- one in additive notation and one in multiplicative. The path to obtain a semiring is clear,  a wheel however generalises the semiring by removing the usual distributivity and defines a new unary map $wDiv$.
@@ -28,5 +29,15 @@ properties in the interactions of the $+$,$*$ and $wDiv$.
   \item Division rule: $\forall w, v \in W, wDiv(w + 0v) = wDiv(w) +0v$
   \end{enumerate}
 \end{definition}
-\chapter{References:}
+Whenever not specified, the notation for the monoids is assumed to be $(+,*)$ with neutral elements $0$ and $1$ respectively.
+\subsection{Basic results}
+Here we collate some very simple propositions that are straightforward given the Wheel definition. These are designed to be auxillary 
+and thus somewhat assorted and perhaps trivial, however mechanisation demands specification of what is typically deemed trivial.
+\begin{proposition}[\textbf{Monoid Automorphism}]
+\label{prop:wDivMonAuto}
+\lean{Wheel.toMonoidHom}
+\leanok
+Given a Wheel $W$ , such that $wDiv 1 = 1$, then $wDiv$ is a monoid automorphism for $(1,*)$.
+\end{proposition}
+\chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.
