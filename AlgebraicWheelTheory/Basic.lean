@@ -15,7 +15,7 @@ mul_wDiv: ∀ a b : α, wDiv (a*b) = (wDiv a)*(wDiv b)
 add_wDiv: ∀ a b c: α, (a + b*c)*(wDiv b) = a*(wDiv b) + c + 0*b
 left_mul_distrib: ∀ a b c: α, (a + b)*c + 0*c = a*c + b*c
 left_mul_distrib': ∀ a b c: α, (a + 0*b)*c = a*c + 0*b
-zero_mul_zero: 0*0 = 0
+zero_mul_zero: (0:α)*0 = 0
 div_add_zero: ∀ a b : α, wDiv (a + 0*b) = (wDiv a) + 0*b
 wDiv_zero_add: ∀ a : α, 0*(wDiv 0) + a = 0*(wDiv 0)
 
@@ -82,8 +82,6 @@ lemma Wheel.wdiv_right_cancel': ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 
   simp only [one_mul,←mul_assoc] at this
   exact this
 
-
-
 /-- Since we have that `wDiv 1` is one, therefore `wDiv` is a Monoid Automorphism on `α`.
 -/
 instance Wheel.toMonoidHom : MonoidHom α α where
@@ -91,16 +89,19 @@ instance Wheel.toMonoidHom : MonoidHom α α where
  map_one' := wdiv_one
  map_mul' := mul_wDiv
 
+/-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related -/
+lemma Wheel.isUnit_add_eq_div_add (c : α) (hc : IsUnit c):∃b:α,c * b = 1 ∧ b * c = 1
+ ∧ (b + (0:α)*\ₐc = \ₐc + 0*b) := by
+ rw [isUnit_iff_exists] at hc
+ obtain ⟨x,hx1,hx2⟩ := hc
+ use x
+ refine ⟨hx1,hx2,?_⟩
+ calc x + 0 * \ₐc = x*\ₐ(x*c) + 0*\ₐc := by simp [hx2]
+ _ = x*(\ₐx)*\ₐc + 0*\ₐc := by rw [mul_wDiv,←mul_assoc]
+ _ = \ₐc + 0*x*\ₐx + 0*\ₐc := by rw [wdiv_self,left_mul_distrib',one_mul,←mul_assoc]
+ _ = \ₐc + 0*x*\ₐx*\ₐc := by rw [add_assoc,mul_assoc 0,zero_mul_add]
+ _ = \ₐc + 0*x := by rw [mul_assoc (0*x),←mul_wDiv,hx2,wdiv_one,mul_one]
+
+
 example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*(x*y*z)^2 := by
- sorry
-
-
-
-lemma wdiv_self : ∀a : α, a * wDiv a = 0*a*a := by
- intro a
- have t1 := add_wDiv a a 0
- have t2 := div_add_zero a 0
- have t3 := mul_wDiv (wDiv a) (wDiv a)
- rw [inv_wDiv a] at t3
- --rw [mul_assoc,←t3]
  sorry

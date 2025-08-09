@@ -5,3 +5,4 @@ Wheel.zero_wdiv_mul
 Wheel.wdiv_self
 Wheel.wdiv_right_cancel'
 Wheel.toMonoidHom
+Wheel.isUnit_add_eq_div_add

@@ -111,6 +111,45 @@
 
 
     
+    <div class="dep-modal-container" id="prop:wdiv_inv_add_div_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:wdiv_inv_add_div" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">8</span></div>
+    <div class="thm_thmcontent"><p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then the unit and self Wheel division are related by: </p>
+<div class="equation" id="a0000000011">
+<p>
+  <div class="equation_content">
+    \begin{equation}  x^{-1} + 0\backslash _{a}x = \backslash _{a}x + 0x^{-1} \end{equation}
+  </div>
+  <span class="equation_label">1</span>
+</p>
+</div>
+<p> where \(x^{-1} \in W\) is the associated two-sided multiplicative inverse of the unit \(x\). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:wdiv_inv_add_div">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isUnit_add_eq_div_add">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="prop:wDiv_one_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -319,7 +358,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

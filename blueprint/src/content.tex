@@ -82,5 +82,18 @@ a + 0*c*\backslash_{a}  c = b + 0*c*\backslash_{a} c
 \leanok
 Given a Wheel $W$ ,  $wDiv$ is a monoid automorphism for $(1,*)$.
 \end{proposition}
+\subsection{Unital interactions}
+This section examines how a Wheel $W$ behaves when an element $x \in W$ happens to be a unit in the multiplicative monoid.
+\begin{proposition}
+  \label{prop:wdiv_inv_add_div}
+  \lean{Wheel.isUnit_add_eq_div_add}
+  \leanok
+  Given a Wheel $W$, and $x \in W$ a unit in the multiplicative monoid of $W$, then the unit and self Wheel division are 
+  related by:
+  \begin{equation}
+    x^{-1} + 0\backslash_{a}x = \backslash_{a}x + 0x^{-1}
+  \end{equation}
+  where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
+\end{proposition} 
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.
