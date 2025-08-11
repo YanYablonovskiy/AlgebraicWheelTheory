@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2025 Yan Yablonovskiy. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Yan Yablonovskiy
+-/
 import Mathlib.Tactic
 import Mathlib.Algebra.Group.Defs
 import Mathlib.Algebra.GroupWithZero.Defs
@@ -23,7 +28,7 @@ wDiv_zero_add: ∀ a : α, 0*(wDiv 0) + a = 0*(wDiv 0)
 open Wheel
 
 universe u
-variable {α: Type u} [Wheel α] ( a b: α)
+variable {α : Type u} [Wheel α] (a b : α)
 
 
 prefix:100  "\\ₐ" => wDiv
@@ -89,8 +94,9 @@ instance Wheel.toMonoidHom : MonoidHom α α where
  map_one' := wdiv_one
  map_mul' := mul_wDiv
 
-/-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related -/
-lemma Wheel.isUnit_add_eq_div_add (c : α) (hc : IsUnit c):∃b:α,c * b = 1 ∧ b * c = 1
+/-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related.
+The predicate version -/
+lemma Wheel.isUnit_add_eq_div_add' (c : α) (hc : IsUnit c):∃b:α,c * b = 1 ∧ b * c = 1
  ∧ (b + (0:α)*\ₐc = \ₐc + 0*b) := by
  rw [isUnit_iff_exists] at hc
  obtain ⟨x,hx1,hx2⟩ := hc
@@ -102,6 +108,22 @@ lemma Wheel.isUnit_add_eq_div_add (c : α) (hc : IsUnit c):∃b:α,c * b = 1 ∧
  _ = \ₐc + 0*x*\ₐx*\ₐc := by rw [add_assoc,mul_assoc 0,zero_mul_add]
  _ = \ₐc + 0*x := by rw [mul_assoc (0*x),←mul_wDiv,hx2,wdiv_one,mul_one]
 
+/-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related. -/
+lemma Wheel.isUnit_add_eq_div_add (c : αˣ): (c⁻¹ + (0:α)*\ₐ↑c = \ₐ↑c + 0*c⁻¹) := by
+ have: c⁻¹ * c = (1:α) := by simp
+ calc c⁻¹ + (0:α) * \ₐ↑c = c⁻¹*\ₐ(↑c⁻¹*↑c) + 0*\ₐ↑c := by simp
+ _ = c⁻¹*(\ₐ↑c⁻¹)*\ₐ↑c + 0*\ₐ↑c := by rw [mul_wDiv,←mul_assoc]
+ _ = \ₐ↑c + 0*↑c⁻¹*\ₐ↑c⁻¹ + 0*\ₐ↑c := by rw [wdiv_self,left_mul_distrib',one_mul,←mul_assoc]
+ _ = \ₐ↑c + 0*↑c⁻¹*\ₐ↑c⁻¹*\ₐ↑c := by rw [add_assoc,mul_assoc 0,zero_mul_add]
+ _ = \ₐ↑c + 0*↑c⁻¹ := by rw [mul_assoc,←mul_wDiv,this,wdiv_one,mul_one]
 
-example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*(x*y*z)^2 := by
- sorry
+
+
+example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*x*y*(z^2) := by
+ intro x y z
+ calc 0*x + 0*y + 0*z + 0*z = 0*(x*y) + 0*z + 0*z := by rw [zero_mul_add,mul_assoc]
+ _ = 0*x*y*z + 0*z := by rw [zero_mul_add,←mul_assoc]
+ _ = 0*(x*y*z) + 0*z := by rw [mul_assoc,mul_assoc,←mul_assoc x]
+ _ = 0*(x*y*z)*z := by simp
+ _ = 0*x*(y*z^2) := by rw [mul_assoc x,←mul_assoc,mul_assoc (0*x),mul_assoc y,←pow_two]
+ _ = 0*x*y*(z^2) := by simp only [mul_assoc]
