@@ -358,7 +358,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {
