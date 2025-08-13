@@ -46,7 +46,7 @@ Given a Wheel $W$ , then $\backslash_{a} 1 = 1$  where $1$ is the neutral elemen
 \leanok
 Given a Wheel $W$ and any two elements $a,b \in W$, then:
 \[
-0*a + 0*b = 0*a*b
+0a + 0b = 0ab
 \]
 \end{proposition}
 \begin{proposition}
@@ -55,7 +55,7 @@ Given a Wheel $W$ and any two elements $a,b \in W$, then:
 \leanok
 Given a Wheel $W$ and any element $a \in W$, then:
 \[
-(0* \backslash_{a}  0)*a = 0* \backslash_{a}  0
+(0 \backslash_{a}  0)a = 0 \backslash_{a}  0
 \]
 \end{proposition}
 \begin{proposition}[\textbf{Dividing by self}]
@@ -64,16 +64,16 @@ Given a Wheel $W$ and any element $a \in W$, then:
 \leanok
 Given a Wheel $W$ and any element $a \in W$, then:
 \[
-a*\backslash_{a}  a = 1 + 0*(a*\backslash_{a}  a)
+a\backslash_{a}  a = 1 + 0(a\backslash_{a}  a)
 \]
 \end{proposition}
 \begin{proposition}[\textbf{Right cancellation}]
 \label{prop:wdiv_right_cancell}
 \lean{Wheel.wdiv_right_cancel'}
 \leanok
-Given a Wheel $W$ and any elements $a,b,c \in W$ such that $a*c = b*c$, then:
+Given a Wheel $W$ and any elements $a,b,c \in W$ such that $ac = bc$, then:
 \[
-a + 0*c*\backslash_{a}  c = b + 0*c*\backslash_{a} c
+a + 0c\backslash_{a} c = b + 0c\backslash_{a} c
 \]
 \end{proposition}
 \begin{proposition}[\textbf{Monoid Automorphism}]
@@ -92,6 +92,26 @@ This section examines how a Wheel $W$ behaves when an element $x \in W$ happens 
   related by:
   \begin{equation}
     x^{-1} + 0\backslash_{a}x = \backslash_{a}x + 0x^{-1}
+  \end{equation}
+  where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
+\end{proposition} 
+\begin{proposition}
+  \label{prop:isUnit_zero_eq_div_mul_add}
+  \lean{Wheel.isUnit_zero_eq_div_mul_add}
+  \leanok
+  Given a Wheel $W$, and $x \in W$ a unit in the multiplicative monoid of $W$, then zero enjoys the following identity: 
+  \begin{equation}
+    0\backslash_{a}x + 0\backslash_{a}x^{-1} = 0
+  \end{equation}
+  where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
+\end{proposition} 
+\begin{proposition}
+  \label{prop:isUnit_inv_eq_div_add}
+  \lean{Wheel.isUnit_inv_eq_div_add}
+  \leanok
+  Given a Wheel $W$, and $x \in W$ a unit in the multiplicative monoid of $W$, then: 
+  \begin{equation}
+    x^{-1} = \backslash_{a}x + 0x^{-1}\backslash_{a}x^{-1}
   \end{equation}
   where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
 \end{proposition} 

@@ -111,6 +111,84 @@
 
 
     
+    <div class="dep-modal-container" id="prop:isUnit_inv_eq_div_add_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:isUnit_inv_eq_div_add" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">10</span></div>
+    <div class="thm_thmcontent"><p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
+<div class="equation" id="a0000000013">
+<p>
+  <div class="equation_content">
+    \begin{equation}  x^{-1} = \backslash _{a}x + 0x^{-1}\backslash _{a}x^{-1} \end{equation}
+  </div>
+  <span class="equation_label">3</span>
+</p>
+</div>
+<p> where \(x^{-1} \in W\) is the associated two-sided multiplicative inverse of the unit \(x\). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:isUnit_inv_eq_div_add">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isUnit_inv_eq_div_add">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:isUnit_zero_eq_div_mul_add_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:isUnit_zero_eq_div_mul_add" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">9</span></div>
+    <div class="thm_thmcontent"><p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then zero enjoys the following identity: </p>
+<div class="equation" id="a0000000012">
+<p>
+  <div class="equation_content">
+    \begin{equation}  0\backslash _{a}x + 0\backslash _{a}x^{-1} = 0 \end{equation}
+  </div>
+  <span class="equation_label">2</span>
+</p>
+</div>
+<p> where \(x^{-1} \in W\) is the associated two-sided multiplicative inverse of the unit \(x\). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:isUnit_zero_eq_div_mul_add">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isUnit_zero_eq_div_mul_add">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="prop:wdiv_inv_add_div_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -192,9 +270,9 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">6</span><span class="proposition_thmtitle"><b class="bfseries">Right cancellation</b></span></div>
-    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(a*c = b*c\), then: </p>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(ac = bc\), then: </p>
 <div class="displaymath" id="a0000000009">
-  \[  a + 0*c*\backslash _{a} c = b + 0*c*\backslash _{a} c  \]
+  \[  a + 0c\backslash _{a} c = b + 0c\backslash _{a} c  \]
 </div>
 </div>
 
@@ -227,7 +305,7 @@
       <span class="proposition_thmlabel">5</span><span class="proposition_thmtitle"><b class="bfseries">Dividing by self</b></span></div>
     <div class="thm_thmcontent"><p>   Given a Wheel \(W\) and any element \(a \in W\), then: </p>
 <div class="displaymath" id="a0000000008">
-  \[  a*\backslash _{a} a = 1 + 0*(a*\backslash _{a} a)  \]
+  \[  a\backslash _{a} a = 1 + 0(a\backslash _{a} a)  \]
 </div>
 </div>
 
@@ -290,7 +368,7 @@
       <span class="proposition_thmlabel">3</span></div>
     <div class="thm_thmcontent"><p>  Given a Wheel \(W\) and any two elements \(a,b \in W\), then: </p>
 <div class="displaymath" id="a0000000006">
-  \[  0*a + 0*b = 0*a*b  \]
+  \[  0a + 0b = 0ab  \]
 </div>
 </div>
 
@@ -323,7 +401,7 @@
       <span class="proposition_thmlabel">4</span></div>
     <div class="thm_thmcontent"><p>  Given a Wheel \(W\) and any element \(a \in W\), then: </p>
 <div class="displaymath" id="a0000000007">
-  \[  (0* \backslash _{a} 0)*a = 0* \backslash _{a} 0  \]
+  \[  (0 \backslash _{a} 0)a = 0 \backslash _{a} 0  \]
 </div>
 </div>
 
@@ -358,7 +436,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"prop:isUnit_zero_eq_div_mul_add"	[color=green,		label=isUnit_zero_eq_div_mul_add,		shape=ellipse];	"prop:isUnit_inv_eq_div_add"	[color=green,		label=isUnit_inv_eq_div_add,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

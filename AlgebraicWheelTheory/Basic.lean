@@ -118,6 +118,20 @@ lemma Wheel.isUnit_add_eq_div_add (c : αˣ): (c⁻¹ + (0:α)*\ₐ↑c = \ₐ�
  _ = \ₐ↑c + 0*↑c⁻¹ := by rw [mul_assoc,←mul_wDiv,this,wdiv_one,mul_one]
 
 
+/-- If  `c  :α` is a unit and `[Wheel α]` , then we have that `0*\ₐc + 0*\ₐc⁻¹ = 0`.  -/
+@[simp]
+lemma Wheel.isUnit_zero_eq_div_mul_add (c : αˣ): (0:α)*\ₐ↑c + (0:α)*\ₐ↑c⁻¹ = 0 := by
+ rw [zero_mul_add,mul_assoc,←mul_wDiv,show c * c⁻¹ = (1:α) by simp,wdiv_one,mul_one]
+
+
+/-- If  `c  :α` is a unit and `[Wheel α]`, then the inverse `c⁻¹` is related to `\ₐc` as follows:-/
+lemma Wheel.isUnit_inv_eq_div_add (c : αˣ): c⁻¹  = \ₐ↑c + (0:α)*c⁻¹*\ₐ↑c⁻¹ := by
+ calc ↑c⁻¹ = ↑c⁻¹ + (0:α)*\ₐ↑c +  0*\ₐ↑c⁻¹  := by rw [add_assoc,isUnit_zero_eq_div_mul_add,add_zero]
+ _ =  (↑c⁻¹ +  0*\ₐ↑c) + (0:α)*\ₐ↑c⁻¹       := by rw [add_assoc]
+ _ =  \ₐ↑c + 0*c⁻¹ + (0:α)*\ₐ↑c⁻¹           := by rw [isUnit_add_eq_div_add c]
+ _ =  \ₐ↑c + (0:α)*c⁻¹*\ₐ↑c⁻¹               := by rw [add_assoc,zero_mul_add]
+
+
 
 example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*x*y*(z^2) := by
  intro x y z

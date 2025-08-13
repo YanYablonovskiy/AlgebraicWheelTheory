@@ -220,7 +220,7 @@
   <div class="proposition_thmcontent">
   <p>  Given a Wheel \(W\) and any two elements \(a,b \in W\), then: </p>
 <div class="displaymath" id="a0000000006">
-  \[  0*a + 0*b = 0*a*b  \]
+  \[  0a + 0b = 0ab  \]
 </div>
 
   </div>
@@ -266,7 +266,7 @@
   <div class="proposition_thmcontent">
   <p>  Given a Wheel \(W\) and any element \(a \in W\), then: </p>
 <div class="displaymath" id="a0000000007">
-  \[  (0* \backslash _{a} 0)*a = 0* \backslash _{a} 0  \]
+  \[  (0 \backslash _{a} 0)a = 0 \backslash _{a} 0  \]
 </div>
 
   </div>
@@ -313,7 +313,7 @@
   <div class="proposition_thmcontent">
   <p>   Given a Wheel \(W\) and any element \(a \in W\), then: </p>
 <div class="displaymath" id="a0000000008">
-  \[  a*\backslash _{a} a = 1 + 0*(a*\backslash _{a} a)  \]
+  \[  a\backslash _{a} a = 1 + 0(a\backslash _{a} a)  \]
 </div>
 
   </div>
@@ -358,9 +358,9 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>   Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(a*c = b*c\), then: </p>
+  <p>   Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(ac = bc\), then: </p>
 <div class="displaymath" id="a0000000009">
-  \[  a + 0*c*\backslash _{a} c = b + 0*c*\backslash _{a} c  \]
+  \[  a + 0c\backslash _{a} c = b + 0c\backslash _{a} c  \]
 </div>
 
   </div>
@@ -457,6 +457,110 @@
     \begin{equation}  x^{-1} + 0\backslash _{a}x = \backslash _{a}x + 0x^{-1} \end{equation}
   </div>
   <span class="equation_label">1</span>
+</p>
+</div>
+<p> where \(x^{-1} \in W\) is the associated two-sided multiplicative inverse of the unit \(x\). </p>
+
+  </div>
+</div>
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:isUnit_zero_eq_div_mul_add">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">9</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#prop:isUnit_zero_eq_div_mul_add">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isUnit_zero_eq_div_mul_add" class="lean_decl">Wheel.isUnit_zero_eq_div_mul_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then zero enjoys the following identity: </p>
+<div class="equation" id="a0000000012">
+<p>
+  <div class="equation_content">
+    \begin{equation}  0\backslash _{a}x + 0\backslash _{a}x^{-1} = 0 \end{equation}
+  </div>
+  <span class="equation_label">2</span>
+</p>
+</div>
+<p> where \(x^{-1} \in W\) is the associated two-sided multiplicative inverse of the unit \(x\). </p>
+
+  </div>
+</div>
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:isUnit_inv_eq_div_add">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">10</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#prop:isUnit_inv_eq_div_add">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isUnit_inv_eq_div_add" class="lean_decl">Wheel.isUnit_inv_eq_div_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
+<div class="equation" id="a0000000013">
+<p>
+  <div class="equation_content">
+    \begin{equation}  x^{-1} = \backslash _{a}x + 0x^{-1}\backslash _{a}x^{-1} \end{equation}
+  </div>
+  <span class="equation_label">3</span>
 </p>
 </div>
 <p> where \(x^{-1} \in W\) is the associated two-sided multiplicative inverse of the unit \(x\). </p>
