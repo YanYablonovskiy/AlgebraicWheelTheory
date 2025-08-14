@@ -8,3 +8,4 @@ Wheel.toMonoidHom
 Wheel.isUnit_add_eq_div_add
 Wheel.isUnit_zero_eq_div_mul_add
 Wheel.isUnit_inv_eq_div_add
+Wheel.isUnit_div_eq_inv_add

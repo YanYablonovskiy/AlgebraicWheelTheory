@@ -27,6 +27,8 @@ wDiv_zero_add: ∀ a : α, 0*(wDiv 0) + a = 0*(wDiv 0)
 
 open Wheel
 
+
+
 universe u
 variable {α : Type u} [Wheel α] (a b : α)
 
@@ -63,7 +65,7 @@ lemma Wheel.zero_wdiv_mul : ∀a: α, (0* \ₐ 0)*a = 0* \ₐ 0 := by
   intro a
   rw [←zero_mul_add,wDiv_zero_add]
 
-/--  For any `a :α` and `[Wheel α]` , `a*\ₐa = 1 + 0*(a*\ₐa)` .
+/-- For any `a :α` and `[Wheel α]` , `a*\ₐa = 1 + 0*(a*\ₐa)` .
 -/
 @[simp, grind]
 lemma Wheel.wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
@@ -79,7 +81,7 @@ lemma Wheel.wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
 /-- For any `a b c :α` and `[Wheel α]` , ` a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc `. This is the
 version of cancellation that wheels enjoy.
 -/
-lemma Wheel.wdiv_right_cancel': ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc := by
+lemma Wheel.wdiv_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc := by
   intro a b c hab
   have: (a * c *\ₐc) = (b * c *\ₐc) := by rw [hab]
   rw [mul_assoc,mul_assoc,wdiv_self c,mul_comm,mul_comm b] at this
@@ -109,7 +111,7 @@ lemma Wheel.isUnit_add_eq_div_add' (c : α) (hc : IsUnit c):∃b:α,c * b = 1 �
  _ = \ₐc + 0*x := by rw [mul_assoc (0*x),←mul_wDiv,hx2,wdiv_one,mul_one]
 
 /-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related. -/
-lemma Wheel.isUnit_add_eq_div_add (c : αˣ): (c⁻¹ + (0:α)*\ₐ↑c = \ₐ↑c + 0*c⁻¹) := by
+lemma Wheel.isUnit_add_eq_div_add (c : αˣ) : (c⁻¹ + (0:α)*\ₐ↑c = \ₐ↑c + 0*c⁻¹) := by
  have: c⁻¹ * c = (1:α) := by simp
  calc c⁻¹ + (0:α) * \ₐ↑c = c⁻¹*\ₐ(↑c⁻¹*↑c) + 0*\ₐ↑c := by simp
  _ = c⁻¹*(\ₐ↑c⁻¹)*\ₐ↑c + 0*\ₐ↑c := by rw [mul_wDiv,←mul_assoc]
@@ -118,18 +120,25 @@ lemma Wheel.isUnit_add_eq_div_add (c : αˣ): (c⁻¹ + (0:α)*\ₐ↑c = \ₐ�
  _ = \ₐ↑c + 0*↑c⁻¹ := by rw [mul_assoc,←mul_wDiv,this,wdiv_one,mul_one]
 
 
-/-- If  `c  :α` is a unit and `[Wheel α]` , then we have that `0*\ₐc + 0*\ₐc⁻¹ = 0`.  -/
+/-- If  `c  :α` is a unit and `[Wheel α]` , then we have that `0*\ₐc + 0*\ₐc⁻¹ = 0` . -/
 @[simp]
-lemma Wheel.isUnit_zero_eq_div_mul_add (c : αˣ): (0:α)*\ₐ↑c + (0:α)*\ₐ↑c⁻¹ = 0 := by
+lemma Wheel.isUnit_zero_eq_div_mul_add (c : αˣ) : (0:α)*\ₐ↑c + (0:α)*\ₐ↑c⁻¹ = 0 := by
  rw [zero_mul_add,mul_assoc,←mul_wDiv,show c * c⁻¹ = (1:α) by simp,wdiv_one,mul_one]
 
 
-/-- If  `c  :α` is a unit and `[Wheel α]`, then the inverse `c⁻¹` is related to `\ₐc` as follows:-/
-lemma Wheel.isUnit_inv_eq_div_add (c : αˣ): c⁻¹  = \ₐ↑c + (0:α)*c⁻¹*\ₐ↑c⁻¹ := by
+/-- If  `c  :α` is a unit and `[Wheel α]`, then the inverse `c⁻¹` is related to `\ₐc` as follows -/
+lemma Wheel.isUnit_inv_eq_div_add (c : αˣ) : c⁻¹  = \ₐ↑c + (0:α)*c⁻¹*\ₐ↑c⁻¹ := by
  calc ↑c⁻¹ = ↑c⁻¹ + (0:α)*\ₐ↑c +  0*\ₐ↑c⁻¹  := by rw [add_assoc,isUnit_zero_eq_div_mul_add,add_zero]
  _ =  (↑c⁻¹ +  0*\ₐ↑c) + (0:α)*\ₐ↑c⁻¹       := by rw [add_assoc]
  _ =  \ₐ↑c + 0*c⁻¹ + (0:α)*\ₐ↑c⁻¹           := by rw [isUnit_add_eq_div_add c]
  _ =  \ₐ↑c + (0:α)*c⁻¹*\ₐ↑c⁻¹               := by rw [add_assoc,zero_mul_add]
+
+
+/-- If  `c  :α` is a unit and `[Wheel α]`, then the inverse `\ₐc` is further related to  `c⁻¹` -/
+lemma Wheel.isUnit_div_eq_inv_add (c : αˣ) : \ₐ↑c = c⁻¹ + (0:α)*↑c*\ₐ↑c := by
+ calc \ₐ↑c = \ₐ↑c + (0:α)*↑c⁻¹ +(0:α)*↑c := by simp [add_assoc,zero_mul_add]
+ _ =  ↑c⁻¹ + 0 * \ₐ↑c * ↑c := by simp [←isUnit_add_eq_div_add,add_assoc,zero_mul_add]
+ _ =  c⁻¹ + (0:α)*↑c*\ₐ↑c :=  by simp only [mul_assoc,mul_comm]
 
 
 

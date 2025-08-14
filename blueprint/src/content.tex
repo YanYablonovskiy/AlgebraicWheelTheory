@@ -115,5 +115,15 @@ This section examines how a Wheel $W$ behaves when an element $x \in W$ happens 
   \end{equation}
   where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
 \end{proposition} 
+\begin{proposition}
+  \label{prop:isUnit_div_eq_inv_add}
+  \lean{Wheel.isUnit_div_eq_inv_add}
+  \leanok
+  Given a Wheel $W$, and $x \in W$ a unit in the multiplicative monoid of $W$, then: 
+  \begin{equation}
+    \backslash_{a}x = x^{-1} + 0x\backslash_{a}x
+  \end{equation}
+  where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
+\end{proposition} 
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.
