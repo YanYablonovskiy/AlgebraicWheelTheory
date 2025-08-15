@@ -13,6 +13,7 @@ Similarly to a commutative ring, a Wheel is a commutative monoid in both operati
 there is a multiplicative unary map `wDiv` which is an involution, as well as a few idiosyncratic
 properties in the interactions of the `+`,`*` and `wDiv`.
 -/
+@[ext]
 class Wheel.{u} (α : Type u) extends AddCommMonoid α, CommMonoid α where
 wDiv (a : α) : α
 inv_wDiv: ∀ a : α, wDiv (wDiv a) = a
@@ -30,13 +31,11 @@ open Wheel
 
 
 universe u
-variable {α : Type u} [Wheel α] (a b : α)
-
+variable {α : Type u} [W : Wheel α] (a b : α)
 
 prefix:100  "\\ₐ" => wDiv
 
 attribute [simp] inv_wDiv mul_wDiv add_wDiv zero_mul_zero div_add_zero wDiv_zero_add
-
 
 /-- We have that `wDiv 1` is one, in general
 -/
@@ -55,6 +54,69 @@ lemma Wheel.zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
  intro a b
  rw [add_comm,←left_mul_distrib' 0 a b]
  simp
+
+@[reducible]
+def 𝓡 (α : Type u) [Wheel α] := {x : α // (0 : α) * x = 0}
+
+
+/-- Addition instance for the induced semiring -/
+instance : Add (𝓡 α) where
+ add := fun a b ↦ by
+  have:=a.prop
+  refine ⟨a + b, ?_⟩
+  calc 0*(↑a + ↑b) = (a + b)*(0:α) + 0*0 := by rw [zero_mul_zero,add_zero,mul_comm]
+  _ = 0 := by rw [left_mul_distrib,mul_comm,a.prop,mul_comm,b.prop,zero_add]
+
+/-- Multiplication instance for the induced semiring -/
+instance : Mul (𝓡 α) where
+  mul := fun a b ↦ by
+   refine ⟨a * b, ?_⟩
+   rw [←mul_assoc,←zero_mul_add,a.prop,b.prop,zero_add]
+
+/-- CommMagma instance for the multiplicative monoid -/
+instance : CommMagma (𝓡 α) where
+ mul := fun a b ↦ a * b
+ mul_comm := fun a b ↦ by
+  ext
+  convert W.mul_comm a b
+
+/-- AddCommMagma instance for the additive monoid -/
+instance : AddCommMagma (𝓡 α) where
+ add := fun a b ↦ a + b
+ add_comm := fun a b ↦ by ext;convert W.add_comm a b
+
+/-- AddCommMonoid instance for the AdditiveCommMonoid of the induced semiring TODO: GOLF -/
+instance : AddCommMonoid (𝓡 α) where
+ add_assoc := fun a b c ↦ by
+  ext
+  convert W.add_assoc a b c
+ zero := ⟨0,zero_mul_zero⟩
+ zero_add := fun a ↦ by ext;convert W.zero_add a
+ add_zero := fun a ↦ by ext;convert W.add_zero a
+ nsmul := fun n a ↦ by
+  refine ⟨n • a, ?_ ⟩
+  have := a.prop
+  induction' n with m ih
+  · rw [zero_nsmul,zero_mul_zero]
+  · rw [succ_nsmul,mul_comm]
+    calc ((m • a.val) + ↑a) * 0 = (m • ↑a + ↑a) * 0 + 0*0 := by rw [zero_mul_zero,add_zero]
+    _ =  (m • ↑a) * 0 + ↑a*0 := by rw [left_mul_distrib]
+    _ = 0 := by  rw [mul_comm,ih,mul_comm,a.prop,zero_add]
+ nsmul_succ := by intro n a; ext; convert W.nsmul_succ n a
+ nsmul_zero := fun x ↦ by ext; convert W.nsmul_zero x
+
+
+/-- A predicate version when an explicit option is needed, without typeclass baggage. -/
+def toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring α := by
+ have left_distrib: ∀(a b c:α),a*(b + c) = a*b + a*c := by
+  intro a b c
+  calc a * (b + c) = (b + c)*a + 0*a := by rw [mul_comm,hα a,add_zero]
+  _ = a*b + a*c :=                      by simp_rw [left_mul_distrib,mul_comm]
+ exact {
+ left_distrib := left_distrib
+ right_distrib := fun a b c ↦ by simp [mul_comm,left_distrib]
+ zero_mul := hα
+ mul_zero := fun a ↦ by rw [mul_comm,hα]}
 
 
 /-- For any `a :α` and `[Wheel α]` , `(0* \ₐ 0)*a = 0* \ₐ 0`. Morally, this is like
