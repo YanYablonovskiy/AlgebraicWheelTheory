@@ -55,8 +55,14 @@ lemma Wheel.zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
  rw [add_comm,←left_mul_distrib' 0 a b]
  simp
 
+/-- Defining the map from Wheels to its largest contained Semirings -/
 @[reducible]
 def 𝓡 (α : Type u) [Wheel α] := {x : α // (0 : α) * x = 0}
+/-- Defining the map from Wheels to its Group -/
+@[reducible]
+def 𝓢 (α : Type u) [Wheel α] := {x : α // 0 * x = 0 ∧ 0 * \ₐx = 0}
+
+def StoR (α : Type u) [Wheel α] : (𝓢 α) → (𝓡 α) := fun ⟨x,⟨hx,_⟩⟩ ↦ ⟨x,hx⟩
 
 
 /-- Addition instance for the induced semiring -/
@@ -66,6 +72,7 @@ instance : Add (𝓡 α) where
   refine ⟨a + b, ?_⟩
   calc 0*(↑a + ↑b) = (a + b)*(0:α) + 0*0 := by rw [zero_mul_zero,add_zero,mul_comm]
   _ = 0 := by rw [left_mul_distrib,mul_comm,a.prop,mul_comm,b.prop,zero_add]
+
 
 /-- Multiplication instance for the induced semiring -/
 instance : Mul (𝓡 α) where
