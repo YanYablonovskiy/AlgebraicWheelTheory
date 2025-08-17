@@ -49,6 +49,9 @@
 
   </ul>
  </li>
+<li class="">
+  <a href="sect0001.html#a0000000015"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic sub-structures of a Wheel</span></a>
+ </li>
 
   </ul>
  </li>
@@ -616,6 +619,152 @@
 </p>
 </div>
 <p> where \(x^{-1} \in W\) is the associated two-sided multiplicative inverse of the unit \(x\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000015">1.2 Algebraic sub-structures of a Wheel</h1>
+<p> Given a wheel \(W\), certain sub-sets form familiar structures. Consider the subset: </p>
+<div class="displaymath" id="a0000000016">
+  \[  \mathcal{R}_{W} := \{  w \in W | 0*w = 0 \}   \]
+</div>
+<p> then \(\mathcal{R}\) turns out to be a commutative unital semiring.  For the purposes of this document, we assume semirings to be unital and commutative by default.  Firstly, </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000017">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">12</span>
+    <span class="definition_thmtitle"><b class="bfseries">\(\mathcal R_{W}\) is a commutative magma in * and +</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000017">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instCommMagma" class="lean_decl">Wheel.instCommMagma</a></li>
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instAddCommMagma" class="lean_decl">Wheel.instAddCommMagma</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative magma in both the wheel operations. </p>
+
+  </div>
+</div>
+<p> this is primarily to address the ‘closure’ of the algebraic operations in the sub-set. To achieve a semi-ring, we further need two commutative monoids: one for each of the wheel operations. Having closure, what is left to prove is a neutral element and associativity. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000018">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13</span>
+    <span class="definition_thmtitle"><b class="bfseries">\(\mathcal R_{W}\) is a commutative monoid in * and +</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000018">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instCommMonoid" class="lean_decl">Wheel.instCommMonoid</a></li>
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instAddCommMonoid" class="lean_decl">Wheel.instAddCommMonoid</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative monoid in both the wheel operations. </p>
+
+  </div>
+</div>
+<p> Finally, the interaction between the two monoids must be distributive, and the semiring has been defined: </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000019">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14</span>
+    <span class="definition_thmtitle"><b class="bfseries">\(\mathcal R_{W}\) is a semiring in * and +</b></span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000019">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instSemiRing" class="lean_decl">Wheel.instSemiRing</a></li>
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.toSemiring" class="lean_decl">Wheel.toSemiring</a></li>
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instLeftDistrib" class="lean_decl">Wheel.instLeftDistrib</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a semiring in * and +. </p>
 
   </div>
 </div>

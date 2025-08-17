@@ -74,25 +74,25 @@ instance : Mul (𝓡 α) where
    rw [←mul_assoc,←zero_mul_add,a.prop,b.prop,zero_add]
 
 /-- CommMagma instance for the multiplicative monoid -/
-instance : CommMagma (𝓡 α) where
+instance Wheel.instCommMagma : CommMagma (𝓡 α) where
  mul := fun a b ↦ a * b
  mul_comm := fun a b ↦ by
   ext
   convert W.mul_comm a b
 
-instance : LeftDistribClass (𝓡 α) where
+instance Wheel.instLeftDistrib : LeftDistribClass (𝓡 α) where
  left_distrib := by
   intro a b c;ext
   calc a * (b + c) = (b + c)*a + (0:α)*a := by rw [mul_comm,a.prop,add_zero]
   _ = a*b + a*c :=                      by simp_rw [left_mul_distrib,mul_comm]
 
 /-- AddCommMagma instance for the additive monoid -/
-instance : AddCommMagma (𝓡 α) where
+instance Wheel.instAddCommMagma : AddCommMagma (𝓡 α) where
  add := fun a b ↦ a + b
  add_comm := fun a b ↦ by ext;convert W.add_comm a b
 
 /-- AddCommMonoid instance for the AdditiveCommMonoid of the induced semiring TODO: GOLF -/
-instance : AddCommMonoid (𝓡 α) where
+instance Wheel.instAddCommMonoid : AddCommMonoid (𝓡 α) where
  add_assoc := fun a b c ↦ by
   ext
   convert W.add_assoc a b c
@@ -112,7 +112,7 @@ instance : AddCommMonoid (𝓡 α) where
  nsmul_zero := fun x ↦ by ext; convert W.nsmul_zero x
 
 /-- CommMonoid instance for the multiplicative CommMonoid of the induced semiring -/
-instance : CommMonoid (𝓡 α) where
+instance Wheel.instCommMonoid : CommMonoid (𝓡 α) where
  mul_assoc := fun a b c ↦ by
   ext
   convert W.mul_assoc a b c
@@ -120,10 +120,10 @@ instance : CommMonoid (𝓡 α) where
  one_mul := fun a ↦ by ext;convert W.one_mul a
  mul_one := fun a ↦ by ext;convert W.mul_one a
 
-/--The Semiring induced by a `[W:Wheel α]`,the corresponding to the "subset":
-`{ w ∈ W | ∀a ∈ W : 0*a = 0}`. Note this is strictly not the case, as it is a subtype,
+/-- The Semiring induced by a `[W:Wheel α]`,the corresponding to the "subset":
+`{ w ∈ W |  0*w = 0}`. Note this is strictly not the case, as it is a subtype,
 but its the analogous case. -/
-instance : Semiring (𝓡 α) where
+instance Wheel.instSemiRing : Semiring (𝓡 α) where
   left_distrib := left_distrib
   right_distrib := fun a b c ↦ by
     simp only [mul_comm,left_distrib]
@@ -133,7 +133,7 @@ instance : Semiring (𝓡 α) where
 
 
 /-- A predicate version when an explicit option is needed, without typeclass baggage. -/
-def toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring α := by
+def Wheel.toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring α := by
  have left_distrib: ∀(a b c:α),a*(b + c) = a*b + a*c := by
   intro a b c
   calc a * (b + c) = (b + c)*a + 0*a := by rw [mul_comm,hα a,add_zero]
