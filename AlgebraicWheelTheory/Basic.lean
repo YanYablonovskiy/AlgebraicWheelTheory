@@ -8,6 +8,30 @@ import Mathlib.Algebra.Group.Defs
 import Mathlib.Algebra.GroupWithZero.Defs
 import Mathlib.Algebra.Ring.Defs
 import Mathlib.Algebra.Field.Defs
+/-!
+# Algebraic wheels
+
+Within this file , for a type `α` , an algebraic structure `Wheel α` is defined as a type-class.
+Some straightforward results are provided given such a `Wheel α`.
+
+## Main results
+
+- `Wheel`: the definition of the wheel type-class
+- `Wheel.instCommGroup` : the subgroup induced by the wheel.
+- `Wheel.instSemiRing`  : the semiring induced by the wheel.
+
+As well as all associated instances, and assorted wheel identities.
+
+## Notation
+
+ - `\ₐ` : The notation for the wheel division unary operation, input as `\\ₐ`.
+
+## References
+
+See JESPER CARLSTRÖM (2004) for the original account  `Wheels – on division by zero`.
+-/
+
+
 /-- A Wheel is an algebraic structure which has two binary operations `(+,*)`, like a ring.
 Similarly to a commutative ring, a Wheel is a commutative monoid in both operations. Additionally,
 there is a multiplicative unary map `wDiv` which is an involution, as well as a few idiosyncratic
@@ -15,12 +39,15 @@ properties in the interactions of the `+`,`*` and `wDiv`.
 -/
 @[ext]
 class Wheel.{u} (α : Type u) extends AddCommMonoid α, CommMonoid α where
+/-- The map emulating division. -/
 wDiv (a : α) : α
+/-- This `wDiv` must be an involution -/
 inv_wDiv: ∀ a : α, wDiv (wDiv a) = a
-mul_wDiv: ∀ a b : α, wDiv (a*b) = (wDiv a)*(wDiv b)
-add_wDiv: ∀ a b c: α, (a + b*c)*(wDiv b) = a*(wDiv b) + c + 0*b
-left_mul_distrib: ∀ a b c: α, (a + b)*c + 0*c = a*c + b*c
-left_mul_distrib': ∀ a b c: α, (a + 0*b)*c = a*c + 0*b
+/-- This `wDiv` map is multiplicative. -/
+wDiv_mul: ∀ a b : α, wDiv (a*b) = (wDiv a)*(wDiv b)
+add_mul_wDiv: ∀ a b c: α, (a + b*c)*(wDiv b) = a*(wDiv b) + c + 0*b
+right_mul_distrib: ∀ a b c: α, (a + b)*c + 0*c = a*c + b*c
+right_mul_distrib': ∀ a b c: α, (a + 0*b)*c = a*c + 0*b
 zero_mul_zero: (0:α)*0 = 0
 div_add_zero: ∀ a b : α, wDiv (a + 0*b) = (wDiv a) + 0*b
 wDiv_zero_add: ∀ a : α, 0*(wDiv 0) + a = 0*(wDiv 0)
@@ -35,7 +62,7 @@ variable {α : Type u} [W : Wheel α] (a b : α)
 
 prefix:100  "\\ₐ" => wDiv
 
-attribute [simp] inv_wDiv mul_wDiv add_wDiv zero_mul_zero div_add_zero wDiv_zero_add
+attribute [simp] inv_wDiv wDiv_mul add_mul_wDiv zero_mul_zero div_add_zero wDiv_zero_add
 
 /-- We have that `wDiv 1` is one, in general
 -/
@@ -43,7 +70,7 @@ attribute [simp] inv_wDiv mul_wDiv add_wDiv zero_mul_zero div_add_zero wDiv_zero
 lemma Wheel.wdiv_one : \ₐ1 = (1:α) := by
   calc  \ₐ 1 = (1:α)* \ₐ 1 := by simp
           _   = \ₐ\ₐ 1 * \ₐ 1 := by simp
-          _   = \ₐ (\ₐ 1 * 1) := by rw [mul_wDiv]
+          _   = \ₐ (\ₐ 1 * 1) := by rw [wDiv_mul]
           _   = \ₐ \ₐ 1  := by simp
           _   = 1 := by simp
 
@@ -52,7 +79,7 @@ lemma Wheel.wdiv_one : \ₐ1 = (1:α) := by
 @[simp, grind]
 lemma Wheel.zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
  intro a b
- rw [add_comm,←left_mul_distrib' 0 a b]
+ rw [add_comm,←right_mul_distrib' 0 a b]
  simp
 
 /-- For any `a :α` and `[Wheel α]` , `(0* \ₐ 0)*a = 0* \ₐ 0`. Morally, this is like
@@ -68,7 +95,7 @@ lemma Wheel.zero_wdiv_mul : ∀a: α, (0* \ₐ 0)*a = 0* \ₐ 0 := by
 @[simp, grind]
 lemma Wheel.wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
   intro a
-  have := add_wDiv 0 (a:α) 1
+  have := add_mul_wDiv 0 (a:α) 1
   simp only [zero_add,mul_one] at this
   nth_rw 1 [this]
   rw [add_comm _ 1,add_assoc]
@@ -109,16 +136,15 @@ instance [Wheel α] : Coe (𝓢' α) (𝓢 α) where
 /-- Addition instance for the induced semiring -/
 instance : Add (𝓡 α) where
  add := fun a b ↦ by
-  have:=a.prop
   refine ⟨a + b, ?_⟩
   calc 0*(↑a + ↑b) = (a + b)*(0:α) + 0*0 := by rw [zero_mul_zero,add_zero,mul_comm]
-  _ = 0 := by rw [left_mul_distrib,mul_comm,a.prop,mul_comm,b.prop,zero_add]
+  _ = 0 := by rw [right_mul_distrib,mul_comm,a.prop,mul_comm,b.prop,zero_add]
 
 /-- Multiplication instance for the induced group -/
 instance : Mul (𝓢 α) where
  mul := fun a b ↦ by
   refine ⟨a*b, ⟨by rw [←mul_assoc,a.prop.1,b.prop.1],?_⟩⟩
-  rw [mul_wDiv,←mul_assoc,a.prop.2,b.prop.2]
+  rw [wDiv_mul,←mul_assoc,a.prop.2,b.prop.2]
 
 lemma mul𝓢_def : ∀(a b : (𝓢 α)),a*b = ⟨a.val,a.prop⟩*⟨b.val,b.prop⟩ := fun a b ↦ by rfl
 
@@ -152,7 +178,7 @@ instance Wheel.instLeftDistrib : LeftDistribClass (𝓡 α) where
  left_distrib := by
   intro a b c;ext
   calc a * (b + c) = (b + c)*a + (0:α)*a := by rw [mul_comm,a.prop,add_zero]
-  _ = a*b + a*c :=                      by simp_rw [left_mul_distrib,mul_comm]
+  _ = a*b + a*c :=                      by simp_rw [right_mul_distrib,mul_comm]
 
 /-- AddCommMagma instance for the additive monoid -/
 instance Wheel.instAddCommMagma : AddCommMagma (𝓡 α) where
@@ -169,12 +195,11 @@ instance Wheel.instAddCommMonoid : AddCommMonoid (𝓡 α) where
  add_zero := fun a ↦ by ext;convert W.add_zero a
  nsmul := fun n a ↦ by
   refine ⟨n • a, ?_ ⟩
-  have := a.prop
   induction' n with m ih
   · rw [zero_nsmul,zero_mul_zero]
   · rw [succ_nsmul,mul_comm]
     calc ((m • a.val) + ↑a) * 0 = (m • ↑a + ↑a) * 0 + 0*0 := by rw [zero_mul_zero,add_zero]
-    _ =  (m • ↑a) * 0 + ↑a*0 := by rw [left_mul_distrib]
+    _ =  (m • ↑a) * 0 + ↑a*0 := by rw [right_mul_distrib]
     _ = 0 := by  rw [mul_comm,ih,mul_comm,a.prop,zero_add]
  nsmul_succ := by intro n a; ext; convert W.nsmul_succ n a
  nsmul_zero := fun x ↦ by ext; convert W.nsmul_zero x
@@ -225,7 +250,7 @@ def Wheel.toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring
  have left_distrib: ∀(a b c:α),a*(b + c) = a*b + a*c := by
   intro a b c
   calc a * (b + c) = (b + c)*a + 0*a := by rw [mul_comm,hα a,add_zero]
-  _ = a*b + a*c :=                      by simp_rw [left_mul_distrib,mul_comm]
+  _ = a*b + a*c :=                      by simp_rw [right_mul_distrib,mul_comm]
  exact {
  left_distrib := left_distrib
  right_distrib := fun a b c ↦ by simp [mul_comm,left_distrib]
@@ -241,7 +266,7 @@ lemma Wheel.wdiv_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b +
   intro a b c hab
   have: (a * c *\ₐc) = (b * c *\ₐc) := by rw [hab]
   rw [mul_assoc,mul_assoc,wdiv_self c,mul_comm,mul_comm b] at this
-  rw [left_mul_distrib',left_mul_distrib'] at this
+  rw [right_mul_distrib',right_mul_distrib'] at this
   simp only [one_mul,←mul_assoc] at this
   exact this
 
@@ -250,7 +275,7 @@ lemma Wheel.wdiv_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b +
 instance Wheel.toMonoidHom : MonoidHom α α where
  toFun := wDiv
  map_one' := wdiv_one
- map_mul' := mul_wDiv
+ map_mul' := wDiv_mul
 
 /-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related.
 The predicate version -/
@@ -261,25 +286,25 @@ lemma Wheel.isUnit_add_eq_div_add' (c : α) (hc : IsUnit c):∃b:α,c * b = 1 �
  use x
  refine ⟨hx1,hx2,?_⟩
  calc x + 0 * \ₐc = x*\ₐ(x*c) + 0*\ₐc := by simp [hx2]
- _ = x*(\ₐx)*\ₐc + 0*\ₐc := by rw [mul_wDiv,←mul_assoc]
- _ = \ₐc + 0*x*\ₐx + 0*\ₐc := by rw [wdiv_self,left_mul_distrib',one_mul,←mul_assoc]
+ _ = x*(\ₐx)*\ₐc + 0*\ₐc := by rw [wDiv_mul,←mul_assoc]
+ _ = \ₐc + 0*x*\ₐx + 0*\ₐc := by rw [wdiv_self,right_mul_distrib',one_mul,←mul_assoc]
  _ = \ₐc + 0*x*\ₐx*\ₐc := by rw [add_assoc,mul_assoc 0,zero_mul_add]
- _ = \ₐc + 0*x := by rw [mul_assoc (0*x),←mul_wDiv,hx2,wdiv_one,mul_one]
+ _ = \ₐc + 0*x := by rw [mul_assoc (0*x),←wDiv_mul,hx2,wdiv_one,mul_one]
 
 /-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related. -/
 lemma Wheel.isUnit_add_eq_div_add (c : αˣ) : (c⁻¹ + (0:α)*\ₐ↑c = \ₐ↑c + 0*c⁻¹) := by
  have: c⁻¹ * c = (1:α) := by simp
  calc c⁻¹ + (0:α) * \ₐ↑c = c⁻¹*\ₐ(↑c⁻¹*↑c) + 0*\ₐ↑c := by simp
- _ = c⁻¹*(\ₐ↑c⁻¹)*\ₐ↑c + 0*\ₐ↑c := by rw [mul_wDiv,←mul_assoc]
- _ = \ₐ↑c + 0*↑c⁻¹*\ₐ↑c⁻¹ + 0*\ₐ↑c := by rw [wdiv_self,left_mul_distrib',one_mul,←mul_assoc]
+ _ = c⁻¹*(\ₐ↑c⁻¹)*\ₐ↑c + 0*\ₐ↑c := by rw [wDiv_mul,←mul_assoc]
+ _ = \ₐ↑c + 0*↑c⁻¹*\ₐ↑c⁻¹ + 0*\ₐ↑c := by rw [wdiv_self,right_mul_distrib',one_mul,←mul_assoc]
  _ = \ₐ↑c + 0*↑c⁻¹*\ₐ↑c⁻¹*\ₐ↑c := by rw [add_assoc,mul_assoc 0,zero_mul_add]
- _ = \ₐ↑c + 0*↑c⁻¹ := by rw [mul_assoc,←mul_wDiv,this,wdiv_one,mul_one]
+ _ = \ₐ↑c + 0*↑c⁻¹ := by rw [mul_assoc,←wDiv_mul,this,wdiv_one,mul_one]
 
 
 /-- If  `c  :α` is a unit and `[Wheel α]` , then we have that `0*\ₐc + 0*\ₐc⁻¹ = 0` . -/
 @[simp]
 lemma Wheel.isUnit_zero_eq_div_mul_add (c : αˣ) : (0:α)*\ₐ↑c + (0:α)*\ₐ↑c⁻¹ = 0 := by
- rw [zero_mul_add,mul_assoc,←mul_wDiv,show c * c⁻¹ = (1:α) by simp,wdiv_one,mul_one]
+ rw [zero_mul_add,mul_assoc,←wDiv_mul,show c * c⁻¹ = (1:α) by simp,wdiv_one,mul_one]
 
 
 /-- If  `c  :α` is a unit and `[Wheel α]`, then the inverse `c⁻¹` is related to `\ₐc` as follows -/
