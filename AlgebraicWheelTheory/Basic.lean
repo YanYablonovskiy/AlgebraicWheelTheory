@@ -55,6 +55,27 @@ lemma Wheel.zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
  rw [add_comm,←left_mul_distrib' 0 a b]
  simp
 
+/-- For any `a :α` and `[Wheel α]` , `(0* \ₐ 0)*a = 0* \ₐ 0`. Morally, this is like
+saying infinity times anything is infinity, complementing the axiom `wDiv_zero_add`.
+-/
+@[simp, grind]
+lemma Wheel.zero_wdiv_mul : ∀a: α, (0* \ₐ 0)*a = 0* \ₐ 0 := by
+  intro a
+  rw [←zero_mul_add,wDiv_zero_add]
+
+/-- For any `a :α` and `[Wheel α]` , `a*\ₐa = 1 + 0*(a*\ₐa)` .
+-/
+@[simp, grind]
+lemma Wheel.wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
+  intro a
+  have := add_wDiv 0 (a:α) 1
+  simp only [zero_add,mul_one] at this
+  nth_rw 1 [this]
+  rw [add_comm _ 1,add_assoc]
+  suffices h: 0 * \ₐa + 0 * a = 0 * (a * \ₐa) by rw [h]
+  simp
+  rw [mul_assoc,mul_comm _ a]
+
 /-- Defining the map from Wheels to its largest contained Semirings -/
 @[reducible]
 def 𝓡 (α : Type u) [Wheel α] := {x : α // (0 : α) * x = 0}
@@ -65,13 +86,25 @@ def 𝓢 (α : Type u) [Wheel α] := {x : α // 0 * x = 0 ∧ 0 * \ₐx = 0}
 @[reducible]
 def 𝓢' (α : Type u) [Wheel α] := {x : (𝓡 α) //  0 * \ₐ(x.val) = 0}
 
-def StoR (α : Type u) [Wheel α] : (𝓢 α) → (𝓡 α) := fun ⟨x,⟨hx,_⟩⟩ ↦ ⟨x,hx⟩
+@[reducible]
+def 𝓢to𝓡 {α : Type u} [Wheel α] : (𝓢 α) → (𝓡 α) := fun ⟨x,⟨hx,_⟩⟩ ↦ ⟨x,hx⟩
+
+@[reducible]
+def 𝓡to𝓢' (α : Type u) [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 0) → (𝓢' α) :=
+ fun x hx ↦ ⟨x,hx⟩
+
+@[reducible]
+def 𝓡to𝓢 {α : Type u} [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 0) → (𝓢 α) :=
+ fun x hx ↦ ⟨x,⟨x.prop,hx⟩⟩
 
 instance [Wheel α] : Coe (𝓢 α) (𝓡 α) where
- coe := StoR α
+ coe := 𝓢to𝓡
 
 instance [Wheel α] : Coe (𝓢 α) (𝓢' α) where
  coe := fun ⟨x,⟨hxz,hxdiv⟩⟩ ↦ ⟨⟨x,hxz⟩,hxdiv⟩
+
+instance [Wheel α] : Coe (𝓢' α) (𝓢 α) where
+ coe := fun ⟨⟨x,hxz⟩,hxdiv⟩ ↦ ⟨x,⟨hxz,hxdiv⟩⟩
 
 /-- Addition instance for the induced semiring -/
 instance : Add (𝓡 α) where
@@ -81,6 +114,20 @@ instance : Add (𝓡 α) where
   calc 0*(↑a + ↑b) = (a + b)*(0:α) + 0*0 := by rw [zero_mul_zero,add_zero,mul_comm]
   _ = 0 := by rw [left_mul_distrib,mul_comm,a.prop,mul_comm,b.prop,zero_add]
 
+/-- Multiplication instance for the induced group -/
+instance : Mul (𝓢 α) where
+ mul := fun a b ↦ by
+  refine ⟨a*b, ⟨by rw [←mul_assoc,a.prop.1,b.prop.1],?_⟩⟩
+  rw [mul_wDiv,←mul_assoc,a.prop.2,b.prop.2]
+
+lemma mul𝓢_def : ∀(a b : (𝓢 α)),a*b = ⟨a.val,a.prop⟩*⟨b.val,b.prop⟩ := fun a b ↦ by rfl
+
+lemma mul𝓢_def' : ∀(a b : (𝓢 α)),a*b = ⟨a.val*b.val,(a*b).prop⟩ := fun a b ↦ by rfl
+
+instance : Inv (𝓢 α) where
+ inv := fun a ↦ ⟨\ₐa, ⟨a.prop.2,by rw [inv_wDiv,a.prop.1]⟩⟩
+
+lemma inv𝓢_def : ∀(a : (𝓢 α)), a⁻¹ = ⟨\ₐ↑a,a⁻¹.prop⟩ := fun a ↦ by rfl
 
 /-- Multiplication instance for the induced semiring -/
 instance : Mul (𝓡 α) where
@@ -89,7 +136,13 @@ instance : Mul (𝓡 α) where
    rw [←mul_assoc,←zero_mul_add,a.prop,b.prop,zero_add]
 
 /-- CommMagma instance for the multiplicative monoid -/
-instance Wheel.instCommMagma : CommMagma (𝓡 α) where
+instance Wheel.instSCommMagma : CommMagma (𝓢 α) where
+ mul_comm := fun a b ↦ by
+  ext
+  convert W.mul_comm a b
+
+/-- CommMagma instance for the multiplicative monoid -/
+instance Wheel.instRCommMagma : CommMagma (𝓡 α) where
  mul := fun a b ↦ a * b
  mul_comm := fun a b ↦ by
   ext
@@ -127,13 +180,33 @@ instance Wheel.instAddCommMonoid : AddCommMonoid (𝓡 α) where
  nsmul_zero := fun x ↦ by ext; convert W.nsmul_zero x
 
 /-- CommMonoid instance for the multiplicative CommMonoid of the induced semiring -/
-instance Wheel.instCommMonoid : CommMonoid (𝓡 α) where
+instance Wheel.instRCommMonoid : CommMonoid (𝓡 α) where
  mul_assoc := fun a b c ↦ by
   ext
   convert W.mul_assoc a b c
  one := ⟨1,mul_one 0⟩
  one_mul := fun a ↦ by ext;convert W.one_mul a
  mul_one := fun a ↦ by ext;convert W.mul_one a
+
+/-- CommMonoid instance for the induced group. -/
+instance Wheel.instSCommMonoid : CommMonoid (𝓢 α) where
+ mul_assoc := fun a b c ↦ by
+  ext
+  convert W.mul_assoc a b c
+ one := ⟨1,⟨mul_one 0,by rw [wdiv_one,mul_one 0]⟩⟩
+ one_mul := fun a ↦ by ext;convert W.one_mul a
+ mul_one := fun a ↦ by ext;convert W.mul_one a
+
+
+/-- The commutative group corresponding to the "subset" of a wheel `[W:Wheel α]`:
+ `{ w ∈ W |  0*w = 0 ∧ 0*\ₐw = 0}`. Note this is strictly not the case, as it is a subtype,
+but its the analogous case. -/
+instance Wheel.instCommGroup : CommGroup (𝓢 α) where
+  inv_mul_cancel := fun a ↦ by
+   rw [inv𝓢_def,mul_comm,mul𝓢_def']
+   ext;congr
+   rw [wdiv_self,←mul_assoc,a.prop.1,a.prop.2,add_zero]
+
 
 /-- The Semiring induced by a `[W:Wheel α]`,the corresponding to the "subset":
 `{ w ∈ W |  0*w = 0}`. Note this is strictly not the case, as it is a subtype,
@@ -160,26 +233,6 @@ def Wheel.toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring
  mul_zero := fun a ↦ by rw [mul_comm,hα]}
 
 
-/-- For any `a :α` and `[Wheel α]` , `(0* \ₐ 0)*a = 0* \ₐ 0`. Morally, this is like
-saying infinity times anything is infinity, complementing the axiom `wDiv_zero_add`.
--/
-@[simp, grind]
-lemma Wheel.zero_wdiv_mul : ∀a: α, (0* \ₐ 0)*a = 0* \ₐ 0 := by
-  intro a
-  rw [←zero_mul_add,wDiv_zero_add]
-
-/-- For any `a :α` and `[Wheel α]` , `a*\ₐa = 1 + 0*(a*\ₐa)` .
--/
-@[simp, grind]
-lemma Wheel.wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
-  intro a
-  have := add_wDiv 0 (a:α) 1
-  simp only [zero_add,mul_one] at this
-  nth_rw 1 [this]
-  rw [add_comm _ 1,add_assoc]
-  suffices h: 0 * \ₐa + 0 * a = 0 * (a * \ₐa) by rw [h]
-  simp
-  rw [mul_assoc,mul_comm _ a]
 
 /-- For any `a b c :α` and `[Wheel α]` , ` a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc `. This is the
 version of cancellation that wheels enjoy.

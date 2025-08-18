@@ -126,7 +126,9 @@ This section examines how a Wheel $W$ behaves when an element $x \in W$ happens 
   where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
 \end{proposition}
 \section{Algebraic sub-structures of a Wheel} 
-Given a wheel $W$, certain sub-sets form familiar structures. Consider the subset:
+Given a wheel $W$, certain sub-sets form familiar structures. 
+\subsection{Induced semiring}
+Consider the subset:
 \[
 \mathcal{R}_{W} := \{ w \in W | 0*w = 0 \}
 \]
@@ -135,23 +137,47 @@ then $\mathcal{R}$ turns out to be a commutative unital semiring.
  For the purposes of this document, we assume semirings to be unital and commutative by default.
 \end{remark}
 Firstly,
-\begin{definition}[\textbf{$\mathcal R_{W}$ is a commutative magma in * and +}]
-  \lean{Wheel.instCommMagma,Wheel.instAddCommMagma}
+\begin{definition}[\textbf{$\mathcal{R}_{W}$ is a commutative magma in * and +}]
+  \lean{Wheel.instRCommMagma,Wheel.instAddCommMagma}
   \leanok
   Given a wheel $W$, then $\mathcal{R}_{W}$ is a commutative magma in both the wheel operations.
 \end{definition}
 this is primarily to address the `closure' of the algebraic operations in the sub-set. To achieve a semi-ring,
 we further need two commutative monoids: one for each of the wheel operations. Having closure, what is left to prove is
 a neutral element and associativity.
-\begin{definition}[\textbf{$\mathcal R_{W}$ is a commutative monoid in * and +}]
-  \lean{Wheel.instCommMonoid,Wheel.instAddCommMonoid}
+\begin{definition}[\textbf{$\mathcal{R}_{W}$ is a commutative monoid in * and +}]
+  \lean{Wheel.instRCommMonoid,Wheel.instAddCommMonoid}
   \leanok
   Given a wheel $W$, then $\mathcal{R}_{W}$ is a commutative monoid in both the wheel operations.
 \end{definition}
 Finally, the interaction between the two monoids must be distributive, and the semiring has been defined:
-\begin{definition}[\textbf{$\mathcal R_{W}$ is a semiring in * and +}]
+\begin{definition}[\textbf{$\mathcal{R}_{W}$ is a semiring in * and +}]
   \lean{Wheel.instSemiRing,Wheel.toSemiring,Wheel.instLeftDistrib}
   Given a wheel $W$, then $\mathcal{R}_{W}$ is a semiring in * and +.
+\end{definition}
+\subsection{Induced commutative group}
+In this section, consider the subset of a wheel $W$:
+\[
+  \mathcal{S}_{W} := \{ w \in W | 0*w = 0 \wedge 0*\backslash_{a}w = 0 \},
+\]
+note that this is also a subset of $\mathcal{R}_{W}$. Once more, begining with the closure of the binary operation *
+inherited from the wheel:
+\begin{definition}[\textbf{$\mathcal{S}_{W}$ is a commutative magma in *}]
+  \lean{Wheel.instSCommMagma}
+  \leanok
+  Given a wheel $W$, then $\mathcal{S}_{W}$ is a commutative magma in the * wheel operation.
+\end{definition}
+Followed by the commutative monoid:
+\begin{definition}[\textbf{$\mathcal{S}_{W}$ is a commutative monoid in *}]
+  \lean{Wheel.instSCommMonoid}
+  \leanok
+  Given a wheel $W$, then $\mathcal{R}_{W}$ is a commutative monoid in both the wheel operations.
+\end{definition}
+And finally, the induced commutative group,
+\begin{definition}[\textbf{$\mathcal{S}_{W}$ is a commutative group in *}]
+  \lean{Wheel.instCommGroup}
+  \leanok
+  Given a wheel $W$, then $\mathcal{S}_{W}$ is a commutative group in *.
 \end{definition}
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.
