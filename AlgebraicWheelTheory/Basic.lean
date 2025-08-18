@@ -322,6 +322,16 @@ lemma Wheel.isUnit_div_eq_inv_add (c : αˣ) : \ₐ↑c = c⁻¹ + (0:α)*↑c*\
  _ =  c⁻¹ + (0:α)*↑c*\ₐ↑c :=  by simp only [mul_assoc,mul_comm]
 
 
+/-- If `x : (𝓡 α)` is `\ₐ`-invertible , then it is also part of (𝓢 α) -/
+@[reducible]
+def Wheel.isUnit_wdiv_coe (x : (𝓡 α)ˣ) (hinv : x⁻¹ = \ₐ(x : α)) : (𝓢 α) := by
+ refine ⟨ x, ⟨(x:𝓡 α).prop,?_⟩⟩
+ calc (0:α) * \ₐ↑↑x = (0*(↑x)) * \ₐ↑↑x := by rw [(x:𝓡 α).prop]
+ _ = 0 * (↑↑x * ↑↑x⁻¹) := by rw [mul_assoc,←hinv]
+ _ = 0*↑↑(x*x⁻¹) := by rfl
+ _ = 0 := by rw [(show ↑↑(x * x⁻¹)=(1:α) by simp;congr),mul_one];
+
+
 
 example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*x*y*(z^2) := by
  intro x y z
