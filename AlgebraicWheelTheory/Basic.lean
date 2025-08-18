@@ -161,6 +161,12 @@ instance : Mul (𝓡 α) where
    refine ⟨a * b, ?_⟩
    rw [←mul_assoc,←zero_mul_add,a.prop,b.prop,zero_add]
 
+lemma mul𝓡_def : ∀(a b : (𝓡 α)),a*b = ⟨a.val,a.prop⟩*⟨b.val,b.prop⟩ := fun a b ↦ by rfl
+
+lemma mul𝓡_def' : ∀(a b : (𝓡 α)),a*b = ⟨a.val*b.val,(a*b).prop⟩ := fun a b ↦ by rfl
+
+lemma mul𝓡_coe : ∀(a b : (𝓡 α)),a.val*b.val = (a*b).val := fun _ _ ↦ rfl
+
 /-- CommMagma instance for the multiplicative monoid -/
 instance Wheel.instSCommMagma : CommMagma (𝓢 α) where
  mul_comm := fun a b ↦ by
@@ -331,6 +337,13 @@ def Wheel.isUnit_wdiv_coe (x : (𝓡 α)ˣ) (hinv : x⁻¹ = \ₐ(x : α)) : (�
  _ = 0*↑↑(x*x⁻¹) := by rfl
  _ = 0 := by rw [(show ↑↑(x * x⁻¹)=(1:α) by simp;congr),mul_one];
 
+
+/-- If  (x : 𝓡 α) is a unit, then it is a unit of the original wheel. -/
+lemma Wheel.isRUnit_isUnit (x : 𝓡 α) (hru : IsUnit x) : IsUnit (x:α) := by
+ rw [isUnit_iff_exists] at *
+ obtain ⟨y,hxy,hyx⟩ := hru
+ use y.val
+ simp [mul𝓡_coe,hxy,hyx];rfl
 
 
 example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*x*y*(z^2) := by

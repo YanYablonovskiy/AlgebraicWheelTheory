@@ -302,6 +302,36 @@
 
 
     
+    <div class="dep-modal-container" id="a0000000028_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="a0000000028" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">19</span></div>
+    <div class="thm_thmcontent"><p> For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is a unit, then is is also a unit in the original wheel. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#a0000000028">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isRUnit_isUnit">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="def:Wheel_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -714,7 +744,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	a0000000019	[color=green,		fillcolor="#B0ECA3",		label=a0000000019,		shape=box,		style=filled];	a0000000021	[color=blue,		fillcolor="#A3D6FF",		label=a0000000021,		shape=box,		style=filled];	a0000000025	[color=green,		fillcolor="#B0ECA3",		label=a0000000025,		shape=box,		style=filled];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"prop:isUnit_inv_eq_div_add"	[color=green,		label=isUnit_inv_eq_div_add,		shape=ellipse];	a0000000027	[color=green,		label=a0000000027,		shape=ellipse];	a0000000024	[color=green,		fillcolor="#B0ECA3",		label=a0000000024,		shape=box,		style=filled];	a0000000020	[color=green,		fillcolor="#B0ECA3",		label=a0000000020,		shape=box,		style=filled];	a0000000026	[color=green,		fillcolor="#B0ECA3",		label=a0000000026,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	"prop:isUnit_zero_eq_div_mul_add"	[color=green,		label=isUnit_zero_eq_div_mul_add,		shape=ellipse];	"prop:isUnit_div_eq_inv_add"	[color=green,		label=isUnit_div_eq_inv_add,		shape=ellipse];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	a0000000019	[color=green,		fillcolor="#B0ECA3",		label=a0000000019,		shape=box,		style=filled];	a0000000024	[color=green,		fillcolor="#B0ECA3",		label=a0000000024,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	"prop:isUnit_div_eq_inv_add"	[color=green,		label=isUnit_div_eq_inv_add,		shape=ellipse];	a0000000021	[color=blue,		fillcolor="#A3D6FF",		label=a0000000021,		shape=box,		style=filled];	a0000000025	[color=green,		fillcolor="#B0ECA3",		label=a0000000025,		shape=box,		style=filled];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"prop:isUnit_inv_eq_div_add"	[color=green,		label=isUnit_inv_eq_div_add,		shape=ellipse];	a0000000027	[color=green,		label=a0000000027,		shape=ellipse];	a0000000028	[color=green,		label=a0000000028,		shape=ellipse];	a0000000020	[color=green,		fillcolor="#B0ECA3",		label=a0000000020,		shape=box,		style=filled];	a0000000026	[color=green,		fillcolor="#B0ECA3",		label=a0000000026,		shape=box,		style=filled];	"prop:isUnit_zero_eq_div_mul_add"	[color=green,		label=isUnit_zero_eq_div_mul_add,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {
