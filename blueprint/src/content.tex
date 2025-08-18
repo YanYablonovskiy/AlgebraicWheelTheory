@@ -160,7 +160,7 @@ In this section, consider the subset of a wheel $W$:
 \[
   \mathcal{S}_{W} := \{ w \in W | 0*w = 0 \wedge 0*\backslash_{a}w = 0 \},
 \]
-note that this is also a subset of $\mathcal{R}_{W}$. Once more, begining with the closure of the binary operation *
+note that $\mathcal{R}_{W}$ is a subset of this set. Once more, begining with the closure of the binary operation *
 inherited from the wheel:
 \begin{definition}[\textbf{$\mathcal{S}_{W}$ is a commutative magma in *}]
   \lean{Wheel.instSCommMagma}
@@ -180,11 +180,11 @@ And finally, the induced commutative group,
   Given a wheel $W$, then $\mathcal{S}_{W}$ is a commutative group in *.
 \end{definition}
 This shows that every element of $\mathcal{S}_{W}$ is $\backslash_{a}$-invertible. Furthermore, if an element of $\mathcal{R}_{W}$ 
-is a $\backslash_{a}$-unit, then its inverse is contained in $\mathcal{S}_{W}$:
+is a $\backslash_{a}$-unit, then it is contained in $\mathcal{S}_{W}$:
 \begin{proposition}
   \lean{Wheel.isUnit_wdiv_coe}
   \leanok
-  For a wheel $W$, if $x \in \mathcal{R}_{W}$ is $\backslash_{a}$-invertible, then $x^{-1} \in \mathcal{S}_{W}$.
+  For a wheel $W$, if $x \in \mathcal{R}_{W}$ is $\backslash_{a}$-invertible, then $x \in \mathcal{S}_{W}$.
 \end{proposition}
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.
