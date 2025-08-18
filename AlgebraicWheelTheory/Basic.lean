@@ -62,8 +62,16 @@ def 𝓡 (α : Type u) [Wheel α] := {x : α // (0 : α) * x = 0}
 @[reducible]
 def 𝓢 (α : Type u) [Wheel α] := {x : α // 0 * x = 0 ∧ 0 * \ₐx = 0}
 
+@[reducible]
+def 𝓢' (α : Type u) [Wheel α] := {x : (𝓡 α) //  0 * \ₐ(x.val) = 0}
+
 def StoR (α : Type u) [Wheel α] : (𝓢 α) → (𝓡 α) := fun ⟨x,⟨hx,_⟩⟩ ↦ ⟨x,hx⟩
 
+instance [Wheel α] : Coe (𝓢 α) (𝓡 α) where
+ coe := StoR α
+
+instance [Wheel α] : Coe (𝓢 α) (𝓢' α) where
+ coe := fun ⟨x,⟨hxz,hxdiv⟩⟩ ↦ ⟨⟨x,hxz⟩,hxdiv⟩
 
 /-- Addition instance for the induced semiring -/
 instance : Add (𝓡 α) where
