@@ -53,9 +53,9 @@ div_add_zero: ∀ a b : α, wDiv (a + 0*b) = (wDiv a) + 0*b
 wDiv_zero_add: ∀ a : α, 0*(wDiv 0) + a = 0*(wDiv 0)
 
 
-open Wheel
+namespace Wheel
 
-
+open Wheel Monoid
 
 universe u
 variable {α : Type u} {β : Type u} [W : Wheel α] (a b : α) [AddCommMonoid β] [CommMonoid β]
@@ -67,7 +67,7 @@ attribute [simp] inv_wDiv wDiv_mul add_mul_wDiv zero_mul_zero div_add_zero wDiv_
 /-- We have that `wDiv 1` is one, in general
 -/
 @[simp, grind]
-lemma Wheel.wdiv_one : \ₐ1 = (1:α) := by
+lemma wdiv_one : \ₐ1 = (1:α) := by
   calc  \ₐ 1 = (1:α)* \ₐ 1 := by simp
           _   = \ₐ\ₐ 1 * \ₐ 1 := by simp
           _   = \ₐ (\ₐ 1 * 1) := by rw [wDiv_mul]
@@ -77,7 +77,7 @@ lemma Wheel.wdiv_one : \ₐ1 = (1:α) := by
 /-- For any two terms `a b :α` with `[Wheel α]` , we have that `0*a + 0*b = 0*a*b`.
 -/
 @[simp, grind]
-lemma Wheel.zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
+lemma zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
  intro a b
  rw [add_comm,←right_mul_distrib' 0 a b]
  simp
@@ -86,14 +86,14 @@ lemma Wheel.zero_mul_add : ∀a b: α, 0*a + 0*b = 0*a*b := by
 saying infinity times anything is infinity, complementing the axiom `wDiv_zero_add`.
 -/
 @[simp, grind]
-lemma Wheel.zero_wdiv_mul : ∀a: α, (0* \ₐ 0)*a = 0* \ₐ 0 := by
+lemma zero_wdiv_mul : ∀a: α, (0* \ₐ 0)*a = 0* \ₐ 0 := by
   intro a
   rw [←zero_mul_add,wDiv_zero_add]
 
 /-- For any `a :α` and `[Wheel α]` , `a*\ₐa = 1 + 0*(a*\ₐa)` .
 -/
 @[simp, grind]
-lemma Wheel.wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
+lemma wdiv_self : ∀a: α, a*\ₐa = 1 + 0*(a*\ₐa) := by
   intro a
   have := add_mul_wDiv 0 (a:α) 1
   simp only [zero_add,mul_one] at this
@@ -125,9 +125,13 @@ def 𝓡to𝓢 {α : Type u} [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 0
  fun x hx ↦ ⟨x,⟨x.prop,hx⟩⟩
 
 
+/-- The typecalss predicate for a trivial wheel -/
+class Trivial (α : Type u) [W : Wheel α] : Prop where
+ triv : ∀x:α , x = 1
 
+namespace Trivial
 
-section Trivial
+open Wheel Monoid
 
 @[reducible]
 def trivWheel' (α : Type u) [Wheel α] :=  {x : α // x = (1:α)}
@@ -170,36 +174,36 @@ instance : Zero (trivWheel β) where
  zero := ⟨1,rfl⟩
 
 @[simp]
-lemma Wheel.triv_mul_def (x y : (trivWheel β)) : x*y = (1:trivWheel β) := by rfl
+lemma triv_mul_def (x y : (trivWheel β)) : x*y = (1:trivWheel β) := by rfl
 
 @[simp]
-lemma Wheel.triv_add_def (x y : (trivWheel β)) : x+y = (1:trivWheel β) := by rfl
+lemma triv_add_def (x y : (trivWheel β)) : x+y = (1:trivWheel β) := by rfl
 
 @[simp]
-lemma Wheel.triv_one_coe : ↑(1: (trivWheel β)) = (1:β) := rfl
+lemma triv_one_coe : ↑(1: (trivWheel β)) = (1:β) := rfl
 
 @[simp]
-lemma Wheel.triv_zero_coe : ↑(0: (trivWheel β)) = (1:β) := rfl
+lemma triv_zero_coe : ↑(0: (trivWheel β)) = (1:β) := rfl
 
 /-- The magmas for the trivial wheel. -/
-instance Wheel.instTrivMagma : CommMagma (trivWheel β) where
+instance instTrivMagma : CommMagma (trivWheel β) where
  mul_comm := fun _ _ ↦ rfl
 instance : AddCommMagma (trivWheel β) where
  add_comm := fun _ _ ↦ rfl
 
-instance Wheel.instTrivMonoid : CommMonoid (trivWheel β) where
+instance instTrivMonoid : CommMonoid (trivWheel β) where
  mul_assoc := fun _ _ _ ↦ rfl
  one_mul := fun x ↦ by ext;simp [x.prop]
  mul_one := fun x ↦ by ext;simp [x.prop]
 
-instance Wheel.instTrivAddMonoid : AddCommMonoid (trivWheel β) where
+instance instTrivAddMonoid : AddCommMonoid (trivWheel β) where
  add_assoc  _ _ _ :=  rfl
  zero_add x :=  by ext;simp [x.prop]
  add_zero x :=  by ext;simp [x.prop]
  nsmul _ x := 1
 
 /-- The trivial wheel. -/
-instance Wheel.instTrivWheel [CommMonoid β] [AddCommMonoid β] : Wheel (trivWheel β) where
+instance instTrivWheel [CommMonoid β] [AddCommMonoid β] : Wheel (trivWheel β) where
  wDiv x := 1
  inv_wDiv x := by ext;simp [x.prop]
  wDiv_mul x y := rfl
@@ -210,19 +214,15 @@ instance Wheel.instTrivWheel [CommMonoid β] [AddCommMonoid β] : Wheel (trivWhe
  div_add_zero x y := rfl
  wDiv_zero_add x := rfl
 
-/-- The typecalss predicate for a trivial wheel -/
-class Wheel.Trivial (α : Type u) [W : Wheel α] : Prop where
- triv : ∀x:α , x = 1
-
-lemma Wheel.isTrivial {α : Type u} [Wheel α] : (∀x:α, x = 1) ↔ Trivial α :=
-  ⟨fun hx ↦ Trivial.mk hx ,fun htriv ↦ htriv.triv⟩
+lemma Wheel.isTrivial {α : Type u} [Wheel α] : (∀x:α, x = 1) ↔ Wheel.Trivial α :=
+  ⟨fun hx ↦ Wheel.Trivial.mk hx ,fun htriv ↦ htriv.triv⟩
 
 /-- The trivial instance for the trivial wheel. -/
-instance : Wheel.Trivial (trivWheel β) where
+instance : Trivial (trivWheel β) where
  triv x := by ext; simp [x.prop]
 
 
-private lemma Trivial.wDiv_zero_eq_zero_mul : \ₐ 0 = (0:α) * \ₐ 0 →  (∀x:α, x = (0 * \ₐ 0)) := by
+private lemma wDiv_zero_eq_zero_mul : \ₐ 0 = (0:α) * \ₐ 0 →  (∀x:α, x = (0 * \ₐ 0)) := by
  intro h0 x
  calc x = 0 + x := by rw [zero_add]
   _ = \ₐ\ₐ 0 + x := by  rw [inv_wDiv]
@@ -232,18 +232,18 @@ private lemma Trivial.wDiv_zero_eq_zero_mul : \ₐ 0 = (0:α) * \ₐ 0 →  (∀
   _ = 0* \ₐ 0 := by rw [wDiv_zero_add,h0]
 
 
-lemma Trivial.trivial_if_wDiv_zero_eq_zero_mul : (\ₐ 0 = (0:α) * \ₐ 0) → Trivial α := by
+lemma trivial_if_wDiv_zero_eq_zero_mul : (\ₐ 0 = (0:α) * \ₐ 0) → Trivial α := by
  rw [←Wheel.isTrivial];intro h0 x
- simp only [Trivial.wDiv_zero_eq_zero_mul h0 x,Trivial.wDiv_zero_eq_zero_mul h0 1]
+ simp only [wDiv_zero_eq_zero_mul h0 x,wDiv_zero_eq_zero_mul h0 1]
 --Then x = 0 + x = //0 + x = /(0/0) + x = 0/0 + x = 0/0.
 
-lemma Trivial.wDiv_zero_eq_zero_mul_if_trivial : Trivial α → (\ₐ 0 = (0:α) * \ₐ 0) := by
+lemma wDiv_zero_eq_zero_mul_if_trivial : Wheel.Trivial α → (\ₐ 0 = (0:α) * \ₐ 0) := by
  rw [←Wheel.isTrivial];intro h0; specialize h0 0
  rw [h0,one_mul]
 
 open List Trivial Wheel in
-lemma Wheel.triv_tfae : TFAE [\ₐ 0 = (0:α)*\ₐ 0 , (0:α) = 1,\ₐ 0 = (0:α),(0:α) = 0*\ₐ0,
-    (1:α) = \ₐ0,(1:α)=0*\ₐ 0, Wheel.Trivial α] := by
+lemma triv_tfae : TFAE [\ₐ 0 = (0:α)*\ₐ 0 , (0:α) = 1,\ₐ 0 = (0:α),(0:α) = 0*\ₐ0,
+    (1:α) = \ₐ0,(1:α)=0*\ₐ 0, Trivial α] := by
  tfae_have 1 → 7 := trivial_if_wDiv_zero_eq_zero_mul
  tfae_have 7 → 1 := wDiv_zero_eq_zero_mul_if_trivial
  tfae_have 6 ← 7 := fun htriv ↦ (htriv.triv (0 * \ₐ0)).symm
@@ -262,6 +262,7 @@ lemma Wheel.triv_tfae : TFAE [\ₐ 0 = (0:α)*\ₐ 0 , (0:α) = 1,\ₐ 0 = (0:α
 
 end Trivial
 
+open Wheel Monoid
 /-- Addition instance for the induced semiring -/
 instance : Add (𝓡 α) where
  add := fun a b ↦ by
@@ -297,31 +298,32 @@ lemma mul𝓡_def' : ∀(a b : (𝓡 α)),a*b = ⟨a.val*b.val,(a*b).prop⟩ := 
 lemma mul𝓡_coe : ∀(a b : (𝓡 α)),a.val*b.val = (a*b).val := fun _ _ ↦ rfl
 
 /-- CommMagma instance for the multiplicative monoid -/
-instance Wheel.instSCommMagma : CommMagma (𝓢 α) where
+instance instSCommMagma : CommMagma (𝓢 α) where
  mul_comm := fun a b ↦ by
   ext
   convert W.mul_comm a b
 
+
 /-- CommMagma instance for the multiplicative monoid -/
-instance Wheel.instRCommMagma : CommMagma (𝓡 α) where
+instance instRCommMagma : CommMagma (𝓡 α) where
  mul := fun a b ↦ a * b
  mul_comm := fun a b ↦ by
   ext
   convert W.mul_comm a b
 
-instance Wheel.instLeftDistrib : LeftDistribClass (𝓡 α) where
+instance instLeftDistrib : LeftDistribClass (𝓡 α) where
  left_distrib := by
   intro a b c;ext
   calc a * (b + c) = (b + c)*a + (0:α)*a := by rw [mul_comm,a.prop,add_zero]
   _ = a*b + a*c :=                      by simp_rw [right_mul_distrib,mul_comm]
 
 /-- AddCommMagma instance for the additive monoid -/
-instance Wheel.instAddCommMagma : AddCommMagma (𝓡 α) where
+instance instAddCommMagma : AddCommMagma (𝓡 α) where
  add := fun a b ↦ a + b
  add_comm := fun a b ↦ by ext;convert W.add_comm a b
 
 /-- AddCommMonoid instance for the AdditiveCommMonoid of the induced semiring TODO: GOLF -/
-instance Wheel.instAddCommMonoid : AddCommMonoid (𝓡 α) where
+instance instAddCommMonoid : AddCommMonoid (𝓡 α) where
  add_assoc := fun a b c ↦ by
   ext
   convert W.add_assoc a b c
@@ -340,7 +342,7 @@ instance Wheel.instAddCommMonoid : AddCommMonoid (𝓡 α) where
  nsmul_zero := fun x ↦ by ext; convert W.nsmul_zero x
 
 /-- CommMonoid instance for the multiplicative CommMonoid of the induced semiring -/
-instance Wheel.instRCommMonoid : CommMonoid (𝓡 α) where
+instance instRCommMonoid : CommMonoid (𝓡 α) where
  mul_assoc := fun a b c ↦ by
   ext
   convert W.mul_assoc a b c
@@ -349,7 +351,7 @@ instance Wheel.instRCommMonoid : CommMonoid (𝓡 α) where
  mul_one := fun a ↦ by ext;convert W.mul_one a
 
 /-- CommMonoid instance for the induced group. -/
-instance Wheel.instSCommMonoid : CommMonoid (𝓢 α) where
+instance instSCommMonoid : CommMonoid (𝓢 α) where
  mul_assoc := fun a b c ↦ by
   ext
   convert W.mul_assoc a b c
@@ -361,7 +363,7 @@ instance Wheel.instSCommMonoid : CommMonoid (𝓢 α) where
 /-- The commutative group corresponding to the "subset" of a wheel `[W:Wheel α]`:
  `{ w ∈ W |  0*w = 0 ∧ 0*\ₐw = 0}`. Note this is strictly not the case, as it is a subtype,
 but its the analogous case. -/
-instance Wheel.instCommGroup : CommGroup (𝓢 α) where
+instance instCommGroup : CommGroup (𝓢 α) where
   inv_mul_cancel := fun a ↦ by
    rw [inv𝓢_def,mul_comm,mul𝓢_def']
    ext;congr
@@ -371,7 +373,7 @@ instance Wheel.instCommGroup : CommGroup (𝓢 α) where
 /-- The Semiring induced by a `[W:Wheel α]`,the corresponding to the "subset":
 `{ w ∈ W |  0*w = 0}`. Note this is strictly not the case, as it is a subtype,
 but its the analogous case. -/
-instance Wheel.instSemiRing : Semiring (𝓡 α) where
+instance instSemiRing : Semiring (𝓡 α) where
   left_distrib := left_distrib
   right_distrib := fun a b c ↦ by
     simp only [mul_comm,left_distrib]
@@ -381,7 +383,7 @@ instance Wheel.instSemiRing : Semiring (𝓡 α) where
 
 
 /-- A predicate version when an explicit option is needed, without typeclass baggage. -/
-def Wheel.toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring α := by
+def toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring α := by
  have left_distrib: ∀(a b c:α),a*(b + c) = a*b + a*c := by
   intro a b c
   calc a * (b + c) = (b + c)*a + 0*a := by rw [mul_comm,hα a,add_zero]
@@ -397,7 +399,7 @@ def Wheel.toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring
 /-- For any `a b c :α` and `[Wheel α]` , ` a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc `. This is the
 version of cancellation that wheels enjoy.
 -/
-lemma Wheel.wdiv_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc := by
+lemma div_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc := by
   intro a b c hab
   have: (a * c *\ₐc) = (b * c *\ₐc) := by rw [hab]
   rw [mul_assoc,mul_assoc,wdiv_self c,mul_comm,mul_comm b] at this
@@ -407,14 +409,14 @@ lemma Wheel.wdiv_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b +
 
 /-- Since we have that `wDiv 1` is one, therefore `wDiv` is a Monoid Automorphism on `α`.
 -/
-instance Wheel.toMonoidHom : MonoidHom α α where
+instance toMonoidHom : MonoidHom α α where
  toFun := wDiv
  map_one' := wdiv_one
  map_mul' := wDiv_mul
 
 /-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related.
 The predicate version -/
-lemma Wheel.isUnit_add_eq_div_add' (c : α) (hc : IsUnit c):∃b:α,c * b = 1 ∧ b * c = 1
+lemma isUnit_add_eq_div_add' (c : α) (hc : IsUnit c):∃b:α,c * b = 1 ∧ b * c = 1
  ∧ (b + (0:α)*\ₐc = \ₐc + 0*b) := by
  rw [isUnit_iff_exists] at hc
  obtain ⟨x,hx1,hx2⟩ := hc
@@ -427,7 +429,7 @@ lemma Wheel.isUnit_add_eq_div_add' (c : α) (hc : IsUnit c):∃b:α,c * b = 1 �
  _ = \ₐc + 0*x := by rw [mul_assoc (0*x),←wDiv_mul,hx2,wdiv_one,mul_one]
 
 /-- If `c  :α` is a unit and `[Wheel α]` , then the inverse and Wheel self-division are related. -/
-lemma Wheel.isUnit_add_eq_div_add (c : αˣ) : (c⁻¹ + (0:α)*\ₐ↑c = \ₐ↑c + 0*c⁻¹) := by
+lemma isUnit_add_eq_div_add (c : αˣ) : (c⁻¹ + (0:α)*\ₐ↑c = \ₐ↑c + 0*c⁻¹) := by
  have: c⁻¹ * c = (1:α) := by simp
  calc c⁻¹ + (0:α) * \ₐ↑c = c⁻¹*\ₐ(↑c⁻¹*↑c) + 0*\ₐ↑c := by simp
  _ = c⁻¹*(\ₐ↑c⁻¹)*\ₐ↑c + 0*\ₐ↑c := by rw [wDiv_mul,←mul_assoc]
@@ -438,12 +440,12 @@ lemma Wheel.isUnit_add_eq_div_add (c : αˣ) : (c⁻¹ + (0:α)*\ₐ↑c = \ₐ�
 
 /-- If  `c  :α` is a unit and `[Wheel α]` , then we have that `0*\ₐc + 0*\ₐc⁻¹ = 0` . -/
 @[simp]
-lemma Wheel.isUnit_zero_eq_div_mul_add (c : αˣ) : (0:α)*\ₐ↑c + (0:α)*\ₐ↑c⁻¹ = 0 := by
+lemma isUnit_zero_eq_div_mul_add (c : αˣ) : (0:α)*\ₐ↑c + (0:α)*\ₐ↑c⁻¹ = 0 := by
  rw [zero_mul_add,mul_assoc,←wDiv_mul,show c * c⁻¹ = (1:α) by simp,wdiv_one,mul_one]
 
 
 /-- If  `c  :α` is a unit and `[Wheel α]`, then the inverse `c⁻¹` is related to `\ₐc` as follows -/
-lemma Wheel.isUnit_inv_eq_div_add (c : αˣ) : c⁻¹  = \ₐ↑c + (0:α)*c⁻¹*\ₐ↑c⁻¹ := by
+lemma isUnit_inv_eq_div_add (c : αˣ) : c⁻¹  = \ₐ↑c + (0:α)*c⁻¹*\ₐ↑c⁻¹ := by
  calc ↑c⁻¹ = ↑c⁻¹ + (0:α)*\ₐ↑c +  0*\ₐ↑c⁻¹  := by rw [add_assoc,isUnit_zero_eq_div_mul_add,add_zero]
  _ =  (↑c⁻¹ +  0*\ₐ↑c) + (0:α)*\ₐ↑c⁻¹       := by rw [add_assoc]
  _ =  \ₐ↑c + 0*c⁻¹ + (0:α)*\ₐ↑c⁻¹           := by rw [isUnit_add_eq_div_add c]
@@ -451,7 +453,7 @@ lemma Wheel.isUnit_inv_eq_div_add (c : αˣ) : c⁻¹  = \ₐ↑c + (0:α)*c⁻�
 
 
 /-- If  `c  :α` is a unit and `[Wheel α]`, then the inverse `\ₐc` is further related to  `c⁻¹` -/
-lemma Wheel.isUnit_div_eq_inv_add (c : αˣ) : \ₐ↑c = c⁻¹ + (0:α)*↑c*\ₐ↑c := by
+lemma isUnit_div_eq_inv_add (c : αˣ) : \ₐ↑c = c⁻¹ + (0:α)*↑c*\ₐ↑c := by
  calc \ₐ↑c = \ₐ↑c + (0:α)*↑c⁻¹ +(0:α)*↑c := by simp [add_assoc,zero_mul_add]
  _ =  ↑c⁻¹ + 0 * \ₐ↑c * ↑c := by simp [←isUnit_add_eq_div_add,add_assoc,zero_mul_add]
  _ =  c⁻¹ + (0:α)*↑c*\ₐ↑c :=  by simp only [mul_assoc,mul_comm]
@@ -459,7 +461,7 @@ lemma Wheel.isUnit_div_eq_inv_add (c : αˣ) : \ₐ↑c = c⁻¹ + (0:α)*↑c*\
 
 /-- If `x : (𝓡 α)` is `\ₐ`-invertible , then it is also part of (𝓢 α) -/
 @[reducible]
-def Wheel.isUnit_wdiv_coe (x : (𝓡 α)ˣ) (hinv : x⁻¹ = \ₐ(x : α)) : (𝓢 α) := by
+def isUnit_wdiv_coe (x : (𝓡 α)ˣ) (hinv : x⁻¹ = \ₐ(x : α)) : (𝓢 α) := by
  refine ⟨ x, ⟨(x:𝓡 α).prop,?_⟩⟩
  calc (0:α) * \ₐ↑↑x = (0*(↑x)) * \ₐ↑↑x := by rw [(x:𝓡 α).prop]
  _ = 0 * (↑↑x * ↑↑x⁻¹) := by rw [mul_assoc,←hinv]
@@ -468,7 +470,7 @@ def Wheel.isUnit_wdiv_coe (x : (𝓡 α)ˣ) (hinv : x⁻¹ = \ₐ(x : α)) : (�
 
 
 /-- If  (x : 𝓡 α) is a unit, then it is a unit of the original wheel. -/
-lemma Wheel.isRUnit_isUnit (x : 𝓡 α) (hru : IsUnit x) : IsUnit (x:α) := by
+lemma isRUnit_isUnit (x : 𝓡 α) (hru : IsUnit x) : IsUnit (x:α) := by
  rw [isUnit_iff_exists] at *
  obtain ⟨y,hxy,hyx⟩ := hru
  use y.val
@@ -483,3 +485,5 @@ example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*x*y*(z^2) := by
  _ = 0*(x*y*z)*z := by simp
  _ = 0*x*(y*z^2) := by rw [mul_assoc x,←mul_assoc,mul_assoc (0*x),mul_assoc y,←pow_two]
  _ = 0*x*y*(z^2) := by simp only [mul_assoc]
+
+end Wheel

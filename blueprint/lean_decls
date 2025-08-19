@@ -10,6 +10,7 @@ Wheel.isUnit_zero_eq_div_mul_add
 Wheel.isUnit_inv_eq_div_add
 Wheel.isUnit_div_eq_inv_add
 Wheel.instTrivWheel
+Wheel.Trivial.triv_tfae
 Wheel.instRCommMagma
 Wheel.instAddCommMagma
 Wheel.instRCommMonoid
