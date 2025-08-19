@@ -129,6 +129,9 @@ def 𝓡to𝓢 {α : Type u} [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 0
 class Trivial (α : Type u) [W : Wheel α] : Prop where
  triv : ∀x:α , x = 1
 
+
+namespace Trivial
+
 instance instTrivWheel : Wheel (PUnit) where
  wDiv := fun x ↦ x
  inv_wDiv _ := rfl
@@ -140,7 +143,6 @@ instance instTrivWheel : Wheel (PUnit) where
  div_add_zero _ _ := rfl
  wDiv_zero_add _ := rfl
 
-namespace Trivial
 
 open Wheel Monoid
 
