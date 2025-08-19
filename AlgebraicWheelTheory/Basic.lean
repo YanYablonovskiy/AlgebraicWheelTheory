@@ -124,11 +124,17 @@ def 𝓡to𝓢' (α : Type u) [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 
 def 𝓡to𝓢 {α : Type u} [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 0) → (𝓢 α) :=
  fun x hx ↦ ⟨x,⟨x.prop,hx⟩⟩
 
+
+
+
+section Trivial
+
 @[reducible]
 def trivWheel' (α : Type u) [Wheel α] :=  {x : α // x = (1:α)}
 
 @[reducible]
 def trivWheel (α : Type u) [AddCommMonoid α] [CommMonoid α] :=  {x : α // x = (1:α)}
+
 
 @[reducible]
 def trivWheel_to_𝓡 [Wheel α] (x : trivWheel α) : (𝓡 α) := ⟨↑x, by simp [x.prop]⟩
@@ -203,6 +209,58 @@ instance Wheel.instTrivWheel [CommMonoid β] [AddCommMonoid β] : Wheel (trivWhe
  zero_mul_zero := rfl
  div_add_zero x y := rfl
  wDiv_zero_add x := rfl
+
+/-- The typecalss predicate for a trivial wheel -/
+class Wheel.Trivial (α : Type u) [W : Wheel α] : Prop where
+ triv : ∀x:α , x = 1
+
+lemma Wheel.isTrivial {α : Type u} [Wheel α] : (∀x:α, x = 1) ↔ Trivial α :=
+  ⟨fun hx ↦ Trivial.mk hx ,fun htriv ↦ htriv.triv⟩
+
+/-- The trivial instance for the trivial wheel. -/
+instance : Wheel.Trivial (trivWheel β) where
+ triv x := by ext; simp [x.prop]
+
+
+private lemma Trivial.wDiv_zero_eq_zero_mul : \ₐ 0 = (0:α) * \ₐ 0 →  (∀x:α, x = (0 * \ₐ 0)) := by
+ intro h0 x
+ calc x = 0 + x := by rw [zero_add]
+  _ = \ₐ\ₐ 0 + x := by  rw [inv_wDiv]
+  _ = \ₐ(0 * \ₐ0) + x := by nth_rw 1 [h0]
+  _ = \ₐ 0 * \ₐ( \ₐ0) + x := by rw [wDiv_mul]
+  _ = 0* \ₐ 0 + x := by simp only [inv_wDiv,mul_comm]
+  _ = 0* \ₐ 0 := by rw [wDiv_zero_add,h0]
+
+
+lemma Trivial.trivial_if_wDiv_zero_eq_zero_mul : (\ₐ 0 = (0:α) * \ₐ 0) → Trivial α := by
+ rw [←Wheel.isTrivial];intro h0 x
+ simp only [Trivial.wDiv_zero_eq_zero_mul h0 x,Trivial.wDiv_zero_eq_zero_mul h0 1]
+--Then x = 0 + x = //0 + x = /(0/0) + x = 0/0 + x = 0/0.
+
+lemma Trivial.wDiv_zero_eq_zero_mul_if_trivial : Trivial α → (\ₐ 0 = (0:α) * \ₐ 0) := by
+ rw [←Wheel.isTrivial];intro h0; specialize h0 0
+ rw [h0,one_mul]
+
+open List Trivial Wheel in
+lemma Wheel.triv_tfae : TFAE [\ₐ 0 = (0:α)*\ₐ 0 , (0:α) = 1,\ₐ 0 = (0:α),(0:α) = 0*\ₐ0,
+    (1:α) = \ₐ0,(1:α)=0*\ₐ 0, Wheel.Trivial α] := by
+ tfae_have 1 → 7 := trivial_if_wDiv_zero_eq_zero_mul
+ tfae_have 7 → 1 := wDiv_zero_eq_zero_mul_if_trivial
+ tfae_have 6 ← 7 := fun htriv ↦ (htriv.triv (0 * \ₐ0)).symm
+ tfae_have 5 ← 6 := by
+  intro hx
+  suffices h:\ₐ (0:α) = 1 from h.symm
+  rw [←mul_one (\ₐ 0),hx,mul_comm,zero_wdiv_mul (\ₐ (0:α))]
+ tfae_have 4 ← 5 := fun h ↦ by rw [←h,mul_one]
+ tfae_have 3 ← 4 := fun h ↦ by rw [h,wDiv_mul,inv_wDiv,mul_comm]
+ tfae_have 2 ← 3 := fun h ↦ by
+  calc 0 = (0:α)*\ₐ 0 := by nth_rw 1 [←zero_mul_zero,←h,mul_comm]
+  _ = (0:α)*\ₐ 0 + 1 := by rw [wDiv_zero_add 1]
+  _ = 1 := by rw [h,zero_mul_zero,zero_add]
+ tfae_have 1 ← 2 := fun h ↦ by rw [h,one_mul]
+ tfae_finish
+
+end Trivial
 
 /-- Addition instance for the induced semiring -/
 instance : Add (𝓡 α) where
@@ -330,7 +388,7 @@ def Wheel.toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring
   _ = a*b + a*c :=                      by simp_rw [right_mul_distrib,mul_comm]
  exact {
  left_distrib := left_distrib
- right_distrib := fun a b c ↦ by simp [mul_comm,left_distrib]
+ right_distrib := fun a b c ↦ by simp only [mul_comm,left_distrib]
  zero_mul := hα
  mul_zero := fun a ↦ by rw [mul_comm,hα]}
 
