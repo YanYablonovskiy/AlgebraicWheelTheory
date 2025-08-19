@@ -214,6 +214,7 @@ instance instTrivWheel [CommMonoid β] [AddCommMonoid β] : Wheel (trivWheel β)
  div_add_zero x y := rfl
  wDiv_zero_add x := rfl
 
+
 lemma Wheel.isTrivial {α : Type u} [Wheel α] : (∀x:α, x = 1) ↔ Wheel.Trivial α :=
   ⟨fun hx ↦ Wheel.Trivial.mk hx ,fun htriv ↦ htriv.triv⟩
 
@@ -399,7 +400,7 @@ def toSemiring {α : Type u} [Wheel α] (hα : ∀a:α, 0*a = 0): Semiring α :=
 /-- For any `a b c :α` and `[Wheel α]` , ` a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc `. This is the
 version of cancellation that wheels enjoy.
 -/
-lemma div_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc := by
+lemma wdiv_right_cancel' : ∀a b c: α, a*c = b*c → a + 0*c*\ₐc = b + 0*c*\ₐc := by
   intro a b c hab
   have: (a * c *\ₐc) = (b * c *\ₐc) := by rw [hab]
   rw [mul_assoc,mul_assoc,wdiv_self c,mul_comm,mul_comm b] at this
