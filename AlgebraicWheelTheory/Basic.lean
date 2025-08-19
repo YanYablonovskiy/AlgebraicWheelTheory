@@ -58,7 +58,7 @@ open Wheel
 
 
 universe u
-variable {α : Type u} [W : Wheel α] (a b : α)
+variable {α : Type u} {β : Type u} [W : Wheel α] (a b : α) [AddCommMonoid β] [CommMonoid β]
 
 prefix:100  "\\ₐ" => wDiv
 
@@ -124,6 +124,24 @@ def 𝓡to𝓢' (α : Type u) [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 
 def 𝓡to𝓢 {α : Type u} [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 0) → (𝓢 α) :=
  fun x hx ↦ ⟨x,⟨x.prop,hx⟩⟩
 
+@[reducible]
+def trivWheel' (α : Type u) [Wheel α] :=  {x : α // x = (1:α)}
+
+@[reducible]
+def trivWheel (α : Type u) [AddCommMonoid α] [CommMonoid α] :=  {x : α // x = (1:α)}
+
+@[reducible]
+def trivWheel_to_𝓡 [Wheel α] (x : trivWheel α) : (𝓡 α) := ⟨↑x, by simp [x.prop]⟩
+
+@[reducible]
+def trivWheel_to_𝓢 [Wheel α] (x : trivWheel α) : (𝓢 α) := ⟨↑x, by simp [x.prop]⟩
+
+instance [Wheel α] : Coe (trivWheel α) (𝓡 α) where
+ coe := trivWheel_to_𝓡
+
+instance [Wheel α] : Coe (trivWheel α) (𝓢 α) where
+ coe := trivWheel_to_𝓢
+
 instance [Wheel α] : Coe (𝓢 α) (𝓡 α) where
  coe := 𝓢to𝓡
 
@@ -132,6 +150,59 @@ instance [Wheel α] : Coe (𝓢 α) (𝓢' α) where
 
 instance [Wheel α] : Coe (𝓢' α) (𝓢 α) where
  coe := fun ⟨⟨x,hxz⟩,hxdiv⟩ ↦ ⟨x,⟨hxz,hxdiv⟩⟩
+
+/-- Addition for the trivial wheel -/
+instance : Add (trivWheel β) where
+ add := fun _ _ ↦ ⟨1,rfl⟩
+/-- Multiplication for the trivial wheel -/
+instance : Mul (trivWheel β) where
+ mul := fun _ _ ↦ ⟨1,rfl⟩
+
+instance : One (trivWheel β) where
+ one := ⟨1,rfl⟩
+instance : Zero (trivWheel β) where
+ zero := ⟨1,rfl⟩
+
+@[simp]
+lemma Wheel.triv_mul_def (x y : (trivWheel β)) : x*y = (1:trivWheel β) := by rfl
+
+@[simp]
+lemma Wheel.triv_add_def (x y : (trivWheel β)) : x+y = (1:trivWheel β) := by rfl
+
+@[simp]
+lemma Wheel.triv_one_coe : ↑(1: (trivWheel β)) = (1:β) := rfl
+
+@[simp]
+lemma Wheel.triv_zero_coe : ↑(0: (trivWheel β)) = (1:β) := rfl
+
+/-- The magmas for the trivial wheel. -/
+instance Wheel.instTrivMagma : CommMagma (trivWheel β) where
+ mul_comm := fun _ _ ↦ rfl
+instance : AddCommMagma (trivWheel β) where
+ add_comm := fun _ _ ↦ rfl
+
+instance Wheel.instTrivMonoid : CommMonoid (trivWheel β) where
+ mul_assoc := fun _ _ _ ↦ rfl
+ one_mul := fun x ↦ by ext;simp [x.prop]
+ mul_one := fun x ↦ by ext;simp [x.prop]
+
+instance Wheel.instTrivAddMonoid : AddCommMonoid (trivWheel β) where
+ add_assoc  _ _ _ :=  rfl
+ zero_add x :=  by ext;simp [x.prop]
+ add_zero x :=  by ext;simp [x.prop]
+ nsmul _ x := 1
+
+/-- The trivial wheel. -/
+instance Wheel.instTrivWheel [CommMonoid β] [AddCommMonoid β] : Wheel (trivWheel β) where
+ wDiv x := 1
+ inv_wDiv x := by ext;simp [x.prop]
+ wDiv_mul x y := rfl
+ add_mul_wDiv x y z := rfl
+ right_mul_distrib x y z := rfl
+ right_mul_distrib' x y z := rfl
+ zero_mul_zero := rfl
+ div_add_zero x y := rfl
+ wDiv_zero_add x := rfl
 
 /-- Addition instance for the induced semiring -/
 instance : Add (𝓡 α) where
