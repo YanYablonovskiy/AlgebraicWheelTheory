@@ -125,6 +125,16 @@ This section examines how a Wheel $W$ behaves when an element $x \in W$ happens 
   \end{equation}
   where $x^{-1} \in W$ is the associated two-sided multiplicative inverse of the unit $x$.
 \end{proposition}
+\subsection{The trivial wheel}
+Given some set $\beta$, if there exist two commutative monoids which can be defined on this set, assume one is taken
+with additive notation and the other with multiplicative. Then there exists 
+a wheel for $\beta$ : the trivial wheel containing the multiplicative unit.
+\begin{proposition}
+  \lean{Wheel.instTrivWheel}
+  \leanok
+  Suppose there is a set $\beta$ and there exist two commutative monoids which can be defined on this set, in additive
+  and multiplicative notation. Then $\{ 1 \}$ is a Wheel with wheel division being the identity map.
+\end{proposition} 
 \section{Algebraic sub-structures of a Wheel} 
 Given a wheel $W$, certain sub-sets form familiar structures. 
 \subsection{Induced semiring}

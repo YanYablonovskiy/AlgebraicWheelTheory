@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.18)  18 AUG 2025 19:18
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.18)  19 AUG 2025 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -941,10 +941,12 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 [2]
 
 [3]
+
+[4]
 Chapter 2.
 )
 
-[4
+[5
 
 ] (C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux)
  ***********
@@ -952,7 +954,7 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-11>
  ***********
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: 76995799DF5C4DDB28834790D05B8808;1229.
+(rerunfilecheck)             Checksum: 11C070B254F5B154284EE068CCC44F7D;1381.
  ) 
 Here is how much of TeX's memory you used:
  16683 strings out of 468456
@@ -961,7 +963,7 @@ Here is how much of TeX's memory you used:
  44932 multiletter control sequences out of 15000+600000
  632188 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 90i,6n,107p,542b,358s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,6n,107p,542b,409s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/p
-rint.pdf (5 pages).
+rint.pdf (6 pages).
