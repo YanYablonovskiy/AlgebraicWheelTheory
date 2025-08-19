@@ -58,7 +58,7 @@ namespace Wheel
 open Wheel Monoid
 
 universe u
-variable {α : Type u} {β : Type u} [W : Wheel α] (a b : α) [AddCommMonoid β] [CommMonoid β]
+variable {α : Type u} {β : Type u} [W : Wheel α] (a b : α)
 
 prefix:100  "\\ₐ" => wDiv
 
@@ -129,98 +129,51 @@ def 𝓡to𝓢 {α : Type u} [Wheel α] : (x:(𝓡 α)) → (0 * \ₐ(x.val) = 0
 class Trivial (α : Type u) [W : Wheel α] : Prop where
  triv : ∀x:α , x = 1
 
+instance instTrivWheel : Wheel (PUnit) where
+ wDiv := fun x ↦ x
+ inv_wDiv _ := rfl
+ wDiv_mul _ _ := rfl
+ add_mul_wDiv _ _ _ := rfl
+ right_mul_distrib _ _ _ := rfl
+ right_mul_distrib' _ _ _ := rfl
+ zero_mul_zero := rfl
+ div_add_zero _ _ := rfl
+ wDiv_zero_add _ := rfl
+
 namespace Trivial
 
 open Wheel Monoid
 
-@[reducible]
-def trivWheel' (α : Type u) [Wheel α] :=  {x : α // x = (1:α)}
+instance [One β] : Coe PUnit β where
+ coe _ := 1
 
 @[reducible]
-def trivWheel (α : Type u) [AddCommMonoid α] [CommMonoid α] :=  {x : α // x = (1:α)}
-
-
-@[reducible]
-def trivWheel_to_𝓡 [Wheel α] (x : trivWheel α) : (𝓡 α) := ⟨↑x, by simp [x.prop]⟩
+def trivWheel_to_𝓡 (x : PUnit) : (𝓡 α) := ⟨x, by rw [mul_one]⟩
 
 @[reducible]
-def trivWheel_to_𝓢 [Wheel α] (x : trivWheel α) : (𝓢 α) := ⟨↑x, by simp [x.prop]⟩
+def trivWheel_to_𝓢 (x : PUnit) : (𝓢 α) := ⟨↑x, by simp⟩
 
-instance [Wheel α] : Coe (trivWheel α) (𝓡 α) where
+instance [Wheel α] : Coe PUnit (𝓡 α) where
  coe := trivWheel_to_𝓡
 
-instance [Wheel α] : Coe (trivWheel α) (𝓢 α) where
+instance [Wheel α] : Coe PUnit (𝓢 α) where
  coe := trivWheel_to_𝓢
 
-instance [Wheel α] : Coe (𝓢 α) (𝓡 α) where
- coe := 𝓢to𝓡
-
-instance [Wheel α] : Coe (𝓢 α) (𝓢' α) where
- coe := fun ⟨x,⟨hxz,hxdiv⟩⟩ ↦ ⟨⟨x,hxz⟩,hxdiv⟩
-
-instance [Wheel α] : Coe (𝓢' α) (𝓢 α) where
- coe := fun ⟨⟨x,hxz⟩,hxdiv⟩ ↦ ⟨x,⟨hxz,hxdiv⟩⟩
-
-/-- Addition for the trivial wheel -/
-instance : Add (trivWheel β) where
- add := fun _ _ ↦ ⟨1,rfl⟩
-/-- Multiplication for the trivial wheel -/
-instance : Mul (trivWheel β) where
- mul := fun _ _ ↦ ⟨1,rfl⟩
-
-instance : One (trivWheel β) where
- one := ⟨1,rfl⟩
-instance : Zero (trivWheel β) where
- zero := ⟨1,rfl⟩
+@[simp]
+lemma triv_mul_def (x y : PUnit) : x*y = 1 := by rfl
 
 @[simp]
-lemma triv_mul_def (x y : (trivWheel β)) : x*y = (1:trivWheel β) := by rfl
+lemma triv_add_def (x y : PUnit) : x+y = 1 := by rfl
 
 @[simp]
-lemma triv_add_def (x y : (trivWheel β)) : x+y = (1:trivWheel β) := by rfl
+lemma triv_one_coe [One β] : ↑(1: PUnit) = (1:β) := rfl
 
 @[simp]
-lemma triv_one_coe : ↑(1: (trivWheel β)) = (1:β) := rfl
-
-@[simp]
-lemma triv_zero_coe : ↑(0: (trivWheel β)) = (1:β) := rfl
-
-/-- The magmas for the trivial wheel. -/
-instance instTrivMagma : CommMagma (trivWheel β) where
- mul_comm := fun _ _ ↦ rfl
-instance : AddCommMagma (trivWheel β) where
- add_comm := fun _ _ ↦ rfl
-
-instance instTrivMonoid : CommMonoid (trivWheel β) where
- mul_assoc := fun _ _ _ ↦ rfl
- one_mul := fun x ↦ by ext;simp [x.prop]
- mul_one := fun x ↦ by ext;simp [x.prop]
-
-instance instTrivAddMonoid : AddCommMonoid (trivWheel β) where
- add_assoc  _ _ _ :=  rfl
- zero_add x :=  by ext;simp [x.prop]
- add_zero x :=  by ext;simp [x.prop]
- nsmul _ x := 1
-
-/-- The trivial wheel. -/
-instance instTrivWheel [CommMonoid β] [AddCommMonoid β] : Wheel (trivWheel β) where
- wDiv x := 1
- inv_wDiv x := by ext;simp [x.prop]
- wDiv_mul x y := rfl
- add_mul_wDiv x y z := rfl
- right_mul_distrib x y z := rfl
- right_mul_distrib' x y z := rfl
- zero_mul_zero := rfl
- div_add_zero x y := rfl
- wDiv_zero_add x := rfl
+lemma triv_zero_coe [One β] : ↑(0: PUnit) = (1:β) := rfl
 
 
 lemma Wheel.isTrivial {α : Type u} [Wheel α] : (∀x:α, x = 1) ↔ Wheel.Trivial α :=
   ⟨fun hx ↦ Wheel.Trivial.mk hx ,fun htriv ↦ htriv.triv⟩
-
-/-- The trivial instance for the trivial wheel. -/
-instance : Trivial (trivWheel β) where
- triv x := by ext; simp [x.prop]
 
 
 private lemma wDiv_zero_eq_zero_mul : \ₐ 0 = (0:α) * \ₐ 0 →  (∀x:α, x = (0 * \ₐ 0)) := by
@@ -236,7 +189,7 @@ private lemma wDiv_zero_eq_zero_mul : \ₐ 0 = (0:α) * \ₐ 0 →  (∀x:α, x 
 lemma trivial_if_wDiv_zero_eq_zero_mul : (\ₐ 0 = (0:α) * \ₐ 0) → Trivial α := by
  rw [←Wheel.isTrivial];intro h0 x
  simp only [wDiv_zero_eq_zero_mul h0 x,wDiv_zero_eq_zero_mul h0 1]
---Then x = 0 + x = //0 + x = /(0/0) + x = 0/0 + x = 0/0.
+
 
 lemma wDiv_zero_eq_zero_mul_if_trivial : Wheel.Trivial α → (\ₐ 0 = (0:α) * \ₐ 0) := by
  rw [←Wheel.isTrivial];intro h0; specialize h0 0
@@ -264,6 +217,17 @@ lemma triv_tfae : TFAE [\ₐ 0 = (0:α)*\ₐ 0 , (0:α) = 1,\ₐ 0 = (0:α),(0:�
 end Trivial
 
 open Wheel Monoid
+
+
+instance [Wheel α] : Coe (𝓢 α) (𝓡 α) where
+ coe := 𝓢to𝓡
+
+instance [Wheel α] : Coe (𝓢 α) (𝓢' α) where
+ coe := fun ⟨x,⟨hxz,hxdiv⟩⟩ ↦ ⟨⟨x,hxz⟩,hxdiv⟩
+
+instance [Wheel α] : Coe (𝓢' α) (𝓢 α) where
+ coe := fun ⟨⟨x,hxz⟩,hxdiv⟩ ↦ ⟨x,⟨hxz,hxdiv⟩⟩
+
 /-- Addition instance for the induced semiring -/
 instance : Add (𝓡 α) where
  add := fun a b ↦ by
