@@ -1,6 +1,6 @@
 # AlgebraicWheelTheory
 
-[![.github/workflows/push.yml](https://github.com/james18lpc/GibbsMeasure/actions/workflows/push.yml/badge.svg)](https://github.com/YanYablonovskiy/GibbsMeasure/actions/workflows/push.yml)
+[![.github/workflows/push.yml](https://github.com/james18lpc/GibbsMeasure/actions/workflows/push.yml/badge.svg)](https://github.com/YanYablonovskiy/AlgebraicWheelTheory/actions/workflows/push.yml)
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/YanYablonovskiy/GibbsMeasure)
 
 This project aims to formalise some results of JESPER CARLSTRÖM[1] on algebraic wheels.
