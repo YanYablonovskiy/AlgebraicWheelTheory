@@ -15,6 +15,10 @@ variable {α : Type u}
 
 open Function in
 theorem invol_fun_of_invol_monoid (IM : InvolutionMonoid α) : Involutive (IM.op) := by
- rw [Involutive]; exact IM.hinv_op
+ rw [Involutive]; exact (IM.hinv_op : ∀x, op (op x) = x)
+
+instance [InvolutiveInv α] [Monoid α] : InvolutionMonoid α where
+ op := fun x ↦ x⁻¹
+ hinv_op := fun x ↦ by rw [inv_inv]
 
 end InvolutionMonoid
