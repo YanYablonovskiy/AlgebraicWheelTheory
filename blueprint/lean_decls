@@ -23,3 +23,5 @@ Wheel.instSCommMonoid
 Wheel.instCommGroup
 Wheel.isUnit_wdiv_coe
 Wheel.isRUnit_isUnit
+InvolutionMonoid
+InvolutionMonoidHom

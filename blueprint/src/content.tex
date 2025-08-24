@@ -143,7 +143,7 @@ $0,1,\backslash_{a} 0, 0 \backslash_{a} 0$ as below:
   If any two of the elements $0,1,\backslash_{a} 0$ and $0 \backslash_{a} 0$ are equal in a
 wheel $W$, then $W$ is trivial.
 \end{proposition} 
-\section{Algebraic sub-structures of a Wheel} 
+\section{Algebraic structures} 
 Given a wheel $W$, certain sub-sets form familiar structures. 
 \subsection{Induced semiring}
 Consider the subset:
@@ -209,5 +209,27 @@ is a $\backslash_{a}$-unit, then it is contained in $\mathcal{S}_{W}$:
   \leanok
   For a wheel $W$, if $x \in \mathcal{R}_{W}$ is a unit, then is is also a unit in the original wheel.
 \end{proposition}
+\subsection{Involution Monoid}
+An Involution is a monoid with a special involution operation , interacting in a particular way with the 
+monoid operation.
+\begin{definition}[\textbf{Involution Monoid}]
+  \lean{InvolutionMonoid}
+  \leanok
+  Given a monoid $(M,*)$, $M$ is called an involution monoid for an involutive function $\star:M \rightarrow M$
+  which skew-distributes over $*$. In other words, $(M,*)$ is a monoid, with an associated map $\star:M \rightarrow M$
+  such that:
+  \begin{enumerate}
+    \item $\forall x \in M,$  $x \star \star = x$ \\
+    \item $\forall x, y \in M, (x * y) \star = y \star  * \: x \star$ \\
+  \end{enumerate}.
+  This is denoted as $(M,*,\star)$ or simply $(M,\star)$ is $*$ is inferrable from surrounding context.
+\end{definition}
+\begin{definition}[\textbf{Involution Monoid Homomorphism}]
+  \lean{InvolutionMonoidHom}
+  \leanok
+  If there are two involution monoids, $(M_{1},\star_{1})$ and $(M_{2},\star_{2})$, a monoid homomorphism $f : M_{1} \rightarrow M_{2}$ 
+  is an involution monoid homomorphism if $\forall x ∈ M_{1}, f (x\star_{1}) = f (x)\star_{2}$.
+\end{definition}
+
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.

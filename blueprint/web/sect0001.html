@@ -53,7 +53,7 @@
   </ul>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000018"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic sub-structures of a Wheel</span></a>
+  <a href="sect0001.html#a0000000018"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic structures</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-2">
      <li class="">
@@ -61,6 +61,9 @@
  </li>
 <li class="">
   <a href="sect0001.html#a0000000025"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Induced commutative group</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000032"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
  </li>
 
   </ul>
@@ -724,7 +727,7 @@
 
   </div>
 </div>
-<h1 id="a0000000018">1.2 Algebraic sub-structures of a Wheel</h1>
+<h1 id="a0000000018">1.2 Algebraic structures</h1>
 <p> Given a wheel \(W\), certain sub-sets form familiar structures. </p>
 <h2 id="a0000000019">1.2.1 Induced semiring</h2>
 <p> Consider the subset: </p>
@@ -1119,6 +1122,103 @@
   </div>
   <div class="proposition_thmcontent">
   <p> For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is a unit, then is is also a unit in the original wheel. </p>
+
+  </div>
+</div>
+<h2 id="a0000000032">1.2.3 Involution Monoid</h2>
+<p> An Involution is a monoid with a special involution operation , interacting in a particular way with the monoid operation. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000033">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">22</span>
+    <span class="definition_thmtitle"><b class="bfseries">Involution Monoid</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000033">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid" class="lean_decl">InvolutionMonoid</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  Given a monoid \((M,*)\), \(M\) is called an involution monoid for an involutive function \(\star :M \rightarrow M\) which skew-distributes over \(*\). In other words, \((M,*)\) is a monoid, with an associated map \(\star :M \rightarrow M\) such that: </p>
+<ol class="enumerate">
+  <li><p>\(\forall x \in M,\) \(x \star \star = x\) <br /></p>
+</li>
+  <li><p>\(\forall x, y \in M, (x * y) \star = y \star * \:  x \star \) <br /></p>
+</li>
+</ol>
+<p>. This is denoted as \((M,*,\star )\) or simply \((M,\star )\) is \(*\) is inferrable from surrounding context. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000034">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">23</span>
+    <span class="definition_thmtitle"><b class="bfseries">Involution Monoid Homomorphism</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000034">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoidHom" class="lean_decl">InvolutionMonoidHom</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
 
   </div>
 </div>
