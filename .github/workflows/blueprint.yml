@@ -19,6 +19,7 @@ permissions:
 
 jobs:
   build_project:
+    if: $(git diff --name-only ${{ github.event.before }} ${{ github.sha }}) == ('README.md')
     runs-on: ubuntu-latest
     name: Build project
     steps:
