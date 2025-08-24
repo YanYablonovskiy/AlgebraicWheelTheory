@@ -1,1 +1,3 @@
 import AlgebraicWheelTheory.Basic
+import AlgebraicWheelTheory.Defs
+import AlgebraicWheelTheory.Constructions
