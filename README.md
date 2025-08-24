@@ -17,7 +17,7 @@ This project currently contains a definition of a Wheel, and a few basic results
 
 ### Code organisation
 
-The Lean code is in the path `AlgebraicWheelTheory/`. Currently all results are in `Basic.lean`.
+The Lean code is in the path `AlgebraicWheelTheory/`. Currently the Wheel definition and basic consequences are in `Basic.lean`, Involution Monoids are defined in `Defs.lean`.
 
 ## Build the Lean files
 
