@@ -77,13 +77,13 @@ instance [InvolutionMonoid α] [InvolutionMonoid β] : FunLike (InvolutionMonoid
   intro x y heq
   ext z;simp [heq]
 
-def toMulHom (α β : Type u) [InvolutionMonoid α] [InvolutionMonoid β] [InvolutionMonoidHom α β]
+def toMulHom [InvolutionMonoid α] [InvolutionMonoid β] [InvolutionMonoidHom α β]
     : MulHom α β where
   toFun := toFun
   map_mul' := by simp
 
-instance [InvolutionMonoid α] [InvolutionMonoid β] [InvolutionMonoidHom α β]: MulHomClass (InvolutionMonoidHom α β) α β where
-  map_mul := by intros; simp
-
+instance [InvolutionMonoid α] [InvolutionMonoid β] [InvolutionMonoidHom α β] :
+    MulHomClass (InvolutionMonoidHom α β) α β where
+  map_mul := fun f x y ↦ (f.toFun.map_mul' x y)
 
 end InvolutionMonoidHom
