@@ -230,6 +230,16 @@ monoid operation.
   If there are two involution monoids, $(M_{1},\star_{1})$ and $(M_{2},\star_{2})$, a monoid homomorphism $f : M_{1} \rightarrow M_{2}$ 
   is an involution monoid homomorphism if $\forall x ∈ M_{1}, f (x\star_{1}) = f (x)\star_{2}$.
 \end{definition}
-
+Several structures can be made into an involution monoid:
+\begin{proposition}
+  \lean{InvolutionMonoid.instDivMonoid,InvolutionMonoid.group_example}
+  \leanok
+  Any abelian group is an involution monoid with $x\star = x^{-1}$.
+\end{proposition}
+\begin{proposition}
+  \lean{InvolutionMonoid.instField}
+  \leanok
+  Any field with decideable equality is an involution monoid with $x\star = x^{-1}$ for $x$ non-zero and $0$ otherwise.
+\end{proposition}
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.

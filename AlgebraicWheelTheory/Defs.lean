@@ -45,10 +45,48 @@ class abbrev InvolutionMonoid (α: Type u) := Monoid α, StarMul α
 namespace InvolutionMonoid
 
 /-- The instance allowing for forgetful synthesis of `InvolutionMonoid α` from `Group α`. -/
-instance [DivisionMonoid α] : InvolutionMonoid α where
+instance instDivMonoid [DivisionMonoid α] : InvolutionMonoid α where
  star x := x⁻¹
  star_involutive := inv_inv
  star_mul := mul_inv_rev
+
+/-- The instance of an involution monoid from a field with decideable equality. May not be
+optimally forgetful yet (see instance below it for attempt ). But is true to the source material.
+-/
+instance instField [Field α] [DecidableEq α] : InvolutionMonoid α where
+ star x := dite (x = 0) (fun _ ↦ 0) (fun _ ↦ x⁻¹)
+ star_involutive x := match em (x=0) with
+ | Or.inl hx0 => by simp [hx0]
+ | Or.inr hxne0 => by simp [hxne0, inv_inv x]
+ star_mul x y := match (em (x=0)) with
+ | Or.inl hx0 => match (em (y=0)) with
+   | Or.inl hy0  => by simp [hx0,hy0]
+   | Or.inr hny0 => by simp [hx0,hny0]
+ | Or.inr hy0 => match (em (x=0)) with
+   | Or.inl hx0  => by simp [hx0]
+   | Or.inr hnx0 => by simp [hnx0]
+
+
+--Apologies to anyone reading this, this is my practice of using the equation compiler.
+instance [CommMonoid α] [AddMonoid α] [DecidableEq α] [Inv α] [mz:MulZeroClass α]: InvolutionMonoid α where
+ star x := dite (x = 0) (fun _ ↦ 0) (fun _ ↦ x⁻¹)
+ star_involutive x := by by_cases heq:(x = 0);simp [heq];sorry
+ star_mul x y := match (em (x=0)) with
+ | Or.inl hx0 => match (em (y=0)) with
+   | Or.inl hy0 => by
+     simp [hx0,hy0]
+     have := mz.mul_zero 0
+     conv =>
+      rhs
+      -- rw [this] TO-DO: Somehow it cannot find 0*0 in the equation, I checked everything I knew how to.
+     sorry
+   | Or.inr _ => sorry
+ | Or.inr _ => by sorry
+
+
+/-- Showing that a group is an involution monoid -/
+def group_example [Group α] : InvolutionMonoid α := inferInstance
+
 
 open Function in
 example [InvolutionMonoid α] : Involutive (fun x : α ↦ x⋆) := by
@@ -85,5 +123,7 @@ def toMulHom [InvolutionMonoid α] [InvolutionMonoid β] [InvolutionMonoidHom α
 instance [InvolutionMonoid α] [InvolutionMonoid β] [InvolutionMonoidHom α β] :
     MulHomClass (InvolutionMonoidHom α β) α β where
   map_mul := fun f x y ↦ (f.toFun.map_mul' x y)
+
+
 
 end InvolutionMonoidHom
