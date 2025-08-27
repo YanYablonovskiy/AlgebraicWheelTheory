@@ -6,6 +6,10 @@ Authors: Yan Yablonovskiy
 import AlgebraicWheelTheory.Basic
 import Mathlib.Logic.Function.Basic
 import Mathlib.Algebra.Star.Basic
+import Mathlib.Algebra.Group.Defs
+import Mathlib.Algebra.GroupWithZero.Defs
+import Mathlib.Algebra.Ring.Defs
+import Mathlib.Algebra.Field.Defs
 /-!
 # Auxillary definitions
 
@@ -49,6 +53,31 @@ instance instDivMonoid [DivisionMonoid α] : InvolutionMonoid α where
  star x := x⁻¹
  star_involutive := inv_inv
  star_mul := mul_inv_rev
+
+instance : Mul String where
+ mul x y := x ++ y
+
+@[simp]
+def mul_string_def (x y: String ) : x*y = x ++ y := rfl
+
+instance : One String where
+ one := ""
+
+@[simp]
+def one_string_def : 1 = "" := rfl
+
+instance : MulOneClass String where
+ one := ""
+ one_mul _ := rfl
+ mul_one x := String.append_empty x
+
+
+instance : Monoid String where
+ mul x y := x.append y
+ mul_assoc x y z := String.append_assoc x y z
+ one := ""
+ one_mul x := rfl
+ mul_one x := by simp
 
 /-- The instance of an involution monoid from a field with decideable equality. May not be
 optimally forgetful yet (see instance below it for attempt ). But is true to the source material.
