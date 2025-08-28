@@ -36,7 +36,7 @@ See instructions at https://github.com/PatrickMassot/leanblueprint/.
 
 ## Acknowledgements
 
-Our project builds on Mathlib. I therefore thank its numerous contributors without whom this
+My project builds on Mathlib. I therefore thank its numerous contributors without whom this
 project couldn't even begin.
 
 Much of the project infrastructure has been adapted from
