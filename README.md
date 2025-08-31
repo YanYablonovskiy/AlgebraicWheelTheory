@@ -1,6 +1,6 @@
 # AlgebraicWheelTheory
 
-[![.github/workflows/push.yml](https://github.com/james18lpc/GibbsMeasure/actions/workflows/push.yml/badge.svg)](https://github.com/YanYablonovskiy/AlgebraicWheelTheory/actions/workflows/push.yml)
+[![Lean Action CI](https://github.com/YanYablonovskiy/AlgebraicWheelTheory/actions/workflows/lean_action_ci.yml/badge.svg)](https://github.com/YanYablonovskiy/AlgebraicWheelTheory/actions/workflows/lean_action_ci.yml)
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/YanYablonovskiy/GibbsMeasure)
 
 This project aims to formalise some results of JESPER CARLSTRÖM[1] on algebraic wheels.
@@ -36,7 +36,7 @@ See instructions at https://github.com/PatrickMassot/leanblueprint/.
 
 ## Acknowledgements
 
-Our project builds on Mathlib. I therefore thank its numerous contributors without whom this
+My project builds on Mathlib. I therefore thank its numerous contributors without whom this
 project couldn't even begin.
 
 Much of the project infrastructure has been adapted from
