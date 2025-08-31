@@ -235,6 +235,11 @@ Several structures can be made into an involution monoid:
   \leanok
   Any field with decideable equality is an involution monoid with $x\star = x^{-1}$ for $x$ non-zero and $0$ otherwise.
 \end{proposition}
+\begin{proposition}
+  \lean{InvolutionMonoid.instSqMatrix}
+  \leanok
+  The monoid of $n \times n$ $R$-valued matrices form an involution monoid with $x\star = x^{T}$ and $R$ a commutative ring.
+\end{proposition}
 The morphisms that respect such structures are similarly defined:
 \begin{definition}[\textbf{Involution Monoid Homomorphism}]
   \lean{InvolutionMonoidHom}

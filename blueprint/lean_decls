@@ -24,7 +24,8 @@ Wheel.instCommGroup
 Wheel.isUnit_wdiv_coe
 Wheel.isRUnit_isUnit
 InvolutionMonoid
-InvolutionMonoidHom
 InvolutionMonoid.instDivMonoid
 InvolutionMonoid.group_example
 InvolutionMonoid.instField
+InvolutionMonoid.instSqMatrix
+InvolutionMonoidHom

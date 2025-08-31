@@ -58,7 +58,7 @@ instance : Mul String where
  mul x y := x ++ y
 
 @[simp]
-def mul_string_def (x y: String ) : x*y = x ++ y := rfl
+def mul_string_def (x y : String) : x*y = x ++ y := rfl
 
 instance : One String where
  one := ""
@@ -97,24 +97,48 @@ instance instField [Field α] [DecidableEq α] : InvolutionMonoid α where
 
 
 --Apologies to anyone reading this, this is my practice of using the equation compiler.
-instance [CommMonoid α] [AddMonoid α] [DecidableEq α] [Inv α] [mz:MulZeroClass α]: InvolutionMonoid α where
- star x := dite (x = 0) (fun _ ↦ 0) (fun _ ↦ x⁻¹)
- star_involutive x := by by_cases heq:(x = 0);simp [heq];sorry
- star_mul x y := match (em (x=0)) with
- | Or.inl hx0 => match (em (y=0)) with
-   | Or.inl hy0 => by
-     simp [hx0,hy0]
-     have := mz.mul_zero 0
-     conv =>
-      rhs
-      -- rw [this] TO-DO: Somehow it cannot find 0*0 in the equation, I checked everything I knew how to.
-     sorry
-   | Or.inr _ => sorry
- | Or.inr _ => by sorry
+-- instance [CommMonoid α] [AddMonoid α] [DecidableEq α] [Inv α] [mz:MulZeroClass α]: InvolutionMonoid α
+-- where
+--  star x := dite (x = 0) (fun _ ↦ 0) (fun _ ↦ x⁻¹)
+--  star_involutive x := by by_cases heq:(x = 0);simp [heq];sorry
+--  star_mul x y := match (em (x=0)) with
+--  | Or.inl hx0 => match (em (y=0)) with
+--    | Or.inl hy0 => by
+--      simp [hx0,hy0]
+--      have := mz.mul_zero 0
+--      conv =>
+--       rhs
+--       -- rw [this] TO-DO: Somehow it cannot find 0*0 in the equation,
+--         I checked everything I knew how to.
+--      sorry
+--    | Or.inr _ => sorry
+--  | Or.inr _ => by sorry
 
+
+@[simp]
+def String.reverse (x : String) : String := x.toList.reverse.toString
+
+--TO-DO: Fix this, why is it so hard.
+-- instance: InvolutionMonoid String where
+--  star  := String.reverse
+--  star_involutive  x := by sorry
+--  star_mul x y := by sorry
 
 /-- Showing that a group is an involution monoid -/
 def group_example [Group α] : InvolutionMonoid α := inferInstance
+
+section
+
+variable {R : Type*} {m : Type*} [DecidableEq m] [Fintype m]
+
+/-- The instance of an involution monoid for square matrices. -/
+instance instSqMatrix [CommRing R] [Fintype m] : InvolutionMonoid (Matrix m m R) where
+ star x := x.transpose
+ star_involutive x := x.transpose_transpose
+ star_mul x y := x.transpose_mul y
+
+end
+
 
 
 open Function in

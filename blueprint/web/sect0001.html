@@ -1171,20 +1171,20 @@
 <ol class="enumerate">
   <li><p>\(\forall x \in M,\) \(x \star \star = x\) <br /></p>
 </li>
-  <li><p>\(\forall x, y \in M, (x * y) \star = y \star * \:  x \star \) <br /></p>
+  <li><p>\(\forall x, y \in M, (x * y) \star = y \star * \:  x \star \). <br /></p>
 </li>
 </ol>
-<p>. This is denoted as \((M,*,\star )\) or simply \((M,\star )\) is \(*\) is inferrable from surrounding context. </p>
+<p> This is denoted as \((M,*,\star )\) or simply \((M,\star )\) if \(*\) is inferrable from surrounding context. </p>
 
   </div>
 </div>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000034">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
+<p> Several structures can be made into an involution monoid: </p>
+<div class="proposition_thmwrapper theorem-style-plain" id="a0000000034">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
     </span>
-    <span class="definition_thmlabel">23</span>
-    <span class="definition_thmtitle"><b class="bfseries">Involution Monoid Homomorphism</b></span>
+    <span class="proposition_thmlabel">23</span>
     <div class="thm_header_extras">
 
     
@@ -1193,50 +1193,6 @@
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0001.html#a0000000034">#</a>
-    
-    
-    
-    <button class="modal lean">L∃∀N</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Lean declarations</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoidHom" class="lean_decl">InvolutionMonoidHom</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
-
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>  If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
-
-  </div>
-</div>
-<p> Several structures can be made into an involution monoid: </p>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000035">
-  <div class="proposition_thmheading">
-    <span class="proposition_thmcaption">
-    Proposition
-    </span>
-    <span class="proposition_thmlabel">24</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0001.html#a0000000035">#</a>
     
     
     
@@ -1268,6 +1224,49 @@
 
   </div>
 </div>
+<div class="proposition_thmwrapper theorem-style-plain" id="a0000000035">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">24</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000035">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instField" class="lean_decl">InvolutionMonoid.instField</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p> Any field with decideable equality is an involution monoid with \(x\star = x^{-1}\) for \(x\) non-zero and \(0\) otherwise. </p>
+
+  </div>
+</div>
 <div class="proposition_thmwrapper theorem-style-plain" id="a0000000036">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
@@ -1296,7 +1295,7 @@
         
         <ul class="uses">
           
-          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instField" class="lean_decl">InvolutionMonoid.instField</a></li>
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instSqMatrix" class="lean_decl">InvolutionMonoid.instSqMatrix</a></li>
           
         </ul>
     
@@ -1307,7 +1306,52 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> Any field with decideable equality is an involution monoid with \(x\star = x^{-1}\) for \(x\) non-zero and \(0\) otherwise. </p>
+  <p> The monoid of \(n \times n\) \(R\)-valued matrices form an involution monoid with \(x\star = x^{T}\) and \(R\) a commutative ring. </p>
+
+  </div>
+</div>
+<p> The morphisms that respect such structures are similarly defined: </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000037">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">26</span>
+    <span class="definition_thmtitle"><b class="bfseries">Involution Monoid Homomorphism</b></span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000037">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoidHom" class="lean_decl">InvolutionMonoidHom</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
 
   </div>
 </div>
