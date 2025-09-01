@@ -240,6 +240,18 @@ Several structures can be made into an involution monoid:
   \leanok
   The monoid of $n \times n$ $R$-valued matrices form an involution monoid with $x\star = x^{T}$ and $R$ a commutative ring.
 \end{proposition}
+Furthermore the notion of a $\star$-unit is defined on an involution monoid as a regular monoid unit, except that the two-sided inverse must
+equal to the $\star$ operation.
+\begin{definition}[\textbf{$\star$-unit}]
+  \lean{InvolutionMonoid.StarUnit}
+  \leanok
+  An element of an involution monoid $x \in (M , \star)$ is a $\star$-unit if $x^{-1} = x\star$.
+\end{definition}
+\begin{definition}[\textbf{$\star$-invertible}]
+  \lean{InvolutionMonoid.IsStarInv}
+  \leanok
+  An involution monoid $(M,\star)$ is $\star$-invertible if every unit is a $\star$-unit.
+\end{definition}
 The morphisms that respect such structures are similarly defined:
 \begin{definition}[\textbf{Involution Monoid Homomorphism}]
   \lean{InvolutionMonoidHom}

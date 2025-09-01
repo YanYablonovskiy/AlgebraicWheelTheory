@@ -28,4 +28,6 @@ InvolutionMonoid.instDivMonoid
 InvolutionMonoid.group_example
 InvolutionMonoid.instField
 InvolutionMonoid.instSqMatrix
+InvolutionMonoid.StarUnit
+InvolutionMonoid.IsStarInv
 InvolutionMonoidHom

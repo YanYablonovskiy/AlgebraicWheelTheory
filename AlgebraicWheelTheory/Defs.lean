@@ -139,11 +139,21 @@ instance instSqMatrix [CommRing R] [Fintype m] : InvolutionMonoid (Matrix m m R)
 
 end
 
+/-- Definition of a `* Unit` , which is a unit such that the inverse coincidences with the star. -/
+structure StarUnit (α : Type u) [InvolutionMonoid α] extends Units α where
+ inv_eq_star : (inv = val⋆)
 
+postfix:1025 "ˣ*" => Units
+
+/-- An involution monoid $(M,⋆)$ is $⋆$-invertible if every unit is a star unit. -/
+structure IsStarInv (α : Type u) [InvolutionMonoid α] : Prop where
+ inv_eq_star : ∀(x : αˣ), x⁻¹ = x⋆
 
 open Function in
 example [InvolutionMonoid α] : Involutive (fun x : α ↦ x⋆) := by
  simp [Involutive]
+
+theorem isUnit_star' [InvolutionMonoid α] {x : α} : IsUnit (x⋆) ↔ IsUnit x := isUnit_star
 
 end InvolutionMonoid
 
@@ -156,9 +166,6 @@ class InvolutionMonoidHom (α : Type u) (β : Type v) [InvolutionMonoid α]
   invol_hom (x : α) : toFun (x⋆) = (toFun x)⋆
 
 namespace InvolutionMonoidHom
-
-theorem isUnit_star' [InvolutionMonoid α] {x : α} : IsUnit (x⋆) ↔ IsUnit x := isUnit_star
-
 
 open Function in
 instance [InvolutionMonoid α] [InvolutionMonoid β] : FunLike (InvolutionMonoidHom α β) α β where
