@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.18)  1 SEP 2025 14:00
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.18)  5 SEP 2025 21:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -953,10 +953,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
 
 [4]
+
+[5]
 Chapter 2.
 )
 
-[5
+[6
 
 ] (C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux)
  ***********
@@ -964,16 +966,16 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-11>
  ***********
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: 27E48DE67A23DC21BEC231337B532C38;1447.
+(rerunfilecheck)             Checksum: A2C36FCDFBB473A04F420D99CB86B43F;1716.
  ) 
 Here is how much of TeX's memory you used:
  16683 strings out of 468456
  305581 string characters out of 5449569
- 914807 words of memory out of 5000000
+ 915807 words of memory out of 5000000
  44932 multiletter control sequences out of 15000+600000
  632188 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,6n,107p,542b,409s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/p
-rint.pdf (6 pages).
+rint.pdf (7 pages).

@@ -65,6 +65,9 @@
 <li class="">
   <a href="sect0001.html#a0000000032"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
  </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Commutative monoid to Involution monoid</span></a>
+ </li>
 
   </ul>
  </li>
@@ -1441,6 +1444,53 @@
   </div>
   <div class="definition_thmcontent">
   <p>  If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
+
+  </div>
+</div>
+<h2 id="a0000000040">1.2.4 Commutative monoid to Involution monoid</h2>
+<p> It is possible, given a commutative monoid \(M\), to construct an involution monoid contained within \(M\). To begin with , an Involution monoid may be defined on \(M \times M\), with \((x_{1},x_{2})\star = (x_{2},x_{1})\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000041">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">29</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#a0000000041">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdStar" class="lean_decl">instProdStar</a></li>
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdInvMon" class="lean_decl">instProdInvMon</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p> Given a commutative monoid \(M\), there is an involution monoid on \(M \times M\) with \((x_{1},x_{2})\star = (x_{2},x_{1})\), and the usual pointwise monoid operation taken from \(M\). </p>
 
   </div>
 </div>

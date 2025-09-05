@@ -31,3 +31,5 @@ InvolutionMonoid.instSqMatrix
 InvolutionMonoid.StarUnit
 InvolutionMonoid.IsStarInv
 InvolutionMonoidHom
+instProdStar
+instProdInvMon

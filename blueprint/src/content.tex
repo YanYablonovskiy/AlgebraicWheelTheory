@@ -259,5 +259,14 @@ The morphisms that respect such structures are similarly defined:
   If there are two involution monoids, $(M_{1},\star_{1})$ and $(M_{2},\star_{2})$, a monoid homomorphism $f : M_{1} \rightarrow M_{2}$ 
   is an involution monoid homomorphism if $\forall x ∈ M_{1}, f (x\star_{1}) = f (x)\star_{2}$.
 \end{definition}
+\subsection{Commutative monoid to Involution monoid}
+It is possible, given a commutative monoid $M$, to construct an involution monoid contained within $M$. To begin with , an Involution
+monoid may be defined on $M \times M$, with $(x_{1},x_{2})\star = (x_{2},x_{1})$.
+\begin{definition}
+  \lean{instProdStar,instProdInvMon}
+  \leanok
+  Given a commutative monoid $M$, there is an involution monoid on $M \times M$ with $(x_{1},x_{2})\star = (x_{2},x_{1})$, and 
+  the usual pointwise monoid operation taken from $M$.
+\end{definition}
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.
