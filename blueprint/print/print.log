@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.18)  5 SEP 2025 21:37
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.18)  7 SEP 2025 19:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -618,7 +618,7 @@ t line 194.
 (./macros/common.tex
 \c@theorem=\count331
 ) (./macros/print.tex)
-(C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux)
+(c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux)
 \openout1 = `print.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
@@ -707,8 +707,8 @@ Package color Info: Driver file: xetex.def on input line 149.
 (c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 30.
 
-(C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out)
-(C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out)
+(c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out)
+(c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out)
 \@outlinefile=\write3
 \openout3 = `print.out'.
 
@@ -960,7 +960,7 @@ Chapter 2.
 
 [6
 
-] (C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux)
+] (c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-11>
@@ -977,5 +977,5 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  90i,6n,107p,542b,409s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/p
+Output written on c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/p
 rint.pdf (7 pages).

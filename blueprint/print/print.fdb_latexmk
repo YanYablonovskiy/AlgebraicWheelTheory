@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1757072243.18376 "print.tex" "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf" "print" 1757072245.13725 0
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux" 1757072244 2412 9e3056661f1301398ce165c96b46c7bf "pdflatex"
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out" 1757072244 1716 a2c36fcdfbb473a04f420d99cb86b43f "pdflatex"
+["pdflatex"] 1757238335.47282 "print.tex" "c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf" "print" 1757238337.47448 0
+  "c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux" 1757238337 2412 9e3056661f1301398ce165c96b46c7bf "pdflatex"
+  "c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out" 1757238337 1716 a2c36fcdfbb473a04f420d99cb86b43f "pdflatex"
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1752763572 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1752766303 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1752762400 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -79,13 +79,13 @@
   "c:/texlive/2025/texmf-dist/web2c/texmf.cnf" 1752762313 42213 4e2ca030e8e2640502016e9e45868dcb ""
   "c:/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt" 1752766597 5896197 18e24e6dab172011f3ea30b215cf7a1c ""
   "c:/texlive/2025/texmf.cnf" 1752766326 713 e69b156964470283e0530f5060668171 ""
-  "content.tex" 1757072189 13045 c01a4b7ba0f04eee4bad2f79a2486c52 ""
+  "content.tex" 1757238293 13471 44159cfcba780c2fa232d5316bf23454 ""
   "macros/common.tex" 1753500584 820 60fafcc3aa944a5e60030581a943ef6b ""
   "macros/print.tex" 1753500584 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1755420922 1172 5788b1a74778b3fe579f927bb5b64ac6 ""
   (generated)
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux"
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.log"
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out"
-  "C:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf"
+  "c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.aux"
+  "c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.log"
+  "c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.out"
+  "c:/Users/Yan/Documents/AlgebraicWheelTheory/blueprint/print/print.pdf"
   (rewritten before read)

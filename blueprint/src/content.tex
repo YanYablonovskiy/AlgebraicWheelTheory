@@ -268,5 +268,17 @@ monoid may be defined on $M \times M$, with $(x_{1},x_{2})\star = (x_{2},x_{1})$
   Given a commutative monoid $M$, there is an involution monoid on $M \times M$ with $(x_{1},x_{2})\star = (x_{2},x_{1})$, and 
   the usual pointwise monoid operation taken from $M$.
 \end{definition}
+Define an equivalence relation on $M \times M$:
+\begin{definition}
+  \lean{equiv_rel,instProdSetoid}
+  \leanok
+  $(x,y) \equiv (x',y')$ iff $\exists s_{1}, s_{2} \in M,(s_{1},s_{1})(x,y) = (s_{2},s_{2})(x',y')$
+\end{definition}
+The equivalence relation gives rise to the corresponding quotient space:
+\begin{definition}
+  \lean{MStar}
+  \leanok
+  Denote the quotient space $M^{*}_{X} := M \times M / \equiv$.
+\end{definition}
 \chapter{References}
 [1] JESPER CARLSTRÖM. “Wheels – on division by zero”. In: Mathematical Structures in Computer Science 14.1 (2004), pp. 143–184. doi: 10.1017/S0960129503004110.

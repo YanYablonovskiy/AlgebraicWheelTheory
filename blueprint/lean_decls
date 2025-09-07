@@ -33,3 +33,6 @@ InvolutionMonoid.IsStarInv
 InvolutionMonoidHom
 instProdStar
 instProdInvMon
+equiv_rel
+instProdSetoid
+MStar

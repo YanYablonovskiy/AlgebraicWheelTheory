@@ -53,4 +53,25 @@ instance instProdInvMon : InvolutionMonoid (α × α) where
   ext <;> simp [star,mul_comm]
 
 
+/-- Defines the congruence ( equivalence ) relation:
+(x, y) ≡S (x,y) means ∃s1,s2 : (s1,s1)(x,y) = (s2,s2)(x,y). -/
+@[reducible, simp]
+def equiv_rel : (α × α) → (α × α) → Prop :=
+  fun ⟨x₁,x₂⟩ ⟨y₁,y₂⟩ ↦ ∃ (a b : α) , (a, a) * (x₁,x₂) = (b, b) * (y₁,y₂)
+
+/-- Defines the Setoid instance for the equivalence relation: equiv_rel. -/
+instance instProdSetoid : Setoid (α × α) where
+  r := equiv_rel
+  iseqv := by
+    refine ⟨fun x ↦ ⟨1,1,rfl⟩ , by rintro x y ⟨a,b,h⟩; simp; exact ⟨b,a, by simp only [h]⟩,?_⟩
+    rintro x y z ⟨a1,b1,h₁⟩ ⟨a2,b2,h₂⟩
+    refine ⟨a1 * a2, b1 * b2, ?_⟩
+    repeat rw [show ∀x y:α,(x*y,x*y)=(x,x)*(y,y) by simp]
+    rw [mul_comm,←mul_assoc,mul_comm x,h₁]
+    rw [mul_assoc,mul_comm y,h₂,←mul_assoc]
+
+/-- The quotient space for the equivalence operation: equiv_rel.
+In the same universe as α, to be the InvMon instance after coerctions -/
+def MStar : Type u :=  Quotient instProdSetoid (α := α × α)
+
 end CommtoInvMonoid
