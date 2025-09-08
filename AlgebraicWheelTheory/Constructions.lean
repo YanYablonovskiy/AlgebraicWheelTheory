@@ -74,4 +74,42 @@ instance instProdSetoid : Setoid (α × α) where
 In the same universe as α, to be the InvMon instance after coerctions -/
 def MStar : Type u :=  Quotient instProdSetoid (α := α × α)
 
+
+
+
+noncomputable section
+
+namespace MStar
+
+def toProd (x : (@MStar α M)) : (α × α) := x.out
+
+@[simp]
+lemma toprod_toprod (x : (@MStar α M)) : toProd ⟦ x.toProd ⟧ = x.toProd := by
+  ext <;> simp [toProd]
+
+instance : Coe (@MStar α M) (α × α) where
+ coe x := x.toProd
+
+instance : Mul (@MStar α M) where
+ mul x y := ⟦x.toProd * y.toProd⟧
+
+@[simp]
+lemma mul_def (x y : (@MStar α M)) : x*y = ⟦x.toProd * y.toProd⟧ := rfl
+
+instance : Star (@MStar α M) where
+ star x := ⟦x.toProd⋆⟧
+
+instance : CommMagma (@MStar α M) where
+ mul_comm x y := by simp only [mul_def,mul_comm]
+
+instance : One (@MStar α M) where
+ one := ⟦ 1 ⟧
+
+@[simp]
+lemma one_def : (1 : (@MStar α M)) = ⟦ 1 ⟧ := rfl
+
+end MStar
+
+end
+
 end CommtoInvMonoid
