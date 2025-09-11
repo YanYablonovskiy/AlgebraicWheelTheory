@@ -70,35 +70,39 @@ instance instProdSetoid : Setoid (α × α) where
     rw [mul_comm,←mul_assoc,mul_comm x,h₁]
     rw [mul_assoc,mul_comm y,h₂,←mul_assoc]
 
+def ConProdSetoid : Con (α × α) where
+ mul' := by
+  rintro w x y z ⟨a1,b1,h⟩ ⟨a2,b2,h2⟩
+  refine ⟨a1*a2,b1*b2,?_⟩
+  repeat rw [show ∀k1 k2 k3 k4 : α, (k1*k2,k3*k4)=(k1,k3)*(k2,k4) by simp]
+  rw [mul_comm (a1,a1),←mul_assoc,mul_assoc (a2,a2),h]
+  rw [mul_comm,←mul_assoc,mul_comm (y.1,y.2),h2]
+  simp only [←mul_assoc,mul_comm]
+
+
 /-- The quotient space for the equivalence operation: equiv_rel.
 In the same universe as α, to be the InvMon instance after coerctions -/
-def MStar : Type u :=  Quotient instProdSetoid (α := α × α)
+@[reducible]
+def MStar : Type u :=  (ConProdSetoid (α:=α)).Quotient
 
-
-
-
-noncomputable section
 
 namespace MStar
 
-def toProd (x : (@MStar α M)) : (α × α) := x.out
-
-@[simp]
-lemma toprod_toprod (x : (@MStar α M)) : toProd ⟦ x.toProd ⟧ = x.toProd := by
-  ext <;> simp [toProd]
-
+noncomputable
 instance : Coe (@MStar α M) (α × α) where
- coe x := x.toProd
+ coe x := x.out
 
+noncomputable
 instance : Mul (@MStar α M) where
- mul x y := ⟦x.toProd * y.toProd⟧
+ mul x y := ⟦x.out * y.out⟧
 
-@[simp]
-lemma mul_def (x y : (@MStar α M)) : x*y = ⟦x.toProd * y.toProd⟧ := rfl
+lemma mul_def (x y : (@MStar α M)) : x*y = ⟦x.out * y.out⟧ := rfl
 
+noncomputable
 instance : Star (@MStar α M) where
- star x := ⟦x.toProd⋆⟧
+ star x := ⟦x.out⋆⟧
 
+noncomputable
 instance : CommMagma (@MStar α M) where
  mul_comm x y := by simp only [mul_def,mul_comm]
 
@@ -109,7 +113,5 @@ instance : One (@MStar α M) where
 lemma one_def : (1 : (@MStar α M)) = ⟦ 1 ⟧ := rfl
 
 end MStar
-
-end
 
 end CommtoInvMonoid
