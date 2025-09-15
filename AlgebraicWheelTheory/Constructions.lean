@@ -35,6 +35,8 @@ solves the following universal problem:
 See JESPER CARLSTRÖM (2004) for the original account  `Wheels – on division by zero`.
 -/
 
+set_option pp.proofs true
+
 section CommtoInvMonoid
 
 universe u
@@ -51,6 +53,13 @@ instance instProdInvMon : InvolutionMonoid (α × α) where
  star_involutive x := rfl
  star_mul x y := by
   ext <;> simp [star,mul_comm]
+
+@[simp]
+lemma prod_star_def (x : α × α) :
+    x⋆ = (x.2,x.1) :=
+  rfl
+
+lemma star_prod_def (x : α × α) : x⋆⋆ = x := rfl
 
 
 /-- Defines the congruence ( equivalence ) relation:
@@ -79,12 +88,10 @@ def ConProdSetoid : Con (α × α) where
   rw [mul_comm,←mul_assoc,mul_comm (y.1,y.2),h2]
   simp only [←mul_assoc,mul_comm]
 
-
 /-- The quotient space for the equivalence operation: equiv_rel.
 In the same universe as α, to be the InvMon instance after coerctions -/
 @[reducible]
 def MStar : Type u :=  (ConProdSetoid (α:=α)).Quotient
-
 
 namespace MStar
 
@@ -93,24 +100,32 @@ instance : Coe (@MStar α M) (α × α) where
  coe x := x.out
 
 noncomputable
-instance : Mul (@MStar α M) where
- mul x y := ⟦x.out * y.out⟧
-
-lemma mul_def (x y : (@MStar α M)) : x*y = ⟦x.out * y.out⟧ := rfl
-
-noncomputable
-instance : Star (@MStar α M) where
+instance : Star (@MStar α M)  where
  star x := ⟦x.out⋆⟧
 
 noncomputable
-instance : CommMagma (@MStar α M) where
- mul_comm x y := by simp only [mul_def,mul_comm]
+instance : Star (Quotient (ConProdSetoid (α := α)).toSetoid) where
+ star x := ⟦x.out⋆⟧
 
-instance : One (@MStar α M) where
- one := ⟦ 1 ⟧
+@[simp, symm]
+lemma star_def (x : @MStar α M) : x⋆ = ⟦x.out⋆⟧ := rfl
 
-@[simp]
-lemma one_def : (1 : (@MStar α M)) = ⟦ 1 ⟧ := rfl
+@[simp, symm]
+lemma star_def' (x : @MStar α M) : x⋆ = ⟦(x.out.2,x.out.1)⟧ := rfl
+
+@[simp, symm]
+lemma prod_out_def (x : (@MStar α M)) : (⟦(x.out.1,x.out.2)⟧ :  (@MStar α M)) = ⟦x.out⟧ :=
+  Quotient.sound ⟨1,1,by congr⟩
+
+@[simp, symm]
+lemma prod_out_star (x : (@MStar α M)) : (⟦(x.out.2,x.out.1)⟧ :  (@MStar α M)) = ⟦x.out⋆⟧ :=
+  Quotient.sound ⟨1,1,by congr⟩
+
+@[simp, symm]
+lemma star_out_eq_out_star (x : (@MStar α M)) : (⟦x⋆.out⟧ : (@MStar α M)) = ⟦x.out⋆⟧ := by simp
+
+@[simp, symm]
+lemma out_star_eq_star_out (x : (@MStar α M)) : (⟦x.out⟧⋆ : (@MStar α M)) = ⟦x⋆.out⟧ := by simp
 
 end MStar
 
