@@ -59,7 +59,9 @@ lemma prod_star_def (x : α × α) :
     x⋆ = (x.2,x.1) :=
   rfl
 
-lemma star_prod_def (x : α × α) : x⋆⋆ = x := rfl
+lemma prod_star_assoc (x : α × α) : (x⋆)⋆ = x⋆⋆ := rfl
+
+lemma star_star' (x : α × α) : x⋆⋆ = x := rfl
 
 
 /-- Defines the congruence ( equivalence ) relation:
@@ -107,25 +109,35 @@ noncomputable
 instance : Star (Quotient (ConProdSetoid (α := α)).toSetoid) where
  star x := ⟦x.out⋆⟧
 
-@[simp, symm]
 lemma star_def (x : @MStar α M) : x⋆ = ⟦x.out⋆⟧ := rfl
 
-@[simp, symm]
 lemma star_def' (x : @MStar α M) : x⋆ = ⟦(x.out.2,x.out.1)⟧ := rfl
 
-@[simp, symm]
 lemma prod_out_def (x : (@MStar α M)) : (⟦(x.out.1,x.out.2)⟧ :  (@MStar α M)) = ⟦x.out⟧ :=
   Quotient.sound ⟨1,1,by congr⟩
 
-@[simp, symm]
 lemma prod_out_star (x : (@MStar α M)) : (⟦(x.out.2,x.out.1)⟧ :  (@MStar α M)) = ⟦x.out⋆⟧ :=
   Quotient.sound ⟨1,1,by congr⟩
 
-@[simp, symm]
-lemma star_out_eq_out_star (x : (@MStar α M)) : (⟦x⋆.out⟧ : (@MStar α M)) = ⟦x.out⋆⟧ := by simp
+lemma star_out_eq_out_star (x : (@MStar α M)) : (⟦x⋆.out⟧ : (@MStar α M)) = ⟦x.out⋆⟧ := by
+  simp [star_def']
 
-@[simp, symm]
+lemma prod_out_star' (x : (@MStar α M)) : (⟦(x.out.2,x.out.1)⟧ :  (@MStar α M)) = ⟦x⋆.out⟧ := by
+  rw [prod_out_star,←star_out_eq_out_star]
+
 lemma out_star_eq_star_out (x : (@MStar α M)) : (⟦x.out⟧⋆ : (@MStar α M)) = ⟦x⋆.out⟧ := by simp
+
+lemma star_assoc (x : (@MStar α M)) : (x⋆)⋆ = x⋆⋆ := by
+ rfl
+
+lemma out_star_star (x :(@MStar α M)) : ⟦x.out⋆⋆⟧  = x := by
+ rw [star_star,Quotient.out_eq]
+
+lemma equiv_star_quot_eq (x y : α × α) : ConProdSetoid x y →
+    (⟦x⋆⟧ : (@MStar α M) ) = ⟦y⋆⟧ := fun ⟨a,b,h⟩ ↦ by
+  refine Quotient.sound ⟨a,b,?_⟩
+  simp [Prod.eq_iff_fst_eq_snd_eq] at h
+  simp [h]
 
 end MStar
 
