@@ -81,32 +81,54 @@ instance instProdSetoid : Setoid (α × α) where
     rw [mul_comm,←mul_assoc,mul_comm x,h₁]
     rw [mul_assoc,mul_comm y,h₂,←mul_assoc]
 
-def ConProdSetoid : Con (α × α) where
- mul' := by
-  rintro w x y z ⟨a1,b1,h⟩ ⟨a2,b2,h2⟩
-  refine ⟨a1*a2,b1*b2,?_⟩
-  repeat rw [show ∀k1 k2 k3 k4 : α, (k1*k2,k3*k4)=(k1,k3)*(k2,k4) by simp]
-  rw [mul_comm (a1,a1),←mul_assoc,mul_assoc (a2,a2),h]
-  rw [mul_comm,←mul_assoc,mul_comm (y.1,y.2),h2]
-  simp only [←mul_assoc,mul_comm]
+structure InvCon [Star (α × α)] extends Con (α × α) where
+  star' x y (hxy : r x y) : r (x⋆) (y⋆)
+
+def InvConProd : InvCon (α := α) where
+  mul' := by
+    rintro w x y z ⟨a1,b1,h⟩ ⟨a2,b2,h2⟩
+    refine ⟨a1*a2,b1*b2,?_⟩
+    repeat rw [show ∀k1 k2 k3 k4 : α, (k1*k2,k3*k4)=(k1,k3)*(k2,k4) by simp]
+    rw [mul_comm (a1,a1),←mul_assoc,mul_assoc (a2,a2),h]
+    rw [mul_comm,←mul_assoc,mul_comm (y.1,y.2),h2]
+    simp only [←mul_assoc,mul_comm]
+  star' := fun x y ⟨a,b,h⟩ ↦ by
+    refine ⟨a,b,?_⟩
+    simp [Prod.eq_iff_fst_eq_snd_eq] at h
+    simp [h]
 
 /-- The quotient space for the equivalence operation: equiv_rel.
 In the same universe as α, to be the InvMon instance after coerctions -/
 @[reducible]
-def MStar : Type u :=  (ConProdSetoid (α:=α)).Quotient
+def MStar : Type u :=  (InvConProd (α:=α)).Quotient
+
+
+namespace Function.Surjective
+
+variable {M₂ : Type u}
+
+-- protected abbrev involutionmonoid [InvolutionMonoid α] [Mul M₂] [Pow M₂ ℕ] [Monoid M₂] [Star M₂] (f : α → M₂) (hf : Surjective f) (one : f 1 = 1)
+--     (mul : ∀ x y, f (x * y) = f x * f y) (npow : ∀ (x) (n : ℕ), f (x ^ n) = f x ^ n) (invol : ∀x, f (x⋆) = (f x)⋆) : InvolutionMonoid M₂ where
+--   sorry
+
+end Function.Surjective
+
+
 
 namespace MStar
+
 
 noncomputable
 instance : Coe (@MStar α M) (α × α) where
  coe x := x.out
+
 
 noncomputable
 instance : Star (@MStar α M)  where
  star x := ⟦x.out⋆⟧
 
 noncomputable
-instance : Star (Quotient (ConProdSetoid (α := α)).toSetoid) where
+instance : Star (Quotient (InvConProd (α := α)).toSetoid) where
  star x := ⟦x.out⋆⟧
 
 lemma star_def (x : @MStar α M) : x⋆ = ⟦x.out⋆⟧ := rfl
@@ -133,7 +155,7 @@ lemma star_assoc (x : (@MStar α M)) : (x⋆)⋆ = x⋆⋆ := by
 lemma out_star_star (x :(@MStar α M)) : ⟦x.out⋆⋆⟧  = x := by
  rw [star_star,Quotient.out_eq]
 
-lemma equiv_star_quot_eq (x y : α × α) : ConProdSetoid x y →
+lemma equiv_star_quot_eq (x y : α × α) : equiv_rel x y →
     (⟦x⋆⟧ : (@MStar α M) ) = ⟦y⋆⟧ := fun ⟨a,b,h⟩ ↦ by
   refine Quotient.sound ⟨a,b,?_⟩
   simp [Prod.eq_iff_fst_eq_snd_eq] at h
