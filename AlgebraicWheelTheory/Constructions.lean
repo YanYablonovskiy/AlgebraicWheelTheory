@@ -102,18 +102,37 @@ In the same universe as α, to be the InvMon instance after coerctions -/
 @[reducible]
 def MStar : Type u :=  (InvConProd (α:=α)).Quotient
 
-
 namespace Function.Surjective
 
-variable {M₂ : Type u}
+protected abbrev involutionmonoid {M₂ : Type u} [InvolutionMonoid α]
+    [Monoid M₂] [Star M₂] (f : α → M₂) (hf : Surjective f) (mul : ∀ x y, f (x * y) = f x * f y)
+    (invol : ∀ x, f (x⋆) = (f x)⋆) : InvolutionMonoid M₂ where
+  star_involutive := by
+    rw [Involutive]
+    intro x
+    have (y : α) : f ( y⋆⋆ ) =  (f y)⋆⋆ := by simp only [invol]
+    obtain ⟨⟨xₐₐinv,hxₐ⟩,xinv,hx⟩ := And.intro (hf (x⋆⋆)) (hf x)
+    rw [←hx,←this xinv,star_involutive]
+  star_mul x y := by
+   have (x y : α) : f (x * y)⋆ =  f (y⋆) * f (x⋆) := by
+    calc f (x * y)⋆ = f ((x * y)⋆) := (invol (x * y)).symm
+    _ = f ( (y⋆) * (x⋆) ) := congrArg f (star_mul x y)
+    _ = f (y⋆) * f (x⋆) := mul (y⋆) (x⋆)
+   obtain ⟨⟨xinv,hx⟩,yinv,hy⟩ := And.intro (hf x) (hf y)
+   rw [←hx,←hy,←invol xinv,←invol yinv,←this,mul]
 
--- protected abbrev involutionmonoid [InvolutionMonoid α] [Mul M₂] [Pow M₂ ℕ] [Monoid M₂] [Star M₂] (f : α → M₂) (hf : Surjective f) (one : f 1 = 1)
---     (mul : ∀ x y, f (x * y) = f x * f y) (npow : ∀ (x) (n : ℕ), f (x ^ n) = f x ^ n) (invol : ∀x, f (x⋆) = (f x)⋆) : InvolutionMonoid M₂ where
---   sorry
+
+
+#check Quotient.lift_surjective
+
+#check Quotient.map
+
+#check Con.Quotient
+
+#check Quotient.mk_surjective
+
 
 end Function.Surjective
-
-
 
 namespace MStar
 
@@ -130,6 +149,12 @@ instance : Star (@MStar α M)  where
 noncomputable
 instance : Star (Quotient (InvConProd (α := α)).toSetoid) where
  star x := ⟦x.out⋆⟧
+
+noncomputable
+def t :=
+  Function.Surjective.involutionmonoid (M₂ := (@MStar α M) ) ((InvConProd (α:=α)).toQuotient) Quotient.mk_surjective
+
+#check t
 
 lemma star_def (x : @MStar α M) : x⋆ = ⟦x.out⋆⟧ := rfl
 
@@ -160,6 +185,7 @@ lemma equiv_star_quot_eq (x y : α × α) : equiv_rel x y →
   refine Quotient.sound ⟨a,b,?_⟩
   simp [Prod.eq_iff_fst_eq_snd_eq] at h
   simp [h]
+
 
 end MStar
 

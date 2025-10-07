@@ -63,25 +63,32 @@
 <div id="statements">
 
     
-    <div class="dep-modal-container" id="a0000000016_modal">
+    <div class="dep-modal-container" id="def:involution_monoid_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000016" style="display: none">
+  <div class="thm" id="def:involution_monoid" style="display: none">
     <div class="thm_thmheading">
-      <span class="proposition_thmcaption">
-      Proposition
+      <span class="definition_thmcaption">
+      Definition
       </span>
-      <span class="proposition_thmlabel">12</span></div>
-    <div class="thm_thmcontent"><p> Suppose there is a set \(\beta \) and there exist two commutative monoids which can be defined on this set, in additive and multiplicative notation. Then \(\{  1 \} \) is a Wheel with wheel division being the identity map. </p>
+      <span class="definition_thmlabel">22</span><span class="definition_thmtitle"><b class="bfseries">Involution Monoid</b></span></div>
+    <div class="thm_thmcontent"><p>   Given a monoid \((M,*)\), \(M\) is called an involution monoid for an involutive function \(\star :M \rightarrow M\) which skew-distributes over \(*\). In other words, \((M,*)\) is a monoid, with an associated map \(\star :M \rightarrow M\) such that: </p>
+<ol class="enumerate">
+  <li><p>\(\forall x \in M,\) \(x \star \star = x\) <br /></p>
+</li>
+  <li><p>\(\forall x, y \in M, (x * y) \star = y \star * \:  x \star \). <br /></p>
+</li>
+</ol>
+<p> This is denoted as \((M,*,\star )\) or simply \((M,\star )\) if \(*\) is inferrable from surrounding context. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000016">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:involution_monoid">LaTeX</a>
     
     
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.Trivial.instTrivWheel">Lean</a>
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid">Lean</a>
     
     
   
@@ -93,25 +100,25 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000017_modal">
+    <div class="dep-modal-container" id="def:involution_monoid_morphism_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000017" style="display: none">
+  <div class="thm" id="def:involution_monoid_morphism" style="display: none">
     <div class="thm_thmheading">
-      <span class="proposition_thmcaption">
-      Proposition
+      <span class="definition_thmcaption">
+      Definition
       </span>
-      <span class="proposition_thmlabel">13</span></div>
-    <div class="thm_thmcontent"><p> If any two of the elements \(0,1,\backslash _{a} 0\) and \(0 \backslash _{a} 0\) are equal in a wheel \(W\), then \(W\) is trivial. </p>
+      <span class="definition_thmlabel">28</span><span class="definition_thmtitle"><b class="bfseries">Involution Monoid Homomorphism</b></span></div>
+    <div class="thm_thmcontent"><p>   If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000017">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:involution_monoid_morphism">LaTeX</a>
     
     
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.Trivial.triv_tfae">Lean</a>
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoidHom">Lean</a>
     
     
   
@@ -123,22 +130,130 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000022_modal">
+    <div class="dep-modal-container" id="def:involution_monoid_prod_space_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000022" style="display: none">
+  <div class="thm" id="def:involution_monoid_prod_space" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">29</span></div>
+    <div class="thm_thmcontent"><p>  Given a commutative monoid \(M\), there is an involution monoid on \(M \times M\) with \((x_{1},x_{2})\star = (x_{2},x_{1})\), and the usual pointwise monoid operation taken from \(M\). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:involution_monoid_prod_space">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdStar" class="lean_decl">instProdStar</a></li>
+        
+           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdInvMon" class="lean_decl">instProdInvMon</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:involution_monoid_setoid_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:involution_monoid_setoid" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">30</span></div>
+    <div class="thm_thmcontent"><p>  \((x,y) \equiv (x',y')\) iff \(\exists s_{1}, s_{2} \in M,(s_{1},s_{1})(x,y) = (s_{2},s_{2})(x',y')\) </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:involution_monoid_setoid">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/equiv_rel" class="lean_decl">equiv_rel</a></li>
+        
+           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdSetoid" class="lean_decl">instProdSetoid</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:MStar_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:MStar" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">31</span></div>
+    <div class="thm_thmcontent"><p>  Denote the quotient space \(M^{*}_{X} := M \times M / \equiv \). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:MStar">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/MStar">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:R_w_magma_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:R_w_magma" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
       <span class="definition_thmlabel">14</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{R}_{W}\) is a commutative magma in * and +</b></span></div>
-    <div class="thm_thmcontent"><p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative magma in both the wheel operations. </p>
+    <div class="thm_thmcontent"><p>   Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative magma in both the wheel operations. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000022">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:R_w_magma">LaTeX</a>
     
     
   <div class="tooltip">
@@ -162,22 +277,22 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000023_modal">
+    <div class="dep-modal-container" id="def:R_w_monoid_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000023" style="display: none">
+  <div class="thm" id="def:R_w_monoid" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
       <span class="definition_thmlabel">15</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{R}_{W}\) is a commutative monoid in * and +</b></span></div>
-    <div class="thm_thmcontent"><p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative monoid in both the wheel operations. </p>
+    <div class="thm_thmcontent"><p>   Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative monoid in both the wheel operations. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000023">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:R_w_monoid">LaTeX</a>
     
     
   <div class="tooltip">
@@ -201,22 +316,22 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000024_modal">
+    <div class="dep-modal-container" id="def:R_w_semiring_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000024" style="display: none">
+  <div class="thm" id="def:R_w_semiring" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
       <span class="definition_thmlabel">16</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{R}_{W}\) is a semiring in * and +</b></span></div>
-    <div class="thm_thmcontent"><p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a semiring in * and +. </p>
+    <div class="thm_thmcontent"><p>   Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a semiring in * and +. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000024">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:R_w_semiring">LaTeX</a>
     
     
   <div class="tooltip">
@@ -242,82 +357,22 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000027_modal">
+    <div class="dep-modal-container" id="def:S_w_group_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000027" style="display: none">
-    <div class="thm_thmheading">
-      <span class="definition_thmcaption">
-      Definition
-      </span>
-      <span class="definition_thmlabel">17</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{S}_{W}\) is a commutative magma in *</b></span></div>
-    <div class="thm_thmcontent"><p>  Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative magma in the * wheel operation. </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000027">LaTeX</a>
-    
-    
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instSCommMagma">Lean</a>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000028_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000028" style="display: none">
-    <div class="thm_thmheading">
-      <span class="definition_thmcaption">
-      Definition
-      </span>
-      <span class="definition_thmlabel">18</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{S}_{W}\) is a commutative monoid in *</b></span></div>
-    <div class="thm_thmcontent"><p>  Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative monoid in the * wheel operation. </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000028">LaTeX</a>
-    
-    
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instSCommMonoid">Lean</a>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000029_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000029" style="display: none">
+  <div class="thm" id="def:S_w_group" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
       <span class="definition_thmlabel">19</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{S}_{W}\) is a commutative group in *</b></span></div>
-    <div class="thm_thmcontent"><p>  Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative group in *. </p>
+    <div class="thm_thmcontent"><p>   Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative group in *. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000029">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:S_w_group">LaTeX</a>
     
     
   <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instCommGroup">Lean</a>
@@ -332,92 +387,25 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000030_modal">
+    <div class="dep-modal-container" id="def:S_w_magma_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000030" style="display: none">
-    <div class="thm_thmheading">
-      <span class="proposition_thmcaption">
-      Proposition
-      </span>
-      <span class="proposition_thmlabel">20</span></div>
-    <div class="thm_thmcontent"><p> For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is \(\backslash _{a}\)-invertible, then \(x \in \mathcal{S}_{W}\). </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000030">LaTeX</a>
-    
-    
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isUnit_wdiv_coe">Lean</a>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000031_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000031" style="display: none">
-    <div class="thm_thmheading">
-      <span class="proposition_thmcaption">
-      Proposition
-      </span>
-      <span class="proposition_thmlabel">21</span></div>
-    <div class="thm_thmcontent"><p> For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is a unit, then is is also a unit in the original wheel. </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000031">LaTeX</a>
-    
-    
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isRUnit_isUnit">Lean</a>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000033_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000033" style="display: none">
+  <div class="thm" id="def:S_w_magma" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">22</span><span class="definition_thmtitle"><b class="bfseries">Involution Monoid</b></span></div>
-    <div class="thm_thmcontent"><p>  Given a monoid \((M,*)\), \(M\) is called an involution monoid for an involutive function \(\star :M \rightarrow M\) which skew-distributes over \(*\). In other words, \((M,*)\) is a monoid, with an associated map \(\star :M \rightarrow M\) such that: </p>
-<ol class="enumerate">
-  <li><p>\(\forall x \in M,\) \(x \star \star = x\) <br /></p>
-</li>
-  <li><p>\(\forall x, y \in M, (x * y) \star = y \star * \:  x \star \). <br /></p>
-</li>
-</ol>
-<p> This is denoted as \((M,*,\star )\) or simply \((M,\star )\) if \(*\) is inferrable from surrounding context. </p>
+      <span class="definition_thmlabel">17</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{S}_{W}\) is a commutative magma in *</b></span></div>
+    <div class="thm_thmcontent"><p>   Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative magma in the * wheel operation. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000033">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:S_w_magma">LaTeX</a>
     
     
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid">Lean</a>
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instSCommMagma">Lean</a>
     
     
   
@@ -429,124 +417,25 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000034_modal">
+    <div class="dep-modal-container" id="def:S_w_monoid_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000034" style="display: none">
-    <div class="thm_thmheading">
-      <span class="proposition_thmcaption">
-      Proposition
-      </span>
-      <span class="proposition_thmlabel">23</span></div>
-    <div class="thm_thmcontent"><p> Any abelian group is an involution monoid with \(x\star = x^{-1}\). </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000034">LaTeX</a>
-    
-    
-  <div class="tooltip">
-      <span class="lean_link">Lean</span>
-      <ul class="tooltip_list">
-        
-           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instDivMonoid" class="lean_decl">InvolutionMonoid.instDivMonoid</a></li>
-        
-           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.group_example" class="lean_decl">InvolutionMonoid.group_example</a></li>
-        
-      </ul>
-  </div>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000035_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000035" style="display: none">
-    <div class="thm_thmheading">
-      <span class="proposition_thmcaption">
-      Proposition
-      </span>
-      <span class="proposition_thmlabel">24</span></div>
-    <div class="thm_thmcontent"><p> Any field with decideable equality is an involution monoid with \(x\star = x^{-1}\) for \(x\) non-zero and \(0\) otherwise. </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000035">LaTeX</a>
-    
-    
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instField">Lean</a>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000036_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000036" style="display: none">
-    <div class="thm_thmheading">
-      <span class="proposition_thmcaption">
-      Proposition
-      </span>
-      <span class="proposition_thmlabel">25</span></div>
-    <div class="thm_thmcontent"><p> The monoid of \(n \times n\) \(R\)-valued matrices form an involution monoid with \(x\star = x^{T}\) and \(R\) a commutative ring. </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000036">LaTeX</a>
-    
-    
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instSqMatrix">Lean</a>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000037_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000037" style="display: none">
+  <div class="thm" id="def:S_w_monoid" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">26</span><span class="definition_thmtitle"><b class="bfseries">\(\star \)-unit</b></span></div>
-    <div class="thm_thmcontent"><p>  An element of an involution monoid \(x \in (M , \star )\) is a \(\star \)-unit if \(x^{-1} = x\star \). </p>
+      <span class="definition_thmlabel">18</span><span class="definition_thmtitle"><b class="bfseries">\(\mathcal{S}_{W}\) is a commutative monoid in *</b></span></div>
+    <div class="thm_thmcontent"><p>   Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative monoid in the * wheel operation. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000037">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:S_w_monoid">LaTeX</a>
     
     
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.StarUnit">Lean</a>
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.instSCommMonoid">Lean</a>
     
     
   
@@ -558,22 +447,22 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000038_modal">
+    <div class="dep-modal-container" id="def:star_invertibility_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000038" style="display: none">
+  <div class="thm" id="def:star_invertibility" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
       <span class="definition_thmlabel">27</span><span class="definition_thmtitle"><b class="bfseries">\(\star \)-invertible</b></span></div>
-    <div class="thm_thmcontent"><p>  An involution monoid \((M,\star )\) is \(\star \)-invertible if every unit is a \(\star \)-unit. </p>
+    <div class="thm_thmcontent"><p>   An involution monoid \((M,\star )\) is \(\star \)-invertible if every unit is a \(\star \)-unit. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000038">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:star_invertibility">LaTeX</a>
     
     
   <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.IsStarInv">Lean</a>
@@ -588,25 +477,25 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000039_modal">
+    <div class="dep-modal-container" id="def:star_unit_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000039" style="display: none">
+  <div class="thm" id="def:star_unit" style="display: none">
     <div class="thm_thmheading">
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">28</span><span class="definition_thmtitle"><b class="bfseries">Involution Monoid Homomorphism</b></span></div>
-    <div class="thm_thmcontent"><p>  If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
+      <span class="definition_thmlabel">26</span><span class="definition_thmtitle"><b class="bfseries">\(\star \)-unit</b></span></div>
+    <div class="thm_thmcontent"><p>   An element of an involution monoid \(x \in (M , \star )\) is a \(\star \)-unit if \(x^{-1} = x\star \). </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000039">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:star_unit">LaTeX</a>
     
     
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoidHom">Lean</a>
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.StarUnit">Lean</a>
     
     
   
@@ -618,103 +507,25 @@
 
 
     
-    <div class="dep-modal-container" id="a0000000041_modal">
+    <div class="dep-modal-container" id="def:trivial_wheel_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="a0000000041" style="display: none">
+  <div class="thm" id="def:trivial_wheel" style="display: none">
     <div class="thm_thmheading">
-      <span class="definition_thmcaption">
-      Definition
+      <span class="proposition_thmcaption">
+      Proposition
       </span>
-      <span class="definition_thmlabel">29</span></div>
-    <div class="thm_thmcontent"><p> Given a commutative monoid \(M\), there is an involution monoid on \(M \times M\) with \((x_{1},x_{2})\star = (x_{2},x_{1})\), and the usual pointwise monoid operation taken from \(M\). </p>
+      <span class="proposition_thmlabel">12</span></div>
+    <div class="thm_thmcontent"><p>  Suppose there is a set \(\beta \) and there exist two commutative monoids which can be defined on this set, in additive and multiplicative notation. Then \(\{  1 \} \) is a Wheel with wheel division being the identity map. </p>
 </div>
 
-    <a class="latex_link" href="sect0001.html#a0000000041">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#def:trivial_wheel">LaTeX</a>
     
     
-  <div class="tooltip">
-      <span class="lean_link">Lean</span>
-      <ul class="tooltip_list">
-        
-           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdStar" class="lean_decl">instProdStar</a></li>
-        
-           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdInvMon" class="lean_decl">instProdInvMon</a></li>
-        
-      </ul>
-  </div>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000042_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000042" style="display: none">
-    <div class="thm_thmheading">
-      <span class="definition_thmcaption">
-      Definition
-      </span>
-      <span class="definition_thmlabel">30</span></div>
-    <div class="thm_thmcontent"><p> \((x,y) \equiv (x',y')\) iff \(\exists s_{1}, s_{2} \in M,(s_{1},s_{1})(x,y) = (s_{2},s_{2})(x',y')\) </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000042">LaTeX</a>
-    
-    
-  <div class="tooltip">
-      <span class="lean_link">Lean</span>
-      <ul class="tooltip_list">
-        
-           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/equiv_rel" class="lean_decl">equiv_rel</a></li>
-        
-           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/instProdSetoid" class="lean_decl">instProdSetoid</a></li>
-        
-      </ul>
-  </div>
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="a0000000043_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="a0000000043" style="display: none">
-    <div class="thm_thmheading">
-      <span class="definition_thmcaption">
-      Definition
-      </span>
-      <span class="definition_thmlabel">31</span></div>
-    <div class="thm_thmcontent"><p> Denote the quotient space \(M^{*}_{X} := M \times M / \equiv \). </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#a0000000043">LaTeX</a>
-    
-    
-  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/MStar">Lean</a>
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.Trivial.instTrivWheel">Lean</a>
     
     
   
@@ -774,6 +585,153 @@
 
 
     
+    <div class="dep-modal-container" id="def:wheel_module_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:wheel_module" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">32</span></div>
+    <div class="thm_thmcontent"><p>  Let \(W\) be a wheel. A \(W\)-module, or WheelModule, is a commutative monoid \((M,0,+)\) with multiplication by W-elements defined (formally, a function \((H × M) → M\) written \((x,m) → x • m\)) such that for any \(x,x' ∈ W\), \(m,m' ∈ M\) the following hold: </p>
+<ol class="enumerate">
+  <li><p>\((xx') • m = x • (x' • m)\) <br /></p>
+</li>
+  <li><p>\(1 • m = m\) <br /></p>
+</li>
+  <li><p>\((x + x') • m + 0 • m = x • m + x' • m\) <br /></p>
+</li>
+  <li><p>\(x • (m + m') + x • 0 = x • m + x • m'\) <br /></p>
+</li>
+  <li><p>\((\backslash _{a} x) • m + m' + x • 0 = \backslash _{a} x • (m + x • m')\) <br /></p>
+</li>
+  <li><p>\((\backslash _{a} x) • m + m' + x • 0 = \backslash _{a} x • (m + x • m')\) <br /></p>
+</li>
+  <li><p>\(x • (m + 0 • m') = x • m + 0 • m'\) <br /></p>
+</li>
+  <li><p>\(m + ( \backslash _{a} 0 ) • 0 = ( \backslash _{a} 0 ) • 0\) </p>
+</li>
+</ol>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:wheel_module">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/WheelModule">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:tfae_wheel_trivial_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:tfae_wheel_trivial" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">13</span></div>
+    <div class="thm_thmcontent"><p>  If any two of the elements \(0,1,\backslash _{a} 0\) and \(0 \backslash _{a} 0\) are equal in a wheel \(W\), then \(W\) is trivial. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#lemma:tfae_wheel_trivial">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.Trivial.triv_tfae">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:inv_monoid_of_abelian_group_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:inv_monoid_of_abelian_group" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">23</span></div>
+    <div class="thm_thmcontent"><p>  Any abelian group is an involution monoid with \(x\star = x^{-1}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:inv_monoid_of_abelian_group">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instDivMonoid" class="lean_decl">InvolutionMonoid.instDivMonoid</a></li>
+        
+           <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.group_example" class="lean_decl">InvolutionMonoid.group_example</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:inv_monoid_of_field_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:inv_monoid_of_field" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">24</span></div>
+    <div class="thm_thmcontent"><p>  Any field with decideable equality is an involution monoid with \(x\star = x^{-1}\) for \(x\) non-zero and \(0\) otherwise. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:inv_monoid_of_field">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instField">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="prop:isUnit_div_eq_inv_add_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -786,7 +744,7 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">11</span></div>
-    <div class="thm_thmcontent"><p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
 <div class="equation" id="a0000000014">
 <p>
   <div class="equation_content">
@@ -825,7 +783,7 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">10</span></div>
-    <div class="thm_thmcontent"><p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
 <div class="equation" id="a0000000013">
 <p>
   <div class="equation_content">
@@ -864,7 +822,7 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">9</span></div>
-    <div class="thm_thmcontent"><p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then zero enjoys the following identity: </p>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then zero enjoys the following identity: </p>
 <div class="equation" id="a0000000012">
 <p>
   <div class="equation_content">
@@ -891,6 +849,66 @@
 
 
     
+    <div class="dep-modal-container" id="prop:S_w_of_wheel_invertible_R_w_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:S_w_of_wheel_invertible_R_w" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">20</span></div>
+    <div class="thm_thmcontent"><p>  For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is \(\backslash _{a}\)-invertible, then \(x \in \mathcal{S}_{W}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:S_w_of_wheel_invertible_R_w">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isUnit_wdiv_coe">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:sq_matrices_inv_monoid_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:sq_matrices_inv_monoid" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">25</span></div>
+    <div class="thm_thmcontent"><p>  The monoid of \(n \times n\) \(R\)-valued matrices form an involution monoid with \(x\star = x^{T}\) and \(R\) a commutative ring. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:sq_matrices_inv_monoid">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/InvolutionMonoid.instSqMatrix">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="prop:wdiv_inv_add_div_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -903,7 +921,7 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">8</span></div>
-    <div class="thm_thmcontent"><p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then the unit and self Wheel division are related by: </p>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then the unit and self Wheel division are related by: </p>
 <div class="equation" id="a0000000011">
 <p>
   <div class="equation_content">
@@ -942,7 +960,7 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">2</span><span class="proposition_thmtitle"><b class="bfseries">Unit preserving</b></span></div>
-    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) , then \(\backslash _{a} 1 = 1\) where \(1\) is the neutral element of the multiplicative commutative monoid. </p>
+    <div class="thm_thmcontent"><p>    Given a Wheel \(W\) , then \(\backslash _{a} 1 = 1\) where \(1\) is the neutral element of the multiplicative commutative monoid. </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#prop:wDiv_one">LaTeX</a>
@@ -960,25 +978,25 @@
 
 
     
-    <div class="dep-modal-container" id="prop:wdiv_right_cancell_modal">
+    <div class="dep-modal-container" id="prop:wdiv_right_cancel_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="prop:wdiv_right_cancell" style="display: none">
+  <div class="thm" id="prop:wdiv_right_cancel" style="display: none">
     <div class="thm_thmheading">
       <span class="proposition_thmcaption">
       Proposition
       </span>
       <span class="proposition_thmlabel">6</span><span class="proposition_thmtitle"><b class="bfseries">Right cancellation</b></span></div>
-    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(ac = bc\), then: </p>
+    <div class="thm_thmcontent"><p>    Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(ac = bc\), then: </p>
 <div class="displaymath" id="a0000000009">
   \[  a + 0c\backslash _{a} c = b + 0c\backslash _{a} c  \]
 </div>
 </div>
 
-    <a class="latex_link" href="sect0001.html#prop:wdiv_right_cancell">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#prop:wdiv_right_cancel">LaTeX</a>
     
     
   <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.wdiv_right_cancel'">Lean</a>
@@ -993,13 +1011,13 @@
 
 
     
-    <div class="dep-modal-container" id="prop:wdiv_selfl_modal">
+    <div class="dep-modal-container" id="prop:wdiv_self_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
 <svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         
-  <div class="thm" id="prop:wdiv_selfl" style="display: none">
+  <div class="thm" id="prop:wdiv_self" style="display: none">
     <div class="thm_thmheading">
       <span class="proposition_thmcaption">
       Proposition
@@ -1011,7 +1029,7 @@
 </div>
 </div>
 
-    <a class="latex_link" href="sect0001.html#prop:wdiv_selfl">LaTeX</a>
+    <a class="latex_link" href="sect0001.html#prop:wdiv_self">LaTeX</a>
     
     
   <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.wdiv_self">Lean</a>
@@ -1038,13 +1056,43 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">7</span><span class="proposition_thmtitle"><b class="bfseries">Monoid Automorphism</b></span></div>
-    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) , \(wDiv\) is a monoid automorphism for \((1,*)\). </p>
+    <div class="thm_thmcontent"><p>    Given a Wheel \(W\) , \(wDiv\) is a monoid automorphism for \((1,*)\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#prop:wDivMonAuto">LaTeX</a>
     
     
   <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.toMonoidHom">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:wheel_unit_of_R_w_unit_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:wheel_unit_of_R_w_unit" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">21</span></div>
+    <div class="thm_thmcontent"><p>  For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is a unit, then is is also a unit in the original wheel. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#prop:wheel_unit_of_R_w_unit">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/Wheel.isRUnit_isUnit">Lean</a>
     
     
   
@@ -1068,7 +1116,8 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">3</span></div>
-    <div class="thm_thmcontent"><p>  Given a Wheel \(W\) and any two elements \(a,b \in W\), then: </p>
+    <div class="thm_thmcontent">
+<p>Given a Wheel \(W\) and any two elements \(a,b \in W\), then: </p>
 <div class="displaymath" id="a0000000006">
   \[  0a + 0b = 0ab  \]
 </div>
@@ -1101,7 +1150,7 @@
       Proposition
       </span>
       <span class="proposition_thmlabel">4</span></div>
-    <div class="thm_thmcontent"><p>  Given a Wheel \(W\) and any element \(a \in W\), then: </p>
+    <div class="thm_thmcontent"><p>   Given a Wheel \(W\) and any element \(a \in W\), then: </p>
 <div class="displaymath" id="a0000000007">
   \[  (0 \backslash _{a} 0)a = 0 \backslash _{a} 0  \]
 </div>
@@ -1138,7 +1187,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"prop:isUnit_div_eq_inv_add"	[color=green,		label=isUnit_div_eq_inv_add,		shape=ellipse];	a0000000016	[color=green,		label=a0000000016,		shape=ellipse];	a0000000042	[color=green,		fillcolor="#B0ECA3",		label=a0000000042,		shape=box,		style=filled];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:wdiv_selfl"	[color=green,		label=wdiv_selfl,		shape=ellipse];	a0000000030	[color=green,		label=a0000000030,		shape=ellipse];	a0000000023	[color=green,		fillcolor="#B0ECA3",		label=a0000000023,		shape=box,		style=filled];	a0000000033	[color=green,		fillcolor="#B0ECA3",		label=a0000000033,		shape=box,		style=filled];	a0000000039	[color=green,		fillcolor="#B0ECA3",		label=a0000000039,		shape=box,		style=filled];	a0000000035	[color=green,		label=a0000000035,		shape=ellipse];	"prop:wdiv_right_cancell"	[color=green,		label=wdiv_right_cancell,		shape=ellipse];	a0000000037	[color=green,		fillcolor="#B0ECA3",		label=a0000000037,		shape=box,		style=filled];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"prop:isUnit_zero_eq_div_mul_add"	[color=green,		label=isUnit_zero_eq_div_mul_add,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	a0000000022	[color=green,		fillcolor="#B0ECA3",		label=a0000000022,		shape=box,		style=filled];	a0000000028	[color=green,		fillcolor="#B0ECA3",		label=a0000000028,		shape=box,		style=filled];	a0000000043	[color=green,		fillcolor="#B0ECA3",		label=a0000000043,		shape=box,		style=filled];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	a0000000034	[color=green,		label=a0000000034,		shape=ellipse];	a0000000038	[color=green,		fillcolor="#B0ECA3",		label=a0000000038,		shape=box,		style=filled];	"prop:isUnit_inv_eq_div_add"	[color=green,		label=isUnit_inv_eq_div_add,		shape=ellipse];	a0000000036	[color=green,		label=a0000000036,		shape=ellipse];	a0000000041	[color=green,		fillcolor="#B0ECA3",		label=a0000000041,		shape=box,		style=filled];	a0000000031	[color=green,		label=a0000000031,		shape=ellipse];	a0000000027	[color=green,		fillcolor="#B0ECA3",		label=a0000000027,		shape=box,		style=filled];	a0000000024	[color=blue,		fillcolor="#A3D6FF",		label=a0000000024,		shape=box,		style=filled];	a0000000029	[color=green,		fillcolor="#B0ECA3",		label=a0000000029,		shape=box,		style=filled];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	a0000000017	[color=green,		label=a0000000017,		shape=ellipse];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:S_w_magma"	[color=green,		fillcolor="#B0ECA3",		label=S_w_magma,		shape=box,		style=filled];	"def:S_w_group"	[color=green,		fillcolor="#B0ECA3",		label=S_w_group,		shape=box,		style=filled];	"prop:inv_monoid_of_field"	[color=green,		label=inv_monoid_of_field,		shape=ellipse];	"def:R_w_monoid"	[color=green,		fillcolor="#B0ECA3",		label=R_w_monoid,		shape=box,		style=filled];	"prop:inv_monoid_of_abelian_group"	[color=green,		label=inv_monoid_of_abelian_group,		shape=ellipse];	"def:R_w_magma"	[color=green,		fillcolor="#B0ECA3",		label=R_w_magma,		shape=box,		style=filled];	"def:star_unit"	[color=green,		fillcolor="#B0ECA3",		label=star_unit,		shape=box,		style=filled];	"def:involution_monoid_morphism"	[color=green,		fillcolor="#B0ECA3",		label=involution_monoid_morphism,		shape=box,		style=filled];	"prop:isUnit_zero_eq_div_mul_add"	[color=green,		label=isUnit_zero_eq_div_mul_add,		shape=ellipse];	"prop:isUnit_inv_eq_div_add"	[color=green,		label=isUnit_inv_eq_div_add,		shape=ellipse];	"prop:isUnit_zero_eq_div_mul_add" -> "prop:isUnit_inv_eq_div_add"	[style=dashed];	"prop:isUnit_div_eq_inv_add"	[color=green,		label=isUnit_div_eq_inv_add,		shape=ellipse];	"prop:isUnit_inv_eq_div_add" -> "prop:isUnit_div_eq_inv_add"	[style=dashed];	"def:R_w_semiring"	[color=blue,		fillcolor="#A3D6FF",		label=R_w_semiring,		shape=box,		style=filled];	"def:involution_monoid_setoid"	[color=green,		fillcolor="#B0ECA3",		label=involution_monoid_setoid,		shape=box,		style=filled];	"prop:wdiv_right_cancel"	[color=green,		label=wdiv_right_cancel,		shape=ellipse];	"prop:wheel_unit_of_R_w_unit"	[color=green,		label=wheel_unit_of_R_w_unit,		shape=ellipse];	"def:Wheel"	[color=green,		fillcolor="#B0ECA3",		label=Wheel,		shape=box,		style=filled];	"def:Wheel" -> "prop:wdiv_right_cancel"	[style=dashed];	"prop:wDiv_one"	[color=green,		label=wDiv_one,		shape=ellipse];	"def:Wheel" -> "prop:wDiv_one"	[style=dashed];	"prop:zero_mul_add"	[color=green,		label=zero_mul_add,		shape=ellipse];	"def:Wheel" -> "prop:zero_mul_add"	[style=dashed];	"prop:wDiv_one" -> "prop:isUnit_zero_eq_div_mul_add"	[style=dashed];	"prop:wDivMonAuto"	[color=green,		label=wDivMonAuto,		shape=ellipse];	"prop:wDiv_one" -> "prop:wDivMonAuto"	[style=dashed];	"prop:wdiv_inv_add_div"	[color=green,		label=wdiv_inv_add_div,		shape=ellipse];	"prop:wDiv_one" -> "prop:wdiv_inv_add_div"	[style=dashed];	"prop:zero_mul_add" -> "prop:isUnit_zero_eq_div_mul_add"	[style=dashed];	"prop:zero_wdiv_mul"	[color=green,		label=zero_wdiv_mul,		shape=ellipse];	"prop:zero_mul_add" -> "prop:zero_wdiv_mul"	[style=dashed];	"prop:wdiv_inv_add_div" -> "prop:isUnit_inv_eq_div_add"	[style=dashed];	"def:star_invertibility"	[color=green,		fillcolor="#B0ECA3",		label=star_invertibility,		shape=box,		style=filled];	"def:involution_monoid"	[color=green,		fillcolor="#B0ECA3",		label=involution_monoid,		shape=box,		style=filled];	"def:involution_monoid_prod_space"	[color=green,		fillcolor="#B0ECA3",		label=involution_monoid_prod_space,		shape=box,		style=filled];	"def:trivial_wheel"	[color=green,		label=trivial_wheel,		shape=ellipse];	"prop:S_w_of_wheel_invertible_R_w"	[color=green,		label=S_w_of_wheel_invertible_R_w,		shape=ellipse];	"def:S_w_monoid"	[color=green,		fillcolor="#B0ECA3",		label=S_w_monoid,		shape=box,		style=filled];	"def:MStar"	[color=green,		fillcolor="#B0ECA3",		label=MStar,		shape=box,		style=filled];	"prop:wdiv_self"	[color=green,		label=wdiv_self,		shape=ellipse];	"prop:wdiv_self" -> "prop:wdiv_right_cancel"	[style=dashed];	"prop:wdiv_self" -> "prop:wdiv_inv_add_div"	[style=dashed];	"def:wheel_module"	[color=green,		fillcolor="#B0ECA3",		label=wheel_module,		shape=box,		style=filled];	"lemma:tfae_wheel_trivial"	[color=green,		label=tfae_wheel_trivial,		shape=ellipse];	"prop:sq_matrices_inv_monoid"	[color=green,		label=sq_matrices_inv_monoid,		shape=ellipse];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

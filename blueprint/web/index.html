@@ -13,7 +13,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algebraic Wheel Theory in Lean 4</title>
-<link rel="next" href="sect0001.html" title="Introduction" />
+<link rel="next" href="sect0001.html" title="Algebraic Wheels" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 <link rel="stylesheet" href="styles/showmore.css" />
@@ -30,7 +30,7 @@
 <nav class="toc">
 <ul class="sub-toc-0">
 <li class="">
-  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Algebraic Wheels</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
@@ -50,20 +50,23 @@
   </ul>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000018"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic structures</span></a>
+  <a href="sect0001.html#a0000000016"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic structures</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-2">
      <li class="">
-  <a href="sect0001.html#a0000000019"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Induced semiring</span></a>
+  <a href="sect0001.html#a0000000017"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Induced semiring</span></a>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Induced commutative group</span></a>
+  <a href="sect0001.html#a0000000020"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Induced commutative group</span></a>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000032"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
+  <a href="sect0001.html#a0000000022"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Commutative monoid to Involution monoid</span></a>
+  <a href="sect0001.html#a0000000023"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Commutative monoid to Involution monoid</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000024"><span class="toc_ref">1.2.5</span> <span class="toc_entry">Wheel Module</span></a>
  </li>
 
   </ul>
@@ -93,7 +96,7 @@
 <nav class=local_toc>
 <ul>
   <li>	
-  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Algebraic Wheels</span></a>
 	<ul>
 		   <li>	
   <a href="sect0001.html#a0000000004"><span class="toc_ref">1.1</span> <span class="toc_entry">Definition of a Wheel</span></a>
@@ -111,19 +114,22 @@
 	</ul>
   </li>
   <li>	
-  <a href="sect0001.html#a0000000018"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic structures</span></a>
+  <a href="sect0001.html#a0000000016"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic structures</span></a>
 	<ul>
 		   <li>	
-  <a href="sect0001.html#a0000000019"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Induced semiring</span></a>
+  <a href="sect0001.html#a0000000017"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Induced semiring</span></a>
   </li>
   <li>	
-  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Induced commutative group</span></a>
+  <a href="sect0001.html#a0000000020"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Induced commutative group</span></a>
   </li>
   <li>	
-  <a href="sect0001.html#a0000000032"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
+  <a href="sect0001.html#a0000000022"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
   </li>
   <li>	
-  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Commutative monoid to Involution monoid</span></a>
+  <a href="sect0001.html#a0000000023"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Commutative monoid to Involution monoid</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000024"><span class="toc_ref">1.2.5</span> <span class="toc_entry">Wheel Module</span></a>
   </li>
 
 	</ul>
@@ -145,7 +151,7 @@
 
   <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
 
-  <a href="sect0001.html" title="Introduction"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0001.html" title="Algebraic Wheels"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

@@ -454,3 +454,44 @@ example : ∀(x y z: α),0*x + 0*y + 0*z + 0*z = 0*x*y*(z^2) := by
  _ = 0*x*y*(z^2) := by simp only [mul_assoc]
 
 end Wheel
+
+
+section
+
+universe u v
+
+variable (W : Type u) (M : Type v) [Wheel W] [AddCommMonoid M] [HSMul W M M]
+
+variable (x x' : W) (m m' : M)
+
+/-- Let $W$ be a wheel. A $W$-module, or WheelModule, is a commutative monoid
+ $(M,0,+)$ with multiplication by W-elements defined (formally, a function
+ $(H × M) → M$ written $(x,m) → x • m$) such that for any $x,x' ∈ W$, $m,m' ∈ M$
+ the following hold:
+
+- `smul_assoc`: $(xx') • m = x • (x' • m)$
+- `one_smul` : $1 • m = m$
+- `right_distrib` : $(x + x') • m + 0 • m  = x • m + x' • m$
+- `wleft_distrib` : $x • (m + m') + x • 0 = x • m + x • m'$
+- `wdiv_right_distrib` :  $(\ₐ x) • m + m' + x • 0 = \ₐ x • (m + x • m')$
+- `zero_smul_zero` : $(\ₐ x) • m + m' + x • 0 = \ₐ x • (m + x • m')$
+- `right_distrib'` : $x • (m + 0 • m') = x • m + 0 • m'$
+- `add_wdiv_zero` :  $m + ( \ₐ 0 ) • 0 = ( \ₐ 0 ) • 0$
+
+where $0$ to the left is in $W$, while $0$ to the right or alone is in $M$.
+-/
+class WheelModule where
+  smul_assoc : (x*x') • m = x • (x' • m)
+  one_smul : (1 : W) • m = m
+  right_distrib : (x + x') • m + (0 : W) • m  = x • m + x' • m
+  wleft_distrib : x • (m + m') + x • 0 = x • m + x • m'
+  wdiv_right_distrib: (\ₐ x) • m + m' + x • 0 = \ₐ x • (m + x • m')
+  zero_smul_zero : (0 : W) • 0 = (0 : M)
+  right_distrib' : x • (m + (0 : W) • m') = x • m + (0 : W) • m'
+  add_wdiv_zero  : m + ( \ₐ 0 : W) • 0 = ( \ₐ 0 : W) • 0
+
+end
+
+namespace WheelModule
+
+end WheelModule

@@ -12,7 +12,7 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Introduction</title>
+<title>Algebraic Wheels</title>
 <link rel="next" href="sect0002.html" title="References" />
 <link rel="prev" href="index.html" title="Algebraic Wheel Theory in Lean 4" />
 <link rel="up" href="index.html" title="Algebraic Wheel Theory in Lean 4" />
@@ -33,7 +33,7 @@
 <nav class="toc">
 <ul class="sub-toc-0">
 <li class=" active current">
-  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Algebraic Wheels</span></a>
   <span class="expand-toc">▼</span>
   <ul class="sub-toc-1 active">
      <li class="">
@@ -53,20 +53,23 @@
   </ul>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000018"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic structures</span></a>
+  <a href="sect0001.html#a0000000016"><span class="toc_ref">1.2</span> <span class="toc_entry">Algebraic structures</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-2">
      <li class="">
-  <a href="sect0001.html#a0000000019"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Induced semiring</span></a>
+  <a href="sect0001.html#a0000000017"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Induced semiring</span></a>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Induced commutative group</span></a>
+  <a href="sect0001.html#a0000000020"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Induced commutative group</span></a>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000032"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
+  <a href="sect0001.html#a0000000022"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Involution Monoid</span></a>
  </li>
 <li class="">
-  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Commutative monoid to Involution monoid</span></a>
+  <a href="sect0001.html#a0000000023"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Commutative monoid to Involution monoid</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000024"><span class="toc_ref">1.2.5</span> <span class="toc_entry">Wheel Module</span></a>
  </li>
 
   </ul>
@@ -86,7 +89,7 @@
 
 
 <div class="main-text">
-<h1 id="a0000000002">1 Introduction</h1>
+<h1 id="a0000000002">1 Algebraic Wheels</h1>
 <h1 id="a0000000004">1.1 Definition of a Wheel</h1>
 <p> Algebraic wheels are structures generalising a commutative semiring, attempting to make sense of ‘division’ by zero. </p>
 <p>Loosely speaking, given a semiring \(R\) and it’s associated monoids, one may extend the semi-ring in a variety of well-known ways. Considering an additive inverse extends a commutative semiring, to a structure with a given name: a commutative ring, and attempting the same succesfully for the multiplicative monoid yields a field. </p>
@@ -174,6 +177,26 @@
     <a class="icon proof" href="sect0001.html#prop:wDiv_one">#</a>
     
     
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
     
     <button class="modal lean">L∃∀N</button>
         <div class="modal-container">
@@ -197,7 +220,7 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>   Given a Wheel \(W\) , then \(\backslash _{a} 1 = 1\) where \(1\) is the neutral element of the multiplicative commutative monoid. </p>
+  <p>    Given a Wheel \(W\) , then \(\backslash _{a} 1 = 1\) where \(1\) is the neutral element of the multiplicative commutative monoid. </p>
 
   </div>
 </div>
@@ -216,6 +239,26 @@
 
     <a class="icon proof" href="sect0001.html#prop:zero_mul_add">#</a>
     
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
     
     
     <button class="modal lean">L∃∀N</button>
@@ -240,7 +283,8 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>  Given a Wheel \(W\) and any two elements \(a,b \in W\), then: </p>
+  
+<p>Given a Wheel \(W\) and any two elements \(a,b \in W\), then: </p>
 <div class="displaymath" id="a0000000006">
   \[  0a + 0b = 0ab  \]
 </div>
@@ -262,6 +306,28 @@
 
     <a class="icon proof" href="sect0001.html#prop:zero_wdiv_mul">#</a>
     
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#prop:zero_mul_add">Proposition 3</a></li>
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
     
     
     <button class="modal lean">L∃∀N</button>
@@ -286,14 +352,14 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>  Given a Wheel \(W\) and any element \(a \in W\), then: </p>
+  <p>   Given a Wheel \(W\) and any element \(a \in W\), then: </p>
 <div class="displaymath" id="a0000000007">
   \[  (0 \backslash _{a} 0)a = 0 \backslash _{a} 0  \]
 </div>
 
   </div>
 </div>
-<div class="proposition_thmwrapper theorem-style-plain" id="prop:wdiv_selfl">
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:wdiv_self">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -307,7 +373,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#prop:wdiv_selfl">#</a>
+    <a class="icon proof" href="sect0001.html#prop:wdiv_self">#</a>
     
     
     
@@ -340,7 +406,7 @@
 
   </div>
 </div>
-<div class="proposition_thmwrapper theorem-style-plain" id="prop:wdiv_right_cancell">
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:wdiv_right_cancel">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -354,8 +420,30 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#prop:wdiv_right_cancell">#</a>
+    <a class="icon proof" href="sect0001.html#prop:wdiv_right_cancel">#</a>
     
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#prop:wdiv_self">Proposition 5</a></li>
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
     
     
     <button class="modal lean">L∃∀N</button>
@@ -380,7 +468,7 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>   Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(ac = bc\), then: </p>
+  <p>    Given a Wheel \(W\) and any elements \(a,b,c \in W\) such that \(ac = bc\), then: </p>
 <div class="displaymath" id="a0000000009">
   \[  a + 0c\backslash _{a} c = b + 0c\backslash _{a} c  \]
 </div>
@@ -403,6 +491,28 @@
 
     <a class="icon proof" href="sect0001.html#prop:wDivMonAuto">#</a>
     
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#prop:wDiv_one">Proposition 2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
     
     
     <button class="modal lean">L∃∀N</button>
@@ -427,7 +537,7 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>   Given a Wheel \(W\) , \(wDiv\) is a monoid automorphism for \((1,*)\). </p>
+  <p>    Given a Wheel \(W\) , \(wDiv\) is a monoid automorphism for \((1,*)\). </p>
 
   </div>
 </div>
@@ -448,6 +558,30 @@
 
     <a class="icon proof" href="sect0001.html#prop:wdiv_inv_add_div">#</a>
     
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#prop:wDiv_one">Proposition 2</a></li>
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#prop:wdiv_self">Proposition 5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
     
     
     <button class="modal lean">L∃∀N</button>
@@ -472,7 +606,7 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then the unit and self Wheel division are related by: </p>
+  <p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then the unit and self Wheel division are related by: </p>
 <div class="equation" id="a0000000011">
 <p>
   <div class="equation_content">
@@ -501,6 +635,30 @@
     <a class="icon proof" href="sect0001.html#prop:isUnit_zero_eq_div_mul_add">#</a>
     
     
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#prop:zero_mul_add">Proposition 3</a></li>
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#prop:wDiv_one">Proposition 2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
     
     <button class="modal lean">L∃∀N</button>
         <div class="modal-container">
@@ -524,7 +682,7 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then zero enjoys the following identity: </p>
+  <p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then zero enjoys the following identity: </p>
 <div class="equation" id="a0000000012">
 <p>
   <div class="equation_content">
@@ -553,6 +711,32 @@
     <a class="icon proof" href="sect0001.html#prop:isUnit_inv_eq_div_add">#</a>
     
     
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#prop:isUnit_zero_eq_div_mul_add">Proposition 9</a></li>
+          
+          <li><a href="sect0001.html#prop:wdiv_inv_add_div">Proposition 8</a></li>
+          
+          <li><a href="sect0001.html#prop:zero_mul_add">Proposition 3</a></li>
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
     
     <button class="modal lean">L∃∀N</button>
         <div class="modal-container">
@@ -576,7 +760,7 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
+  <p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
 <div class="equation" id="a0000000013">
 <p>
   <div class="equation_content">
@@ -605,6 +789,30 @@
     <a class="icon proof" href="sect0001.html#prop:isUnit_div_eq_inv_add">#</a>
     
     
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#prop:zero_mul_add">Proposition 3</a></li>
+          
+          <li><a href="sect0001.html#def:Wheel">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#prop:isUnit_inv_eq_div_add">Proposition 10</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
     
     <button class="modal lean">L∃∀N</button>
         <div class="modal-container">
@@ -628,7 +836,7 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p>  Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
+  <p>   Given a Wheel \(W\), and \(x \in W\) a unit in the multiplicative monoid of \(W\), then: </p>
 <div class="equation" id="a0000000014">
 <p>
   <div class="equation_content">
@@ -643,7 +851,7 @@
 </div>
 <h2 id="a0000000015">1.1.3 The trivial wheel</h2>
 <p> Given some set \(\beta \), if there exist two commutative monoids which can be defined on this set, assume one is taken with additive notation and the other with multiplicative. Then there exists a wheel for \(\beta \) : the trivial wheel containing the multiplicative unit. </p>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000016">
+<div class="proposition_thmwrapper theorem-style-plain" id="def:trivial_wheel">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -656,7 +864,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000016">#</a>
+    <a class="icon proof" href="sect0001.html#def:trivial_wheel">#</a>
     
     
     
@@ -682,12 +890,12 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> Suppose there is a set \(\beta \) and there exist two commutative monoids which can be defined on this set, in additive and multiplicative notation. Then \(\{  1 \} \) is a Wheel with wheel division being the identity map. </p>
+  <p>  Suppose there is a set \(\beta \) and there exist two commutative monoids which can be defined on this set, in additive and multiplicative notation. Then \(\{  1 \} \) is a Wheel with wheel division being the identity map. </p>
 
   </div>
 </div>
 <p> If given a wheel \(W\), one may ask if it is the trivial wheel. This may be answered by comparing any two values out of \(0,1,\backslash _{a} 0, 0 \backslash _{a} 0\) as below: </p>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000017">
+<div class="proposition_thmwrapper theorem-style-plain" id="lemma:tfae_wheel_trivial">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -700,7 +908,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000017">#</a>
+    <a class="icon proof" href="sect0001.html#lemma:tfae_wheel_trivial">#</a>
     
     
     
@@ -726,19 +934,19 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> If any two of the elements \(0,1,\backslash _{a} 0\) and \(0 \backslash _{a} 0\) are equal in a wheel \(W\), then \(W\) is trivial. </p>
+  <p>  If any two of the elements \(0,1,\backslash _{a} 0\) and \(0 \backslash _{a} 0\) are equal in a wheel \(W\), then \(W\) is trivial. </p>
 
   </div>
 </div>
-<h1 id="a0000000018">1.2 Algebraic structures</h1>
+<h1 id="a0000000016">1.2 Algebraic structures</h1>
 <p> Given a wheel \(W\), certain sub-sets form familiar structures. </p>
-<h2 id="a0000000019">1.2.1 Induced semiring</h2>
+<h2 id="a0000000017">1.2.1 Induced semiring</h2>
 <p> Consider the subset: </p>
-<div class="displaymath" id="a0000000020">
+<div class="displaymath" id="a0000000018">
   \[  \mathcal{R}_{W} := \{  w \in W | 0*w = 0 \}   \]
 </div>
 <p> then \(\mathcal{R}\) turns out to be a commutative unital semiring. </p>
-<div class="remark_thmwrapper theorem-style-plain" id="a0000000021">
+<div class="remark_thmwrapper theorem-style-plain" id="a0000000019">
   <div class="remark_thmheading">
     <span class="remark_thmcaption">
     Remark
@@ -749,7 +957,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000021">#</a>
+    <a class="icon proof" href="sect0001.html#a0000000019">#</a>
     
     
     
@@ -761,7 +969,7 @@
   </div>
 </div>
 <p> Firstly, </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000022">
+<div class="definition_thmwrapper theorem-style-definition" id="def:R_w_magma">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -775,7 +983,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000022">#</a>
+    <a class="icon proof" href="sect0001.html#def:R_w_magma">#</a>
     
     
     
@@ -803,12 +1011,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative magma in both the wheel operations. </p>
+  <p>   Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative magma in both the wheel operations. </p>
 
   </div>
 </div>
 <p> This is primarily to address the ‘closure’ of the algebraic operations in the sub-set. To achieve a semi-ring, we further need two commutative monoids: one for each of the wheel operations. Having closure, what is left to prove is a neutral element and associativity. </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000023">
+<div class="definition_thmwrapper theorem-style-definition" id="def:R_w_monoid">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -822,7 +1030,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000023">#</a>
+    <a class="icon proof" href="sect0001.html#def:R_w_monoid">#</a>
     
     
     
@@ -850,12 +1058,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative monoid in both the wheel operations. </p>
+  <p>   Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a commutative monoid in both the wheel operations. </p>
 
   </div>
 </div>
 <p> Finally, the interaction between the two monoids must be distributive, and the semiring has been defined: </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000024">
+<div class="definition_thmwrapper theorem-style-definition" id="def:R_w_semiring">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -867,7 +1075,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000024">#</a>
+    <a class="icon proof" href="sect0001.html#def:R_w_semiring">#</a>
     
     
     
@@ -897,17 +1105,17 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a semiring in * and +. </p>
+  <p>   Given a wheel \(W\), then \(\mathcal{R}_{W}\) is a semiring in * and +. </p>
 
   </div>
 </div>
-<h2 id="a0000000025">1.2.2 Induced commutative group</h2>
+<h2 id="a0000000020">1.2.2 Induced commutative group</h2>
 <p> In this section, consider the subset of a wheel \(W\): </p>
-<div class="displaymath" id="a0000000026">
+<div class="displaymath" id="a0000000021">
   \[  \mathcal{S}_{W} := \{  w \in W | 0*w = 0 \wedge 0*\backslash _{a}w = 0 \} ,  \]
 </div>
 <p> note that \(\mathcal{R}_{W}\) is a subset of this set. Once more, begining with the closure of the binary operation * inherited from the wheel: </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000027">
+<div class="definition_thmwrapper theorem-style-definition" id="def:S_w_magma">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -921,7 +1129,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000027">#</a>
+    <a class="icon proof" href="sect0001.html#def:S_w_magma">#</a>
     
     
     
@@ -947,12 +1155,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative magma in the * wheel operation. </p>
+  <p>   Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative magma in the * wheel operation. </p>
 
   </div>
 </div>
 <p> Followed by the commutative monoid: </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000028">
+<div class="definition_thmwrapper theorem-style-definition" id="def:S_w_monoid">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -966,7 +1174,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000028">#</a>
+    <a class="icon proof" href="sect0001.html#def:S_w_monoid">#</a>
     
     
     
@@ -992,12 +1200,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative monoid in the * wheel operation. </p>
+  <p>   Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative monoid in the * wheel operation. </p>
 
   </div>
 </div>
 <p> And finally, the induced commutative group, </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000029">
+<div class="definition_thmwrapper theorem-style-definition" id="def:S_w_group">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1011,7 +1219,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000029">#</a>
+    <a class="icon proof" href="sect0001.html#def:S_w_group">#</a>
     
     
     
@@ -1037,12 +1245,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative group in *. </p>
+  <p>   Given a wheel \(W\), then \(\mathcal{S}_{W}\) is a commutative group in *. </p>
 
   </div>
 </div>
 <p> This shows that every element of \(\mathcal{S}_{W}\) is \(\backslash _{a}\)-invertible. Furthermore, if an element of \(\mathcal{R}_{W}\) is a \(\backslash _{a}\)-unit, then it is contained in \(\mathcal{S}_{W}\): </p>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000030">
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:S_w_of_wheel_invertible_R_w">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -1055,7 +1263,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000030">#</a>
+    <a class="icon proof" href="sect0001.html#prop:S_w_of_wheel_invertible_R_w">#</a>
     
     
     
@@ -1081,11 +1289,11 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is \(\backslash _{a}\)-invertible, then \(x \in \mathcal{S}_{W}\). </p>
+  <p>  For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is \(\backslash _{a}\)-invertible, then \(x \in \mathcal{S}_{W}\). </p>
 
   </div>
 </div>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000031">
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:wheel_unit_of_R_w_unit">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -1098,7 +1306,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000031">#</a>
+    <a class="icon proof" href="sect0001.html#prop:wheel_unit_of_R_w_unit">#</a>
     
     
     
@@ -1124,13 +1332,13 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is a unit, then is is also a unit in the original wheel. </p>
+  <p>  For a wheel \(W\), if \(x \in \mathcal{R}_{W}\) is a unit, then is is also a unit in the original wheel. </p>
 
   </div>
 </div>
-<h2 id="a0000000032">1.2.3 Involution Monoid</h2>
+<h2 id="a0000000022">1.2.3 Involution Monoid</h2>
 <p> An Involution is a monoid with a special involution operation , interacting in a particular way with the monoid operation. </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000033">
+<div class="definition_thmwrapper theorem-style-definition" id="def:involution_monoid">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1144,7 +1352,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000033">#</a>
+    <a class="icon proof" href="sect0001.html#def:involution_monoid">#</a>
     
     
     
@@ -1170,7 +1378,7 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  Given a monoid \((M,*)\), \(M\) is called an involution monoid for an involutive function \(\star :M \rightarrow M\) which skew-distributes over \(*\). In other words, \((M,*)\) is a monoid, with an associated map \(\star :M \rightarrow M\) such that: </p>
+  <p>   Given a monoid \((M,*)\), \(M\) is called an involution monoid for an involutive function \(\star :M \rightarrow M\) which skew-distributes over \(*\). In other words, \((M,*)\) is a monoid, with an associated map \(\star :M \rightarrow M\) such that: </p>
 <ol class="enumerate">
   <li><p>\(\forall x \in M,\) \(x \star \star = x\) <br /></p>
 </li>
@@ -1182,7 +1390,7 @@
   </div>
 </div>
 <p> Several structures can be made into an involution monoid: </p>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000034">
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:inv_monoid_of_abelian_group">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -1195,7 +1403,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000034">#</a>
+    <a class="icon proof" href="sect0001.html#prop:inv_monoid_of_abelian_group">#</a>
     
     
     
@@ -1223,11 +1431,11 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> Any abelian group is an involution monoid with \(x\star = x^{-1}\). </p>
+  <p>  Any abelian group is an involution monoid with \(x\star = x^{-1}\). </p>
 
   </div>
 </div>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000035">
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:inv_monoid_of_field">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -1240,7 +1448,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000035">#</a>
+    <a class="icon proof" href="sect0001.html#prop:inv_monoid_of_field">#</a>
     
     
     
@@ -1266,11 +1474,11 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> Any field with decideable equality is an involution monoid with \(x\star = x^{-1}\) for \(x\) non-zero and \(0\) otherwise. </p>
+  <p>  Any field with decideable equality is an involution monoid with \(x\star = x^{-1}\) for \(x\) non-zero and \(0\) otherwise. </p>
 
   </div>
 </div>
-<div class="proposition_thmwrapper theorem-style-plain" id="a0000000036">
+<div class="proposition_thmwrapper theorem-style-plain" id="prop:sq_matrices_inv_monoid">
   <div class="proposition_thmheading">
     <span class="proposition_thmcaption">
     Proposition
@@ -1283,7 +1491,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000036">#</a>
+    <a class="icon proof" href="sect0001.html#prop:sq_matrices_inv_monoid">#</a>
     
     
     
@@ -1309,12 +1517,12 @@
         </div>
   </div>
   <div class="proposition_thmcontent">
-  <p> The monoid of \(n \times n\) \(R\)-valued matrices form an involution monoid with \(x\star = x^{T}\) and \(R\) a commutative ring. </p>
+  <p>  The monoid of \(n \times n\) \(R\)-valued matrices form an involution monoid with \(x\star = x^{T}\) and \(R\) a commutative ring. </p>
 
   </div>
 </div>
 <p> Furthermore the notion of a \(\star \)-unit is defined on an involution monoid as a regular monoid unit, except that the two-sided inverse must equal to the \(\star \) operation. </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000037">
+<div class="definition_thmwrapper theorem-style-definition" id="def:star_unit">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1328,7 +1536,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000037">#</a>
+    <a class="icon proof" href="sect0001.html#def:star_unit">#</a>
     
     
     
@@ -1354,11 +1562,11 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  An element of an involution monoid \(x \in (M , \star )\) is a \(\star \)-unit if \(x^{-1} = x\star \). </p>
+  <p>   An element of an involution monoid \(x \in (M , \star )\) is a \(\star \)-unit if \(x^{-1} = x\star \). </p>
 
   </div>
 </div>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000038">
+<div class="definition_thmwrapper theorem-style-definition" id="def:star_invertibility">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1372,7 +1580,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000038">#</a>
+    <a class="icon proof" href="sect0001.html#def:star_invertibility">#</a>
     
     
     
@@ -1398,12 +1606,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  An involution monoid \((M,\star )\) is \(\star \)-invertible if every unit is a \(\star \)-unit. </p>
+  <p>   An involution monoid \((M,\star )\) is \(\star \)-invertible if every unit is a \(\star \)-unit. </p>
 
   </div>
 </div>
 <p> The morphisms that respect such structures are similarly defined: </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000039">
+<div class="definition_thmwrapper theorem-style-definition" id="def:involution_monoid_morphism">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1417,7 +1625,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000039">#</a>
+    <a class="icon proof" href="sect0001.html#def:involution_monoid_morphism">#</a>
     
     
     
@@ -1443,13 +1651,13 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
+  <p>   If there are two involution monoids, \((M_{1},\star _{1})\) and \((M_{2},\star _{2})\), a monoid homomorphism \(f : M_{1} \rightarrow M_{2}\) is an involution monoid homomorphism if \(\forall x ∈ M_{1}, f (x\star _{1}) = f (x)\star _{2}\). </p>
 
   </div>
 </div>
-<h2 id="a0000000040">1.2.4 Commutative monoid to Involution monoid</h2>
+<h2 id="a0000000023">1.2.4 Commutative monoid to Involution monoid</h2>
 <p> It is possible, given a commutative monoid \(M\), to construct an involution monoid contained within \(M\). To begin with , an Involution monoid may be defined on \(M \times M\), with \((x_{1},x_{2})\star = (x_{2},x_{1})\). </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000041">
+<div class="definition_thmwrapper theorem-style-definition" id="def:involution_monoid_prod_space">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1462,7 +1670,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000041">#</a>
+    <a class="icon proof" href="sect0001.html#def:involution_monoid_prod_space">#</a>
     
     
     
@@ -1490,12 +1698,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p> Given a commutative monoid \(M\), there is an involution monoid on \(M \times M\) with \((x_{1},x_{2})\star = (x_{2},x_{1})\), and the usual pointwise monoid operation taken from \(M\). </p>
+  <p>  Given a commutative monoid \(M\), there is an involution monoid on \(M \times M\) with \((x_{1},x_{2})\star = (x_{2},x_{1})\), and the usual pointwise monoid operation taken from \(M\). </p>
 
   </div>
 </div>
 <p> Define an equivalence relation on \(M \times M\): </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000042">
+<div class="definition_thmwrapper theorem-style-definition" id="def:involution_monoid_setoid">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1508,7 +1716,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000042">#</a>
+    <a class="icon proof" href="sect0001.html#def:involution_monoid_setoid">#</a>
     
     
     
@@ -1536,12 +1744,12 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p> \((x,y) \equiv (x',y')\) iff \(\exists s_{1}, s_{2} \in M,(s_{1},s_{1})(x,y) = (s_{2},s_{2})(x',y')\) </p>
+  <p>  \((x,y) \equiv (x',y')\) iff \(\exists s_{1}, s_{2} \in M,(s_{1},s_{1})(x,y) = (s_{2},s_{2})(x',y')\) </p>
 
   </div>
 </div>
 <p> The equivalence relation gives rise to the corresponding quotient space: </p>
-<div class="definition_thmwrapper theorem-style-definition" id="a0000000043">
+<div class="definition_thmwrapper theorem-style-definition" id="def:MStar">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -1554,7 +1762,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#a0000000043">#</a>
+    <a class="icon proof" href="sect0001.html#def:MStar">#</a>
     
     
     
@@ -1580,7 +1788,69 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p> Denote the quotient space \(M^{*}_{X} := M \times M / \equiv \). </p>
+  <p>  Denote the quotient space \(M^{*}_{X} := M \times M / \equiv \). </p>
+
+  </div>
+</div>
+<h2 id="a0000000024">1.2.5 Wheel Module</h2>
+<div class="definition_thmwrapper theorem-style-definition" id="def:wheel_module">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">32</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:wheel_module">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://YanYablonovskiy.github.io/AlgebraicWheelTheory/docs/find/#doc/WheelModule" class="lean_decl">WheelModule</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  Let \(W\) be a wheel. A \(W\)-module, or WheelModule, is a commutative monoid \((M,0,+)\) with multiplication by W-elements defined (formally, a function \((H × M) → M\) written \((x,m) → x • m\)) such that for any \(x,x' ∈ W\), \(m,m' ∈ M\) the following hold: </p>
+<ol class="enumerate">
+  <li><p>\((xx') • m = x • (x' • m)\) <br /></p>
+</li>
+  <li><p>\(1 • m = m\) <br /></p>
+</li>
+  <li><p>\((x + x') • m + 0 • m = x • m + x' • m\) <br /></p>
+</li>
+  <li><p>\(x • (m + m') + x • 0 = x • m + x • m'\) <br /></p>
+</li>
+  <li><p>\((\backslash _{a} x) • m + m' + x • 0 = \backslash _{a} x • (m + x • m')\) <br /></p>
+</li>
+  <li><p>\((\backslash _{a} x) • m + m' + x • 0 = \backslash _{a} x • (m + x • m')\) <br /></p>
+</li>
+  <li><p>\(x • (m + 0 • m') = x • m + 0 • m'\) <br /></p>
+</li>
+  <li><p>\(m + ( \backslash _{a} 0 ) • 0 = ( \backslash _{a} 0 ) • 0\) </p>
+</li>
+</ol>
 
   </div>
 </div>

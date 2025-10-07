@@ -36,3 +36,4 @@ instProdInvMon
 equiv_rel
 instProdSetoid
 MStar
+WheelModule
