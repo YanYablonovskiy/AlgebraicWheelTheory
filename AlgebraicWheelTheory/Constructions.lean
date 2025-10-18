@@ -121,44 +121,18 @@ protected abbrev involutionmonoid {M₂ : Type u} [InvolutionMonoid α]
    obtain ⟨⟨xinv,hx⟩,yinv,hy⟩ := And.intro (hf x) (hf y)
    rw [←hx,←hy,←invol xinv,←invol yinv,←this,mul]
 
-
-
-#check Quotient.lift_surjective
-
-#check Quotient.map
-
-#check Con.Quotient
-
-#check Quotient.mk_surjective
-
-
 end Function.Surjective
 
 namespace MStar
-
 
 noncomputable
 instance : Coe (@MStar α M) (α × α) where
  coe x := x.out
 
-
 noncomputable
 instance : Star (@MStar α M)  where
- star x := ⟦x.out⋆⟧
-
-noncomputable
-instance : Star (Quotient (InvConProd (α := α)).toSetoid) where
- star x := ⟦x.out⋆⟧
-
-noncomputable
-def t :=
-  Function.Surjective.involutionmonoid (M₂ := (@MStar α M) ) ((InvConProd (α:=α)).toQuotient) Quotient.mk_surjective
-
-#check t
-
-lemma star_def (x : @MStar α M) : x⋆ = ⟦x.out⋆⟧ := rfl
-
-lemma star_def' (x : @MStar α M) : x⋆ = ⟦(x.out.2,x.out.1)⟧ := rfl
+ star := Quotient.map (fun r ↦ r⋆)
+   (fun a b ⟨c,⟨d,h⟩⟩ ↦ ⟨c,⟨d,by simpa [Prod.eq_iff_fst_eq_snd_eq,And.comm] using h⟩⟩)
 
 lemma prod_out_def (x : (@MStar α M)) : (⟦(x.out.1,x.out.2)⟧ :  (@MStar α M)) = ⟦x.out⟧ :=
   Quotient.sound ⟨1,1,by congr⟩
@@ -166,11 +140,7 @@ lemma prod_out_def (x : (@MStar α M)) : (⟦(x.out.1,x.out.2)⟧ :  (@MStar α 
 lemma prod_out_star (x : (@MStar α M)) : (⟦(x.out.2,x.out.1)⟧ :  (@MStar α M)) = ⟦x.out⋆⟧ :=
   Quotient.sound ⟨1,1,by congr⟩
 
-lemma star_out_eq_out_star (x : (@MStar α M)) : (⟦x⋆.out⟧ : (@MStar α M)) = ⟦x.out⋆⟧ := by
-  simp [star_def']
-
-lemma prod_out_star' (x : (@MStar α M)) : (⟦(x.out.2,x.out.1)⟧ :  (@MStar α M)) = ⟦x⋆.out⟧ := by
-  rw [prod_out_star,←star_out_eq_out_star]
+lemma star_out (x : α × α) : ⟦x⋆⟧ = (⟦x⟧⋆ :(@MStar α M)) := rfl
 
 lemma out_star_eq_star_out (x : (@MStar α M)) : (⟦x.out⟧⋆ : (@MStar α M)) = ⟦x⋆.out⟧ := by simp
 
@@ -183,9 +153,13 @@ lemma out_star_star (x :(@MStar α M)) : ⟦x.out⋆⋆⟧  = x := by
 lemma equiv_star_quot_eq (x y : α × α) : equiv_rel x y →
     (⟦x⋆⟧ : (@MStar α M) ) = ⟦y⋆⟧ := fun ⟨a,b,h⟩ ↦ by
   refine Quotient.sound ⟨a,b,?_⟩
-  simp [Prod.eq_iff_fst_eq_snd_eq] at h
-  simp [h]
+  simpa [Prod.eq_iff_fst_eq_snd_eq,And.comm] using h
 
+
+noncomputable
+instance : InvolutionMonoid (@MStar α M) where
+ star_involutive x := Quotient.inductionOn x (fun _ ↦ rfl)
+ star_mul r s := sorry
 
 end MStar
 
