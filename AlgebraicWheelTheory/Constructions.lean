@@ -98,9 +98,10 @@ def InvConProd : InvCon (α := α) where
     simp [h]
 
 /-- The quotient space for the equivalence operation: equiv_rel.
-In the same universe as α, to be the InvMon instance after coerctions -/
+In the same universe as α, to be the InvMon instance after coercions.
+This is Definition 2.6 of the reference. -/
 @[reducible]
-def MStar : Type u :=  (InvConProd (α:=α)).Quotient
+def MStar (α : Type u) [CommMonoid α] : Type u :=  (InvConProd (α:=α)).Quotient
 
 namespace Function.Surjective
 
@@ -125,41 +126,52 @@ end Function.Surjective
 
 namespace MStar
 
+universe v
+
+variable {N : Type v} [InvolutionMonoid N] (ϕ : α →ₙ* N)
+
 noncomputable
-instance : Coe (@MStar α M) (α × α) where
+instance : Coe (MStar α) (α × α) where
  coe x := x.out
 
 noncomputable
-instance : Star (@MStar α M)  where
+instance : Star (MStar α)  where
  star := Quotient.map (fun r ↦ r⋆)
    (fun a b ⟨c,⟨d,h⟩⟩ ↦ ⟨c,⟨d,by simpa [Prod.eq_iff_fst_eq_snd_eq,And.comm] using h⟩⟩)
 
-lemma prod_out_def (x : (@MStar α M)) : (⟦(x.out.1,x.out.2)⟧ :  (@MStar α M)) = ⟦x.out⟧ :=
+lemma prod_out_def (x : (MStar α)) : (⟦(x.out.1,x.out.2)⟧ : MStar α) = ⟦x.out⟧ :=
   Quotient.sound ⟨1,1,by congr⟩
 
-lemma prod_out_star (x : (@MStar α M)) : (⟦(x.out.2,x.out.1)⟧ :  (@MStar α M)) = ⟦x.out⋆⟧ :=
+lemma prod_out_star (x : (MStar α)) : (⟦(x.out.2,x.out.1)⟧ : MStar α) = ⟦x.out⋆⟧ :=
   Quotient.sound ⟨1,1,by congr⟩
 
-lemma star_out (x : α × α) : ⟦x⋆⟧ = (⟦x⟧⋆ :(@MStar α M)) := rfl
+lemma star_out (x : α × α) : ⟦x⋆⟧ = (⟦x⟧⋆ : MStar α) := rfl
 
-lemma out_star_eq_star_out (x : (@MStar α M)) : (⟦x.out⟧⋆ : (@MStar α M)) = ⟦x⋆.out⟧ := by simp
+lemma out_star_eq_star_out (x : MStar α) : (⟦x.out⟧⋆ : MStar α) = ⟦x⋆.out⟧ := by simp
 
-lemma star_assoc (x : (@MStar α M)) : (x⋆)⋆ = x⋆⋆ := by
+lemma star_assoc (x : (MStar α)) : (x⋆)⋆ = x⋆⋆ := by
  rfl
 
-lemma out_star_star (x :(@MStar α M)) : ⟦x.out⋆⋆⟧  = x := by
+lemma out_star_star (x : MStar α) : ⟦x.out⋆⋆⟧  = x := by
  rw [star_star,Quotient.out_eq]
 
 lemma equiv_star_quot_eq (x y : α × α) : equiv_rel x y →
-    (⟦x⋆⟧ : (@MStar α M) ) = ⟦y⋆⟧ := fun ⟨a,b,h⟩ ↦ by
+    (⟦x⋆⟧ : (MStar α) ) = ⟦y⋆⟧ := fun ⟨a,b,h⟩ ↦ by
   refine Quotient.sound ⟨a,b,?_⟩
   simpa [Prod.eq_iff_fst_eq_snd_eq,And.comm] using h
 
 
 noncomputable
-instance : InvolutionMonoid (@MStar α M) where
+instance involutionMonoid : InvolutionMonoid (MStar α) where
  star_involutive x := Quotient.inductionOn x (fun _ ↦ rfl)
- star_mul r s := sorry
+ star_mul x y := Quotient.inductionOn₂ x y (fun a b ↦ Quotient.sound (by simp [mul_comm]) )
+
+noncomputable
+def φ : InvolutionMonoidHom (MStar α) N where
+ toFun x := (ϕ x.out.1)*(ϕ x.out.2)⋆
+ map_mul' := sorry
+ invol_hom := sorry
+
 
 end MStar
 
